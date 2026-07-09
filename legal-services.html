@@ -1,0 +1,1076 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Legal Services | Turn2Law</title><meta name="description" content="Incorporation, compliance, trademark, and advisory, delivered by an in-house bench of lawyers, CAs, and CS professionals. Done right, not just fast."><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"><style>
+/* ============================================================
+   TURN2LAW: Design System
+   Gold on white, nothing louder.
+   ============================================================ */
+:root{
+  --gold:#D8AB5B;
+  --gold-deep:#B98F42;
+  --gold-soft:rgba(216,171,91,.14);
+  --ink:#111111;
+  --navy:#0A1628;
+  --navy-2:#0E1D33;
+  --gray:#6F6F6F;
+  --gray-2:#9A9A9A;
+  --line:#EAEAEA;
+  --line-soft:#F1F1F1;
+  --bg:#FFFFFF;
+  --bg-tint:#FBFAF7;
+  --glass:rgba(255,255,255,.65);
+  --glass-line:rgba(255,255,255,.7);
+  --shadow-sm:0 2px 10px rgba(17,17,17,.05);
+  --shadow-md:0 12px 34px rgba(17,17,17,.09);
+  --shadow-lg:0 30px 70px rgba(17,17,17,.14);
+  --shadow-gold:0 18px 50px rgba(216,171,91,.30);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1200px;
+  --r:22px;
+  --r-lg:28px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--gold);color:#fff}
+
+/* Typography */
+h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.mono{font-family:'DM Mono',monospace}
+.eyebrow{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
+.eyebrow.center{justify-content:center}
+.h2{font-size:clamp(30px,4.4vw,50px);line-height:1.08;letter-spacing:-.025em}
+.lede{font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--gray);max-width:640px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+.pad{padding:clamp(72px,10vw,128px) 0}
+.pad-t{padding-top:clamp(72px,10vw,128px)}
+
+/* ============ Ambient N glow ============ */
+.nglow{
+  position:absolute;pointer-events:none;z-index:0;opacity:.5;
+  color:var(--gold);filter:blur(2px);
+}
+.nglow svg{width:100%;height:100%;filter:drop-shadow(0 0 60px rgba(216,171,91,.55))}
+
+/* ============ Buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:600;font-size:15px;padding:14px 26px;border-radius:100px;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s var(--ease),color .3s var(--ease);
+  position:relative;white-space:nowrap;will-change:transform;
+}
+.btn svg{width:17px;height:17px}
+.btn-gold{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-gold::after{
+  content:"";position:absolute;inset:0;border-radius:100px;
+  background:linear-gradient(120deg,var(--gold),var(--gold-deep));
+  opacity:0;transition:opacity .35s var(--ease);z-index:-1;
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:var(--shadow-gold);color:#111}
+.btn-gold:hover::after{opacity:1}
+.btn-gold{z-index:0;overflow:hidden}
+.btn-ghost{background:rgba(255,255,255,.5);color:var(--ink);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:var(--shadow-md)}
+.btn .pill{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;
+  padding:3px 9px;border-radius:100px;background:var(--gold-soft);color:var(--gold-deep);
+}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:transform .5s var(--ease),background .4s,box-shadow .4s,border-color .4s;
+}
+.nav-inner{
+  max-width:var(--maxw);margin:14px auto;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  border-radius:100px;transition:all .4s var(--ease);
+  border:1px solid transparent;
+}
+.nav.scrolled .nav-inner{
+  background:var(--glass);backdrop-filter:blur(18px) saturate(1.6);
+  border-color:rgba(17,17,17,.06);box-shadow:0 10px 40px rgba(17,17,17,.07);
+}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand .mark{width:26px;height:31px;color:var(--ink)}
+.brand b{color:var(--gold-deep)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{
+  font-size:14px;font-weight:500;color:var(--gray);padding:9px 15px;border-radius:100px;
+  transition:color .25s,background .25s;position:relative;
+}
+.nav-links a:hover{color:var(--ink);background:rgba(17,17,17,.04)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-login{font-size:14px;font-weight:600;color:var(--ink);padding:9px 14px}
+.nav-login:hover{color:var(--gold-deep)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;align-items:center;justify-content:center;background:rgba(255,255,255,.6);border:1px solid var(--line)}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:.3s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+body.menu-open .burger span{background:transparent}
+body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--gold-deep));z-index:101}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:32px;
+  opacity:0;pointer-events:none;transform:translateY(-14px);transition:.45s var(--ease);
+}
+body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
+.mobile-menu>a{font-family:'Poppins',sans-serif;font-weight:600;font-size:30px;padding:10px 0;color:var(--ink);border-bottom:1px solid var(--line-soft)}
+.mobile-menu>a:last-of-type{border:none}
+.mobile-menu .mm-actions{margin-top:24px;display:flex;gap:12px}
+.mobile-menu .mm-actions .btn-gold{color:#fff}
+
+/* ============ HERO ============ */
+.hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0 60px}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-mesh{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(60% 55% at 78% 18%,rgba(216,171,91,.20),transparent 60%),
+    radial-gradient(50% 50% at 12% 82%,rgba(216,171,91,.13),transparent 60%),
+    radial-gradient(40% 40% at 50% 50%,rgba(10,22,40,.03),transparent 70%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
+}
+.hero .nglow{top:-12%;left:50%;transform:translateX(-50%);width:min(680px,70vw);height:min(760px,78vw);opacity:.22}
+.hero-inner{position:relative;z-index:2;display:flex;justify-content:center;width:100%}
+.hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:760px;width:100%}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;padding:7px 8px 7px 16px;border-radius:100px;
+  background:var(--glass);border:1px solid rgba(17,17,17,.07);backdrop-filter:blur(10px);
+  font-size:13px;font-weight:500;color:var(--ink);box-shadow:var(--shadow-sm);
+}
+.hero-badge .tag{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.06em;background:var(--ink);color:#fff;padding:4px 10px;border-radius:100px}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.hero h1{
+  font-size:clamp(40px,6vw,74px);line-height:1.02;letter-spacing:-.035em;margin:26px 0 0;
+}
+.hero h1 .g{
+  background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{font-size:clamp(16px,1.4vw,19px);color:var(--gray);max-width:400px;margin:24px auto 0;line-height:1.6}
+.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+.hero-trust{margin-top:40px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-trust .lbl{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-2)}
+.hero-trust .names{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;font-weight:600;color:var(--gray)}
+
+/* hero visual panel: glass stack */
+.glasscard{
+  position:absolute;border-radius:var(--r);border:1px solid rgba(255,255,255,.8);
+  background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:var(--shadow-lg);padding:20px 22px;
+}
+.hp-main{inset:0;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.7)}
+.hp-row{display:flex;align-items:center;gap:12px}
+.hp-ico{width:38px;height:38px;border-radius:11px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.hp-ico svg{width:19px;height:19px}
+.hp-ico.gold{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff}
+.hp-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px}
+.hp-meta{font-size:12px;color:var(--gray)}
+.hp-prompt{font-size:13.5px;color:var(--ink);background:var(--bg-tint);border:1px solid var(--line);border-radius:12px;padding:12px 14px;line-height:1.5}
+.hp-chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10.5px;
+  letter-spacing:.02em;padding:5px 10px;border-radius:100px;background:#fff;border:1px solid var(--line);color:var(--gray);
+}
+.chip i{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.hp-bar{height:6px;border-radius:100px;background:var(--line);overflow:hidden}
+.hp-bar span{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));animation:fill 2.6s var(--ease) infinite}
+@keyframes fill{0%{width:8%}60%{width:92%}100%{width:100%}}
+.hp-badge{
+  position:absolute;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  padding:9px 14px;border-radius:100px;background:#fff;box-shadow:var(--shadow-md);
+  display:flex;align-items:center;gap:7px;
+}
+.hp-badge b{color:var(--gold-deep)}
+.hp-badge.b1{top:-18px;right:14px;animation:floaty 5s ease-in-out infinite}
+.hp-badge.b2{bottom:-16px;left:-14px;animation:floaty 6s ease-in-out infinite .8s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:26px}
+.stat{background:rgba(255,255,255,.7);backdrop-filter:blur(6px);padding:20px 22px}
+.stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em}
+.stat .v b{color:var(--gold-deep)}
+.stat .k{font-size:12.5px;color:var(--gray);margin-top:2px}
+
+/* ============ MARQUEE ============ */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:var(--bg-tint)}
+.marquee-track{display:flex;gap:64px;width:max-content;animation:scrollx 28s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;color:var(--gray-2);letter-spacing:-.01em;display:flex;align-items:center;gap:64px}
+.marquee-item::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ============ Reveal animation ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ PRODUCTS ============ */
+.sec-head{max-width:660px;margin-bottom:56px}
+.sec-head .h2{margin:18px 0 18px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{
+  position:relative;border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;
+  padding:28px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s;
+  display:flex;flex-direction:column;min-height:400px;
+}
+.pcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+.pcard:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.pcard:hover::before{opacity:1}
+.pcard.dark{background:var(--navy);border-color:var(--navy)}
+.pcard.dark .p-name,.pcard.dark .p-num{color:#fff}
+.pcard.dark .p-desc{color:#9fb0c4}
+.pcard.dark::before{background:radial-gradient(120% 80% at 100% 0%,rgba(216,171,91,.22),transparent 55%)}
+.p-num{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--gold-deep);font-weight:500}
+.p-ico{width:50px;height:50px;border-radius:14px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:18px 0 20px;transition:.5s var(--ease)}
+.p-ico svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.pcard.dark .p-ico{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.pcard.dark .p-ico svg{stroke:var(--gold)}
+.pcard:hover .p-ico{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border-color:transparent;transform:rotate(-6deg)}
+.pcard:hover .p-ico svg{stroke:#fff}
+.p-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em}
+.p-desc{font-size:14.5px;line-height:1.6;color:var(--gray);margin:10px 0 0;flex:1}
+.p-visual{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.pcard.dark .p-visual{border-color:rgba(255,255,255,.12)}
+.p-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;margin-top:20px;color:var(--ink)}
+.pcard.dark .p-link{color:var(--gold)}
+.p-link svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.pcard:hover .p-link svg{transform:translateX(5px)}
+
+/* ============ BENTO ============ */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:186px;gap:20px}
+.bcell{
+  border-radius:var(--r);border:1px solid var(--line);background:#fff;padding:24px;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);position:relative;overflow:hidden;
+}
+.bcell:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.bcell .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
+.bcell .bt{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:-.01em;margin-bottom:6px}
+.bcell .bd{font-size:13px;line-height:1.55;color:var(--gray)}
+.bcell.feat{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
+.bcell.feat .k{color:var(--gold-deep)}
+.bcell.feat .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(56px,7vw,88px);line-height:1;letter-spacing:-.03em}
+.bcell.feat .big s{font-size:22px;font-weight:600;color:var(--gray);margin-left:8px;text-decoration:none}
+.bcell.feat .note{font-size:13.5px;color:var(--gray);margin-top:8px}
+.bcell.feat .file-btn{border:1px solid var(--line);border-radius:11px;padding:10px 16px;font-size:13px;font-weight:600;white-space:nowrap;transition:.3s var(--ease)}
+.bcell.feat .file-btn:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.bcell.dark{background:var(--navy);border-color:var(--navy)}
+.bcell.dark .k{color:var(--gold)}
+.bcell.dark .bt{color:#fff}
+.bcell.dark .bd{color:#9fb0c4}
+.bcell.span2{grid-column:span 2}
+
+/* ============ Product deep sections ============ */
+.split{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.split.rev{grid-template-columns:1.05fr .95fr}
+.kicker{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+.deep-list{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-direction:column;gap:2px}
+.deep-list li{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:15px}
+.deep-list li:last-child{border-bottom:1px solid var(--line)}
+.deep-list .n{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold-deep);padding-top:2px;flex:none;width:26px}
+.deep-list b{font-family:'Poppins',sans-serif;font-weight:600;font-size:15.5px;display:block;margin-bottom:2px}
+.deep-list p{margin:0;font-size:13.5px;color:var(--gray);line-height:1.55}
+
+/* service catalog cards */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff;transition:.45s var(--ease);position:relative;overflow:hidden;cursor:pointer}
+.cat::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+.cat:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:transparent}
+.cat:hover::before{opacity:1}
+.cat:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px}
+.cat-ico{width:46px;height:46px;border-radius:13px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:.5s var(--ease)}
+.cat-ico svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.cat:hover .cat-ico{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border-color:transparent;transform:rotate(-6deg)}
+.cat:hover .cat-ico svg{stroke:#fff}
+.cat .cc{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);margin:16px 0 0;position:relative;z-index:1}
+.cat .cn{font-family:'Poppins',sans-serif;font-weight:600;font-size:16.5px;letter-spacing:-.01em;margin:10px 0 8px;position:relative;z-index:1}
+.cat .cb{font-size:13px;line-height:1.55;color:var(--gray);position:relative;z-index:1}
+.cat .ct{margin-top:14px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:var(--gray-2);position:relative;z-index:1}
+.cat-more{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:16px;position:relative;z-index:1}
+.cat-more svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:2.4;transition:transform .4s var(--ease)}
+.cat:hover .cat-more svg{transform:translateX(4px)}
+
+/* doc engine flow */
+.de-panel{background:var(--navy);border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);color:#fff;position:relative;overflow:hidden}
+.de-panel .nglow{top:-30%;left:-10%;width:400px;height:470px;opacity:.16}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
+.step{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;background:rgba(255,255,255,.03);transition:.4s var(--ease)}
+.step:hover{background:rgba(255,255,255,.07);transform:translateY(-4px)}
+.step .sn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--gold)}
+.step .st{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;margin:10px 0 6px}
+.step .sd{font-size:12.5px;line-height:1.55;color:#9fb0c4}
+.templates{display:flex;flex-wrap:wrap;gap:10px}
+.tpl{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:#fff;transition:.35s var(--ease);cursor:default}
+.tpl:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.tpl .tn{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px}
+.tpl .tg{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--gray-2);margin-top:3px}
+
+/* introspector dark */
+.intro-sec{background:var(--navy);color:#fff;border-radius:0;overflow:hidden;position:relative}
+.intro-sec .nglow{top:5%;right:-6%;width:520px;height:600px;opacity:.2}
+.intro-sec .h2,.intro-sec .p-name{color:#fff}
+.intro-sec .lede{color:#9fb0c4}
+.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.icap{border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px;background:rgba(255,255,255,.03);transition:.45s var(--ease)}
+.icap:hover{background:rgba(255,255,255,.06);transform:translateY(-5px)}
+.icap .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.icap .cn{font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;margin:12px 0 8px}
+.icap .cb{font-size:13px;line-height:1.6;color:#9fb0c4}
+.responsible{margin-top:30px;font-size:12.5px;color:#7d8da2;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;display:flex;gap:10px;align-items:flex-start}
+.responsible svg{width:16px;height:16px;stroke:var(--gold);flex:none;margin-top:2px}
+
+/* ============ AUDIENCES ============ */
+.forks{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.fork{position:relative;border-radius:var(--r-lg);border:1px solid var(--line);padding:34px;overflow:hidden;background:#fff;transition:.5s var(--ease)}
+.fork:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.fork .orb{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,var(--gold-soft),transparent 70%);pointer-events:none}
+.fork.ink{background:var(--navy);border-color:var(--navy);color:#fff}
+.fork-badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--gray)}
+.fork.ink .fork-badge{color:#9fb0c4}
+.fork-badge i{width:32px;height:32px;border-radius:9px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.fork-badge i svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.fork.ink .fork-badge i{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.fork.ink .fork-badge i svg{stroke:var(--gold)}
+.fork h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(21px,2.4vw,26px);letter-spacing:-.02em;margin:20px 0 12px}
+.fork p{font-size:14.5px;line-height:1.6;color:var(--gray);margin:0}
+.fork.ink p{color:#9fb0c4}
+.fork ul{list-style:none;padding:0;margin:22px 0 26px;display:flex;flex-direction:column;gap:12px}
+.fork li{display:flex;gap:11px;font-size:14px;align-items:center}
+.fork li svg{width:17px;height:17px;stroke:var(--gold-deep);fill:none;stroke-width:2.4;flex:none}
+.fork.ink li svg{stroke:var(--gold)}
+
+/* ============ PRICING ============ */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.price{border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;background:#fff;display:flex;flex-direction:column;transition:.45s var(--ease);position:relative}
+.price:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.price.feat{border-color:var(--gold);background:var(--bg-tint)}
+.price.feat:hover{box-shadow:var(--shadow-gold)}
+.price .badge{position:absolute;top:-12px;left:28px;background:var(--gold);color:#111;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;padding:5px 13px;font-weight:500}
+.price .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:16px}
+.price .amt{font-family:'DM Mono',monospace;font-size:34px;color:var(--ink);margin-bottom:6px;letter-spacing:-.02em}
+.price .amt small{font-size:14px;color:var(--gray)}
+.price .amt .slot{font-size:11px;color:var(--gray-2);margin-left:8px}
+.price .sub{font-size:13.5px;color:var(--gray);margin-bottom:22px}
+.price ul{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:11px;flex:1}
+.price li{display:flex;gap:10px;font-size:14px;align-items:baseline}
+.price li::before{content:"";width:7px;height:2px;background:var(--gold);flex:none;transform:translateY(-4px)}
+.price .pbtn{text-align:center;font-size:14px;font-weight:600;padding:13px;border-radius:12px;border:1px solid var(--line);transition:.3s var(--ease)}
+.price .pbtn:hover{border-color:var(--ink)}
+.price.feat .pbtn{background:var(--gold);border-color:var(--gold);color:#111}
+.price.feat .pbtn:hover{background:var(--gold-deep);border-color:var(--gold-deep)}
+.price-foot{text-align:center;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:36px}
+
+/* ============ TESTIMONIALS ============ */
+.tst{position:relative;overflow:hidden}
+.tst .nglow{bottom:-20%;left:40%;width:400px;height:470px;opacity:.14}
+.tst-viewport{overflow:hidden;margin-top:44px}
+.tst-track{display:flex;gap:22px;transition:transform .7s var(--ease)}
+.tcard{
+  flex:0 0 calc((100% - 44px)/3);border-radius:var(--r-lg);padding:30px;
+  background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);
+  box-shadow:var(--shadow-md);display:flex;flex-direction:column;
+}
+.tcard .qm{font-family:'Poppins',sans-serif;font-size:52px;line-height:.4;color:var(--gold);height:26px}
+.tcard .q{font-size:15px;line-height:1.6;color:var(--ink);margin:8px 0 24px;flex:1}
+.tcard .who{display:flex;align-items:center;gap:12px}
+.tcard .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;flex:none}
+.tcard .nm{font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px}
+.tcard .rl{font-size:12.5px;color:var(--gray)}
+.tst-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.tst-dots{display:flex;gap:8px}
+.tst-dots button{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s var(--ease)}
+.tst-dots button.on{width:24px;border-radius:100px;background:var(--gold)}
+.tst-arrows{display:flex;gap:10px}
+.tst-arrows button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease)}
+.tst-arrows button:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.tst-arrows svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:44px auto 0}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(16px,1.7vw,19px);letter-spacing:-.01em;color:var(--ink)}
+.faq-ico{width:22px;height:22px;flex:none;position:relative}
+.faq-ico::before,.faq-ico::after{content:"";position:absolute;background:var(--gold-deep);transition:.4s var(--ease);border-radius:2px}
+.faq-ico::before{top:10px;left:2px;width:18px;height:2px}
+.faq-ico::after{top:2px;left:10px;width:2px;height:18px}
+.faq-item.open .faq-ico::after{transform:rotate(90deg);opacity:0}
+.faq-panel{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.faq-a{padding:0 4px 24px;font-size:15px;line-height:1.7;color:var(--gray);max-width:680px}
+
+/* ============ CONTACT ============ */
+.contact-wrap{position:relative;border-radius:var(--r-lg);border:1px solid var(--line);background:var(--bg-tint);overflow:hidden;padding:clamp(28px,4vw,52px)}
+.contact-wrap .glow{position:absolute;border-radius:50%;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;position:relative;z-index:1}
+.cinfo{display:flex;gap:14px;align-items:center;margin-top:18px}
+.cinfo .ico{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.cinfo .ico svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:1.7}
+.cinfo .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.cinfo .v{font-size:14.5px;font-weight:500}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:span 2}
+.field label{font-size:13px;font-weight:600;color:var(--ink)}
+.field input,.field textarea{
+  font-family:inherit;font-size:14.5px;padding:13px 15px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;color:var(--ink);transition:.3s var(--ease);width:100%;
+}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.consent{grid-column:span 2;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--gray);line-height:1.5}
+.consent a{color:var(--gold-deep);font-weight:600}
+.send{grid-column:span 2}
+.form-ok{grid-column:span 2;display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold-deep);font-weight:600}
+.form-ok svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+
+/* ============ CTA BAND ============ */
+.cta-band{position:relative;border-radius:var(--r-lg);background:var(--navy);color:#fff;overflow:hidden;padding:clamp(48px,7vw,84px) 32px;text-align:center}
+.cta-band .nglow{top:-40%;left:50%;transform:translateX(-50%);width:500px;height:580px;opacity:.2}
+.cta-band h2{font-size:clamp(28px,4vw,46px);color:#fff;position:relative;z-index:1}
+.cta-band p{color:#9fb0c4;max-width:520px;margin:16px auto 32px;position:relative;z-index:1}
+.cta-band .btn-gold{background:var(--gold);color:#111}
+.cta-band .btn-gold::after{background:#fff}
+.cta-band .btn-row{position:relative;z-index:1;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ============ FOOTER ============ */
+.footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand .brand{font-size:20px;margin-bottom:16px}
+.foot-brand p{font-size:14px;color:var(--gray);max-width:280px;line-height:1.6}
+.foot-col h4{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-2);font-weight:500;margin:0 0 16px}
+.foot-col a{display:block;font-size:14px;color:var(--gray);padding:6px 0;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-statutory{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--gray-2);border-top:1px solid var(--line);padding-top:22px;line-height:1.9}
+.foot-disc{font-size:12px;color:var(--gray-2);line-height:1.65;margin-top:18px;max-width:820px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap;gap:16px}
+.foot-bottom .cr{font-size:13px;color:var(--gray)}
+.foot-social{display:flex;gap:10px}
+.foot-social a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease)}
+.foot-social a:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.foot-social svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* ============ HERO LOGO ============ */
+.hero-logo{width:clamp(200px,26vw,300px);height:auto;margin-bottom:22px}
+
+/* ============ HERO RATING ============ */
+.rating{display:inline-flex;align-items:center;gap:13px;flex-wrap:wrap}
+.rating .avs{display:flex}
+.rating .avs span{
+  width:32px;height:32px;border-radius:50%;border:2px solid #fff;margin-left:-10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;
+  font-weight:600;font-size:11px;box-shadow:var(--shadow-sm);
+}
+.rating .avs span:first-child{margin-left:0}
+.rating .rstars{display:flex;gap:2px;margin-bottom:3px}
+.rating .rstars svg{width:14px;height:14px;fill:var(--gold);stroke:none}
+.rating .rmeta{font-size:12.5px;color:var(--gray);line-height:1.4}
+.rating .rmeta b{color:var(--ink);font-weight:600}
+
+/* ============ JOURNEY: Start · Manage · Protect ============ */
+.journey{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;perspective:1700px;margin-top:8px}
+.jcard{
+  position:relative;border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;
+  padding:30px 28px 26px;overflow:hidden;display:flex;flex-direction:column;min-height:430px;
+  box-shadow:var(--shadow-md);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .5s;
+}
+.jcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease);pointer-events:none}
+.jcard:nth-child(1){transform:rotate(-4.5deg) translateY(16px)}
+.jcard:nth-child(2){transform:translateY(-8px);z-index:2;border-color:rgba(216,171,91,.42)}
+.jcard:nth-child(3){transform:rotate(4.5deg) translateY(16px)}
+.journey:hover .jcard{transform:translateY(4px)}
+.journey:hover .jcard:nth-child(2){transform:translateY(-2px)}
+.jcard:hover{transform:translateY(-10px) !important;box-shadow:var(--shadow-lg);border-color:transparent;z-index:4}
+.jcard:hover::before{opacity:1}
+.jc-step{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
+.jc-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;color:var(--ink);display:inline-flex;align-items:center;gap:9px}
+.jc-title svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:2.3;transition:transform .5s var(--ease)}
+.jcard:hover .jc-title svg{transform:translateX(4px)}
+.jc-desc{font-size:14px;line-height:1.6;color:var(--gray);margin:11px 0 22px}
+.jc-mock{margin-top:auto;background:var(--bg-tint);border:1px solid var(--line);border-radius:16px;padding:16px 16px 18px}
+.jc-mrow{display:flex;align-items:center;gap:11px}
+.jc-mico{width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.jc-mico svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:1.8}
+.jc-mt{font-family:'Poppins',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:-.01em}
+.jc-ms{font-size:11.5px;color:var(--gray);margin-top:1px}
+.jc-check{margin-left:auto;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#111;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.jc-mbar{height:6px;border-radius:100px;background:var(--line);overflow:hidden;margin-top:15px}
+.jc-mbar span{display:block;height:100%;width:66%;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-deep))}
+.jc-mtag{display:flex;justify-content:space-between;align-items:flex-end;margin-top:13px}
+.jc-mtag .lab{font-size:11.5px;color:var(--gray)}
+.jc-mtag b{font-family:'Poppins',sans-serif;color:var(--ink);font-size:15px;font-weight:600}
+.jc-link{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--ink);margin-top:18px}
+.jc-link svg{width:15px;height:15px;stroke:var(--gold-deep);fill:none;stroke-width:2.2;transition:transform .4s var(--ease)}
+.jcard:hover .jc-link svg{transform:translateX(4px)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .journey{grid-template-columns:1fr;perspective:none;gap:18px}
+  .jcard,.jcard:nth-child(1),.jcard:nth-child(2),.jcard:nth-child(3),.journey:hover .jcard{transform:none}
+  .jcard{min-height:0}
+  .hero-copy{max-width:none}
+  .split,.split.rev{grid-template-columns:1fr;gap:36px}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .products{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .bcell.feat{grid-column:span 2}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr}
+  .price-grid{grid-template-columns:1fr}
+  .forks{grid-template-columns:1fr}
+  .tcard{flex:0 0 calc((100% - 22px)/2)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .nav-links,.nav-cta .nav-login{display:none}
+  .burger{display:flex}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px}
+  .hero{padding-top:100px}
+  .bento,.cat-grid{grid-template-columns:1fr}
+  .bcell.feat{grid-column:span 1;grid-row:span 2}
+  .tcard{flex:0 0 100%}
+  .form,.contact-grid{grid-template-columns:1fr}
+  .field.full,.consent,.send,.form-ok{grid-column:span 1}
+  .foot-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .nav-inner{margin:10px 14px}
+  .nav-cta .btn-gold{display:none}
+  .marquee-item{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ===== Sub-page hero ===== */
+.phero{position:relative;overflow:hidden;padding:158px 0 72px}
+.phero.dark{background:var(--navy);color:#fff}
+.phero.dark .lede{color:#9fb0c4}
+.phero.dark .hero-badge{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff}
+.phero.dark .hero-badge .dot{background:var(--gold)}
+.phero .nglow{top:-18%;left:50%;transform:translateX(-50%);width:min(680px,70vw);height:min(760px,78vw);opacity:.2}
+.phero-inner{position:relative;z-index:2;max-width:900px}
+.phero-inner.center{margin:0 auto;text-align:center}
+.phero h1{font-size:clamp(34px,5.4vw,62px);line-height:1.03;letter-spacing:-.035em;margin:22px 0 0}
+.phero h1 .g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
+.phero.dark h1{color:#fff}
+.phero .lede{margin-top:22px}
+.phero-inner.center .lede{margin-left:auto;margin-right:auto}
+.phero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.phero-inner.center .phero-ctas{justify-content:center}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.phero.dark .crumb{color:#8ea0b6}
+.crumb a{color:var(--gold-deep)}
+.phero.dark .crumb a{color:var(--gold)}
+
+/* ===== Light process steps ===== */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pstep{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:26px 24px;transition:.45s var(--ease);position:relative;overflow:hidden}
+.pstep::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+.pstep:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
+.pstep:hover::before{opacity:1}
+.pstep .pic{width:48px;height:48px;border-radius:13px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:.5s var(--ease)}
+.pstep .pic svg{width:22px;height:22px;stroke:var(--gold-deep);fill:none;stroke-width:1.8}
+.pstep:hover .pic{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border-color:transparent}
+.pstep:hover .pic svg{stroke:#fff}
+.pstep .pn{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+.pstep h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;margin:8px 0 8px;letter-spacing:-.01em}
+.pstep p{font-size:14px;color:var(--gray);line-height:1.6;margin:0}
+
+/* ===== Light feature grid ===== */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fgrid.two{grid-template-columns:repeat(2,1fr)}
+.fcard{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:28px;transition:.45s var(--ease);position:relative;overflow:hidden}
+.fcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+.fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
+.fcard:hover::before{opacity:1}
+.fcard .fic{width:50px;height:50px;border-radius:14px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:.5s var(--ease)}
+.fcard .fic svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.fcard:hover .fic{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border-color:transparent;transform:rotate(-6deg)}
+.fcard:hover .fic svg{stroke:#fff}
+.fcard h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 8px}
+.fcard p{font-size:14px;color:var(--gray);line-height:1.6;margin:0}
+.fcard .ftag{margin-top:14px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--gray-2);text-transform:uppercase}
+
+/* ===== Comparison table ===== */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+.cmp{width:100%;border-collapse:collapse;min-width:560px}
+.cmp th,.cmp td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);background:var(--bg-tint);font-weight:500}
+.cmp thead th.hl{color:var(--gold-deep)}
+.cmp td:first-child,.cmp th:first-child{font-family:'Poppins',sans-serif;font-weight:600;color:var(--ink)}
+.cmp td.t2l{color:var(--ink);font-weight:500}
+.cmp td.t2l::before{content:"";display:inline-block;width:7px;height:2px;background:var(--gold);margin-right:9px;transform:translateY(-3px)}
+.cmp tbody tr:last-child td{border-bottom:none}
+.cmp tbody tr:hover td{background:rgba(216,171,91,.04)}
+
+/* ===== Entity cards ===== */
+.ent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ent{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:26px 24px;transition:.45s var(--ease);display:flex;flex-direction:column}
+.ent:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
+.ent .ek{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
+.ent h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 8px}
+.ent p{font-size:13.5px;color:var(--gray);line-height:1.6;margin:0 0 16px;flex:1}
+.ent ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.ent li{display:flex;gap:9px;font-size:13px;color:var(--ink);align-items:flex-start}
+.ent li svg{width:15px;height:15px;stroke:var(--gold-deep);fill:none;stroke-width:2.4;flex:none;margin-top:3px}
+
+/* ===== Static testimonial grid ===== */
+.tstat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcell{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:28px;display:flex;flex-direction:column;transition:.45s var(--ease)}
+.tcell:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:transparent}
+.tcell .qm{font-family:'Poppins',sans-serif;font-size:48px;line-height:.4;color:var(--gold);height:24px}
+.tcell .q{font-size:14.5px;line-height:1.6;color:var(--ink);margin:6px 0 22px;flex:1}
+.tcell .who{display:flex;align-items:center;gap:12px}
+.tcell .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;flex:none}
+.tcell .nm{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px}
+.tcell .rl{font-size:12.5px;color:var(--gray)}
+
+/* ===== Section sub-heading centered ===== */
+.sec-head.center{max-width:660px;margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.center .lede{margin-left:auto;margin-right:auto}
+
+/* dark section capability grid reuse from base .intro-sec/.icap */
+.cap-sec{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.cap-sec .nglow{top:6%;right:-6%;width:520px;height:600px;opacity:.2}
+.cap-sec .h2{color:#fff}
+.cap-sec .lede{color:#9fb0c4}
+
+/* starting-price mini grid */
+.pmini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pmini .pm{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:22px 24px;transition:.4s var(--ease);position:relative;overflow:hidden}
+.pmini .pm::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+.pmini .pm:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
+.pmini .pm:hover::before{opacity:1}
+.pmini .pm .pmk{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
+.pmini .pm .pmv{font-family:'Poppins',sans-serif;font-weight:600;font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.pmini .pm .pmv small{font-size:12.5px;color:var(--gray);font-weight:500;letter-spacing:0}
+.pmini .pm .pmn{font-size:12.5px;color:var(--gray);margin-top:6px;line-height:1.5}
+@media (max-width:980px){.pmini{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pmini{grid-template-columns:1fr}}
+
+/* ===== Service detail modal ===== */
+body.modal-open{overflow:hidden}
+.svc-overlay{position:fixed;inset:0;z-index:300;background:rgba(10,16,28,.58);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.svc-overlay.open{opacity:1;pointer-events:auto}
+.svc-panel{width:100%;max-width:780px;max-height:88vh;overflow-y:auto;background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);transform:translateY(18px) scale(.97);transition:transform .45s var(--ease);position:relative}
+.svc-overlay.open .svc-panel{transform:translateY(0) scale(1)}
+.svc-close{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;z-index:2;transition:.3s var(--ease)}
+.svc-close:hover{background:var(--ink);border-color:var(--ink)}
+.svc-close svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:2}
+.svc-close:hover svg{stroke:#fff}
+.svc-head{background:var(--bg-tint);border-bottom:1px solid var(--line);padding:36px 40px 28px;position:relative;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
+.svc-head .nglow{top:-60%;right:-10%;width:280px;height:320px;opacity:.16}
+.svc-ico{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:var(--shadow-gold)}
+.svc-ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.7}
+.svc-code{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin:18px 0 6px;position:relative;z-index:1}
+.svc-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;position:relative;z-index:1}
+.svc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;position:relative;z-index:1}
+.svc-body{padding:32px 40px 40px}
+.svc-desc{font-size:15px;line-height:1.7;color:var(--gray);max-width:600px;margin:0}
+.svc-sub{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin:28px 0 16px}
+.svc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.svc-tab{font-size:13px;font-weight:600;padding:8px 16px;border-radius:100px;border:1px solid var(--line);color:var(--gray);transition:.3s var(--ease)}
+.svc-tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.svc-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc-tier{border:1px solid var(--line);border-radius:16px;padding:22px 20px;position:relative;transition:.35s var(--ease)}
+.svc-tier.rec{border-color:var(--gold);background:var(--bg-tint)}
+.svc-tier .stg{position:absolute;top:-11px;left:20px;background:var(--gold);color:#111;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:4px 11px;font-weight:600}
+.svc-tier .stn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
+.svc-tier .stp{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em}
+.svc-tier .stp small{font-size:11.5px;color:var(--gray);font-weight:500;margin-left:4px}
+.svc-tier ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.svc-tier li{display:flex;gap:8px;font-size:12.5px;color:var(--ink);align-items:baseline}
+.svc-tier li::before{content:"";width:6px;height:2px;background:var(--gold);flex:none;transform:translateY(-4px)}
+.svc-steps{display:flex;flex-direction:column;gap:2px}
+.svc-step{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line);font-size:13.5px}
+.svc-step:first-child{border-top:none}
+.svc-step b{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold-deep);flex:none;width:22px}
+.svc-foot{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
+.svc-note{font-size:12px;color:var(--gray-2);margin-top:16px;line-height:1.6}
+@media (max-width:760px){.svc-tiers{grid-template-columns:1fr}.svc-head{padding:30px 24px 24px}.svc-body{padding:26px 24px 32px}}
+
+/* dark-hero nav readability (before scroll, over navy) */
+body.dark-hero .nav:not(.scrolled) .brand{color:#fff}
+body.dark-hero .nav:not(.scrolled) .nav-links a{color:rgba(255,255,255,.72)}
+body.dark-hero .nav:not(.scrolled) .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+body.dark-hero .nav:not(.scrolled) .nav-login{color:#fff}
+body.dark-hero .nav:not(.scrolled) .nav-login:hover{color:var(--gold)}
+body.dark-hero .nav:not(.scrolled) .nav-cta .btn-gold{background:var(--gold);color:#111}
+body.dark-hero .nav:not(.scrolled) .burger{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+body.dark-hero .nav:not(.scrolled) .burger span,body.dark-hero .nav:not(.scrolled) .burger span::before,body.dark-hero .nav:not(.scrolled) .burger span::after{background:#fff}
+
+/* responsible-use callout (light) */
+.ru{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);background:var(--bg-tint);border-radius:var(--r);padding:22px 24px;max-width:820px}
+.ru svg{width:22px;height:22px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;flex:none;margin-top:2px}
+.ru b{font-family:'Poppins',sans-serif;font-weight:600;display:block;margin-bottom:4px;font-size:15px}
+.ru p{margin:0;font-size:13.5px;color:var(--gray);line-height:1.6}
+
+@media (max-width:980px){
+  .steps{grid-template-columns:1fr 1fr}
+  .fgrid,.fgrid.two{grid-template-columns:1fr 1fr}
+  .ent-grid{grid-template-columns:1fr 1fr}
+  .tstat{grid-template-columns:1fr}
+  .phero{padding-top:130px}
+}
+@media (max-width:560px){
+  .steps,.fgrid,.fgrid.two,.ent-grid{grid-template-columns:1fr}
+}
+</style></head><body class=""><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="nmark" viewBox="0 0 96 118"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 108 V26 L70 100 V34"></path><path d="M49 44 L70 18 L91 44"></path></g></symbol></svg><div class="progress" id="progress"></div>
+<header class="nav" id="nav"><div class="nav-inner">
+  <a href="/" class="brand" aria-label="Turn2Law home"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async" style="height:28px;width:auto;display:block"></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/legal-services.html" style="color:var(--ink);background:rgba(17,17,17,.05)">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a></nav>
+  <div class="nav-cta">
+    <a href="/login.html" class="nav-login">Login</a>
+    <a href="/signup.html" class="btn btn-gold">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile"><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a><div class="mm-actions"><a href="/login.html" class="btn btn-ghost">Login</a><a href="/signup.html" class="btn btn-gold">Get Started</a></div></nav><main id="top"><section class="phero"><div class="hero-bg"><div class="hero-mesh"></div><div class="hero-grid-lines"></div><div class="nglow"><svg><use href="#nmark"></use></svg></div></div><div class="wrap"><div class="phero-inner center"><span class="crumb reveal"><a href="/">Home</a> / Legal Services</span><h1 class="reveal" style="--d:60ms">Legal services,<br><span class="g">done right.</span></h1><p class="lede reveal" style="--d:140ms">Human-delivered legal, compliance, and IP work, sold and tracked like a modern product. Incorporation to ongoing compliance, one bench behind it.</p><div class="phero-ctas reveal" style="--d:220ms"><a href="/signup.html" class="btn btn-gold">Get started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="#services" class="btn btn-ghost">See the catalogue</a></div></div></div></section><section class="wrap" style="margin-top:-28px;position:relative;z-index:5"><div class="stats reveal"><div class="stat"><div class="v">5+</div><div class="k">Startups incorporated</div></div><div class="stat"><div class="v">₹18,000</div><div class="k">ROC compliance / year</div></div><div class="stat"><div class="v">In-house</div><div class="k">Lawyers, CAs, CS</div></div></div></section>
+
+<section class="pad"><div class="wrap">
+  <div class="sec-head" style="max-width:680px"><span class="eyebrow reveal">Your business, end to end</span><h2 class="h2 reveal" style="--d:80ms">Start, manage, and protect your business.</h2><p class="lede reveal" style="--d:140ms">From the day you incorporate to the day you defend your brand, one legal OS carries the whole journey. No handoffs, no chasing, no surprise invoices.</p></div>
+  <div class="journey">
+    <a href="#services" class="jcard reveal" style="--d:60ms">
+      <div class="jc-step">01 · Start</div>
+      <div class="jc-title">Start Your Business <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      <p class="jc-desc">Launch effortlessly with expert-guided incorporation, registrations, and licensing. Private Limited, OPC, LLP, or Section 8, with the whole process visible before you pay.</p>
+      <div class="jc-mock">
+        <div class="jc-mrow">
+          <div class="jc-mico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline></svg></div>
+          <div><div class="jc-mt">Business registration done</div><div class="jc-ms">Completed in just 2 days</div></div>
+          <div class="jc-check">✓</div>
+        </div>
+      </div>
+      <span class="jc-link">Start now <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+    </a>
+    <a href="#pricing" class="jcard reveal" style="--d:140ms">
+      <div class="jc-step">02 · Manage</div>
+      <div class="jc-title">Manage Your Business <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      <p class="jc-desc">Stay compliant and in control with automated ROC and GST filings, a smart compliance calendar, and reminders on WhatsApp before a deadline can slip.</p>
+      <div class="jc-mock">
+        <div class="jc-mrow">
+          <div class="jc-mico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
+          <div><div class="jc-mt">Filing process</div><div class="jc-ms">Just 3 simple steps</div></div>
+        </div>
+        <div class="jc-mbar"><span></span></div>
+        <div class="jc-mtag"><span class="lab">MGT-7 annual return</span><b>14 days</b></div>
+      </div>
+      <span class="jc-link">See how <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+    </a>
+    <a href="#services" class="jcard reveal" style="--d:220ms">
+      <div class="jc-step">03 · Protect</div>
+      <div class="jc-title">Protect Your Business <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      <p class="jc-desc">Secure your brand with trademark registration, watertight contracts drafted by Doc Engine, and legal support from a verified in-house bench of lawyers.</p>
+      <div class="jc-mock">
+        <div class="jc-mrow">
+          <div class="jc-mico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+          <div><div class="jc-mt">Brand availability</div><div class="jc-ms">Trademark search complete</div></div>
+        </div>
+        <div class="jc-mtag"><span class="lab">Availability</span><b>Very High</b></div>
+      </div>
+      <span class="jc-link">Protect it <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+    </a>
+  </div>
+</div></section>
+
+<section class="pad-t"><div class="wrap">
+  <div class="split">
+    <div>
+      <span class="kicker reveal" style="color:var(--gold-deep)">Pillar 01 · Legal Services</span>
+      <h2 class="h2 reveal" style="--d:80ms;margin:16px 0 18px">Done right,<br>not just fast.</h2>
+      <p class="lede reveal" style="--d:140ms">Human-delivered legal, compliance, and IP work, sold and tracked like a modern product. Every service page says exactly what happens, when, and what it costs.</p>
+      <ul class="deep-list reveal" style="--d:200ms">
+        <li><span class="n">01</span><div><b>Incorporation, done right</b><p>Private Limited, OPC, LLP, and Section 8, with the whole process visible before you pay.</p></div></li>
+        <li><span class="n">02</span><div><b>ROC and GST, never missed</b><p>Annual filings, resolutions, and registers on a calendar that cannot slip.</p></div></li>
+        <li><span class="n">03</span><div><b>An in-house bench</b><p>Lawyers, CAs, and CS professionals on one platform, with a named owner per matter.</p></div></li>
+      </ul>
+    </div>
+    <div class="reveal" style="--d:160ms">
+      <div class="glasscard" style="position:relative;padding:26px;background:var(--bg-tint);box-shadow:var(--shadow-md)">
+        <div class="k mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:18px">Order · Received → Delivered</div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <div style="display:flex;gap:14px;padding:12px 0;"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--gold);color:#111;">✓</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Received</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Your order and matter are created; an invoice is issued within two minutes.</div></div></div>
+          <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--gold);color:#111;">✓</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Documents verified</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Each KYC item shows its status with a reason in plain language.</div></div></div>
+          <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">3</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Filed</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Your assigned professional files with the MCA; you see who owns it.</div></div></div>
+          <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">4</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Government processing</div><div style="font-size:12px;color:var(--gray);line-height:1.5">We track the registrar so you do not have to; blockers are named.</div></div></div>
+          <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">5</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Approved</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Approval lands; deliverables are prepared for your locker.</div></div></div>
+          <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">6</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Delivered</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Everything in your locker, and your compliance calendar switches on.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="services" class="pad"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow reveal">The service catalogue</span><h2 class="h2 reveal" style="--d:80ms">Every legal service a company needs.</h2><p class="lede reveal" style="--d:140ms">Human-delivered legal, compliance, and IP work, sold and tracked like a modern product. Tap any service below for its full pricing and process.</p></div>
+    <div class="cat-grid">
+      <div class="cat reveal" style="--d:0ms" data-svc="0" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v15"></path><path d="M12 21V10a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v11"></path><path d="M2 21h20"></path><path d="M7 8h1M7 12h1M7 16h1M16 12h1M16 16h1"></path></svg></div><div class="cc">01 · Incorporation</div><div class="cn">Company incorporation</div><div class="cb">Private Limited, OPC, LLP, Section 8, and conversions, with the whole process visible before you pay.</div><div class="ct">PVT LTD · OPC · LLP · SECTION 8</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:70ms" data-svc="1" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.2 13.9 7 23l5-3 5 3-1.2-9.1"></path></svg></div><div class="cc">02 · Trademark &amp; IP</div><div class="cn">Trademark and IP</div><div class="cb">Search, filing, opposition, renewal, copyright, and patent assistance, handled by the bench.</div><div class="ct">SEARCH · FILING · OPPOSITION · COPYRIGHT</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:140ms" data-svc="2" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="m9 14 2 2 4-4"></path></svg></div><div class="cc">03 · Registrations</div><div class="cn">Business registrations</div><div class="cb">The registrations a running business collects, done once and done right.</div><div class="ct">GST · MSME · IEC · FSSAI · SHOPS</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:210ms" data-svc="3" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div><div class="cc">04 · ROC compliance</div><div class="cn">ROC and annual compliance</div><div class="cb">Annual filings, resolutions, registers, and AGM paperwork on a calendar that cannot miss.</div><div class="ct">AOC-4 · MGT-7 · DIR-3 KYC · REGISTERS</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:0ms" data-svc="4" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6 13.5 15.5l-5-5L1 18"></path><path d="M17 6h6v6"></path></svg></div><div class="cc">05 · Fundraising</div><div class="cn">Fundraising advisory</div><div class="cb">ESOP schemes, cap tables, term sheets, and FEMA / RBI paperwork for your round.</div><div class="ct">ESOP · CAP TABLE · TERM SHEET · FEMA</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:70ms" data-svc="5" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="cc">06 · Employment &amp; HR</div><div class="cn">Employment and HR legal</div><div class="cb">Contracts, POSH compliance, PF and ESI, and policy manuals as you hire.</div><div class="ct">CONTRACTS · POSH · PF / ESI · POLICIES</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:140ms" data-svc="6" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="cc">07 · Disputes</div><div class="cn">Disputes and recovery</div><div class="cb">Legal notices, payment recovery, and mediation support, informational and clear.</div><div class="ct">NOTICES · RECOVERY · MEDIATION</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+      <div class="cat reveal" style="--d:210ms" data-svc="7" tabindex="0" role="button" aria-haspopup="dialog"><div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="cc">08 · Virtual GC</div><div class="cn">Virtual general counsel</div><div class="cb">A monthly retainer: your request queue, priority SLAs, one bench behind it.</div><div class="ct">RETAINER · PRIORITY SLA · MONTHLY</div><div class="cat-more">View pricing &amp; details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+    </div>
+  </div></section><section class="pad-t"><div class="wrap">
+    <div class="sec-head center"><span class="eyebrow center reveal">Start your business</span><h2 class="h2 reveal" style="--d:80ms">Pick the right structure.</h2><p class="lede reveal" style="--d:140ms">Four ways to incorporate in India. We help you choose, then handle the filing end to end.</p></div>
+    <div class="ent-grid"><div class="ent reveal"><div class="ek">Most popular</div><h3>Private Limited</h3><p>Best for startups raising capital and issuing ESOPs.</p><ul><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Separate legal entity</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Equity and ESOP ready</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Preferred by investors</li></ul></div><div class="ent reveal"><div class="ek">Solo founder</div><h3>OPC</h3><p>One person company for a single founder who wants limited liability.</p><ul><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>One shareholder</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Limited liability</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Lower compliance load</li></ul></div><div class="ent reveal"><div class="ek">Partners</div><h3>LLP</h3><p>Limited liability partnership for services firms and small teams.</p><ul><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Partner liability capped</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Flexible profit share</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Fewer filings than Pvt Ltd</li></ul></div><div class="ent reveal"><div class="ek">Non-profit</div><h3>Section 8</h3><p>For mission-driven organisations and foundations.</p><ul><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Non-profit status</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Tax benefits eligible</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Grant and CSR ready</li></ul></div></div>
+  </div></section><section id="pricing" class="pad-t"><div class="wrap">
+    <div class="sec-head center"><span class="eyebrow center reveal">Pricing</span><h2 class="h2 reveal" style="--d:80ms">What it costs, on the page.</h2><p class="lede reveal" style="--d:140ms">Transparent, all-inclusive fees. No quotes-on-request for standard work. Government fees where applicable are billed at actuals.</p></div>
+    <div class="mono reveal" style="font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin:8px 0 20px">Company formation · Private Limited Company</div>
+    <div class="price-grid">
+      <div class="price reveal"><div class="k">Basic</div><div class="amt">₹14,999<small>one-time</small></div><div class="sub">Everything you need to incorporate</div><ul><li>DSC and DIN for 2 directors</li><li>Name approval (RUN) and MOA / AOA drafting</li><li>Company incorporation certificate</li><li>Company PAN and TAN</li></ul><a href="/signup.html" class="pbtn">Get started</a></div>
+      <div class="price feat reveal" style="--d:100ms"><div class="badge">Recommended</div><div class="k">Standard</div><div class="amt">₹19,999<small>one-time</small></div><div class="sub">Incorporate and start operating</div><ul><li>Everything in Basic</li><li>Current bank account and GST registration</li><li>Commencement certificate and share certificates</li><li>Priority support</li></ul><a href="/signup.html" class="pbtn">Get started</a></div>
+      <div class="price reveal" style="--d:200ms"><div class="k">Premium</div><div class="amt">₹29,999<small>one-time</small></div><div class="sub">Incorporate, protect, and stay compliant</div><ul><li>Everything in Standard</li><li>MSME / Udyam and Trademark registration</li><li>ESI, PF, and Professional Tax</li><li>Dedicated account manager</li></ul><a href="/signup.html" class="pbtn">Get started</a></div>
+    </div>
+    <div class="mono reveal" style="font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin:44px 0 20px">More services · starting prices</div>
+    <div class="pmini">
+      <div class="pm reveal"><div class="pmk">One Person Company</div><div class="pmv">₹12,999<small> one-time</small></div><div class="pmn">Basic plan. Standard and Premium available.</div></div>
+      <div class="pm reveal" style="--d:70ms"><div class="pmk">Limited Liability Partnership</div><div class="pmv">₹11,999<small> one-time</small></div><div class="pmn">Basic plan. Standard and Premium available.</div></div>
+      <div class="pm reveal" style="--d:140ms"><div class="pmk">Partnership Firm</div><div class="pmv">₹8,999<small> one-time</small></div><div class="pmn">Basic plan. Standard and Premium available.</div></div>
+      <div class="pm reveal"><div class="pmk">GST Registration</div><div class="pmv">₹2,999<small> one-time</small></div><div class="pmn">Basic plan. Return-filing plans from ₹999 / month.</div></div>
+      <div class="pm reveal" style="--d:70ms"><div class="pmk">Import Export Code</div><div class="pmv">₹2,999<small> one-time</small></div><div class="pmn">Basic plan, lifetime validity.</div></div>
+      <div class="pm reveal" style="--d:140ms"><div class="pmk">ROC annual compliance</div><div class="pmv">₹18,000<small> / year</small></div><div class="pmn">AOC-4, MGT-7, DIR-3 KYC, registers, and calendar.</div></div>
+    </div>
+    <div class="price-foot reveal">All-inclusive of professional fees. Government and statutory fees billed at actuals. No GSTIN appears until registration is active.</div>
+  </div></section><section class="pad-t"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow reveal">How it works</span><h2 class="h2 reveal" style="--d:80ms">From order to delivered, in the open.</h2></div>
+    <div class="steps"><div class="pstep reveal"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline></svg></div><div class="pn">STEP 01</div><h3>Tell us what you need</h3><p>Pick a service or describe your matter. You see the scope, the documents required, and the price before anything begins.</p></div><div class="pstep reveal"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg></div><div class="pn">STEP 02</div><h3>We verify and file</h3><p>Your assigned professional collects KYC, prepares the paperwork, and files with the MCA or the relevant authority.</p></div><div class="pstep reveal"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg></div><div class="pn">STEP 03</div><h3>Track to delivered</h3><p>Every stage is visible live with a named owner. Deliverables land in your locker and your compliance calendar switches on.</p></div></div>
+  </div></section><section class="pad-t"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow reveal">Why Turn2Law</span><h2 class="h2 reveal" style="--d:80ms">Traditional legal services, rebuilt.</h2></div>
+    <div class="cmp-wrap reveal"><table class="cmp"><thead><tr><th>Dimension</th><th>Traditional</th><th class="hl">Turn2Law</th></tr></thead><tbody>
+      <tr><td>Access</td><td>Referral-driven, office hours</td><td class="t2l">One platform, wherever you are</td></tr>
+      <tr><td>Cost</td><td>High retainers from day one</td><td class="t2l">Per-service and subscription tiers</td></tr>
+      <tr><td>Speed</td><td>Days to weeks for a first draft</td><td class="t2l">Services on defined timelines</td></tr>
+      <tr><td>Tracking</td><td>Email chains and phone tag</td><td class="t2l">Live status, a named owner per matter</td></tr>
+    </tbody></table></div>
+  </div></section><section class="pad-t"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow reveal">What founders say</span><h2 class="h2 reveal" style="--d:80ms">Trusted by teams building fast.</h2></div>
+    <div class="tstat"><div class="tcell reveal"><div class="qm">&ldquo;</div><p class="q">Turn2Law incorporated us in eleven days flat, every stage visible, no chasing anyone on email. It felt like software, not a law firm.</p><div class="who"><div class="av">AR</div><div><div class="nm">Ananya Rao</div><div class="rl">Founder · ICEBRKR</div></div></div></div><div class="tcell reveal"><div class="qm">&ldquo;</div><p class="q">The compliance calendar caught an MGT-7 deadline we would have missed. That single reminder more than paid for the platform.</p><div class="who"><div class="av">SN</div><div><div class="nm">Sara Nair</div><div class="rl">Founder · Serene Neurotech</div></div></div></div><div class="tcell reveal"><div class="qm">&ldquo;</div><p class="q">One platform for incorporation, contracts, and compliance. Genuinely the legal ops layer for our whole company.</p><div class="who"><div class="av">IS</div><div><div class="nm">Ishaan Sharma</div><div class="rl">Founder · Motioncomm</div></div></div></div></div>
+  </div></section><section id="faq" class="pad-t"><div class="wrap">
+    <div class="sec-head center"><span class="eyebrow center reveal">Frequently asked</span><h2 class="h2 reveal" style="--d:80ms;margin:18px 0 18px">Questions, answered.</h2></div>
+    <div class="faq"><div class="faq-item reveal"><button class="faq-q" type="button">Which company structure should I choose?<span class="faq-ico"></span></button><div class="faq-panel"><div class="faq-a">Most funded startups incorporate as a Private Limited company because it is equity and ESOP ready and preferred by investors. Solo founders often pick an OPC, services firms an LLP, and non-profits a Section 8 company. We help you decide before filing.</div></div></div><div class="faq-item reveal"><button class="faq-q" type="button">How long does incorporation take?<span class="faq-ico"></span></button><div class="faq-panel"><div class="faq-a">Timelines depend on name approval and government processing, but the whole process is visible before you pay and tracked live with a named owner. Early clients have been incorporated in under two weeks.</div></div></div><div class="faq-item reveal"><button class="faq-q" type="button">What is included in ROC annual compliance?<span class="faq-ico"></span></button><div class="faq-panel"><div class="faq-a">The confirmed package at ₹18,000 per year covers AOC-4 and MGT-7 annual filings, DIR-3 KYC, statutory registers, board minutes, and a compliance calendar with reminders on email and WhatsApp.</div></div></div><div class="faq-item reveal"><button class="faq-q" type="button">Who actually does the work?<span class="faq-ico"></span></button><div class="faq-panel"><div class="faq-a">An in-house bench of lawyers, CAs, and CS professionals, with a named owner on every matter. Turn2Law is a technology platform, not a law firm, and does not provide legal representation.</div></div></div><div class="faq-item reveal"><button class="faq-q" type="button">When will a GSTIN appear on invoices?<span class="faq-ico"></span></button><div class="faq-panel"><div class="faq-a">GST registration is pending. No GSTIN is printed on any document until it is confirmed active.</div></div></div></div>
+  </div></section><section class="pad-t"><div class="wrap"><div class="cta-band reveal">
+    <div class="nglow"><svg><use href="#nmark"></use></svg></div>
+    <h2>Start your company the right way.</h2><p>Incorporation, registrations, and compliance on one platform, with a named owner at every stage.</p>
+    <div class="btn-row"><a href="/signup.html" class="btn btn-gold">Get started</a><a href="/#contact" class="btn btn-ghost" style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)">Talk to us</a></div>
+  </div></div></section></main><footer class="footer"><div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async" style="height:30px;width:auto;display:block"></div>
+      <p>India's Legal OS. One platform for the founder who cannot afford a lawyer on retainer and the lawyer who cannot afford a bench.</p></div>
+      <div class="foot-col"><h4>Products</h4><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/">Home</a><a href="/resources.html">Resources</a><a href="/#contact">Contact</a><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener">LinkedIn</a></div>
+      <div class="foot-col"><h4>Get started</h4><a href="/#contact">Talk to us</a><a href="/legal-services.html">For founders</a><a href="/introspector.html">For lawyers</a><a href="mailto:hello@turn2law.in">hello@turn2law.in</a></div>
+    </div>
+    <div class="foot-statutory">Effivia Turn2Law Legal Pvt. Ltd.&nbsp; · &nbsp;CIN: U63110DL2025PTC443434&nbsp; · &nbsp;PAN: AAICE6828R&nbsp; · &nbsp;TAN: DELE19430F&nbsp; · &nbsp;turn2law.in</div>
+    <p class="foot-disc">Turn2Law is a technology platform, not a law firm, and does not provide legal representation. Information here is not legal advice. AI output is decision support and must be reviewed by qualified counsel before use in any filing.</p>
+    <div class="foot-bottom"><div class="cr">© 2026 Effivia Turn2Law Legal Pvt. Ltd. All rights reserved.</div>
+      <div class="foot-social"><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="11"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+      <a href="mailto:hello@turn2law.in" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></a></div>
+    </div>
+  </div></footer><div class="svc-overlay" id="svcOverlay" role="dialog" aria-modal="true"><div class="svc-panel"><button class="svc-close" id="svcClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button><div id="svcContent"></div></div></div><script>(function(){'use strict';
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var nav=$('#nav'),progress=$('#progress');
+  function onScroll(){var st=window.pageYOffset||document.documentElement.scrollTop;var h=document.documentElement.scrollHeight-window.innerHeight;progress.style.transform='scaleX('+(h>0?st/h:0)+')';nav.classList.toggle('scrolled',st>20);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var burger=$('#burger');
+  if(burger){burger.addEventListener('click',function(){var open=document.body.classList.toggle('menu-open');burger.setAttribute('aria-expanded',open);});
+  $$('#mobileMenu a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');});});}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  $$('.reveal:not(.in)').forEach(function(el){io.observe(el);});
+  $$('.faq-item').forEach(function(item){var btn=item.querySelector('.faq-q'),panel=item.querySelector('.faq-panel');btn.addEventListener('click',function(){var open=item.classList.contains('open');$$('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-panel').style.maxHeight=null;});if(!open){item.classList.add('open');panel.style.maxHeight=panel.scrollHeight+'px';}});});
+})();</script><script>(function(){'use strict';
+  var ICONS={
+    building:'<path d="M4 21V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v15"></path><path d="M12 21V10a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v11"></path><path d="M2 21h20"></path><path d="M7 8h1M7 12h1M7 16h1M16 12h1M16 16h1"></path>',
+    award:'<circle cx="12" cy="8" r="6"></circle><path d="M8.2 13.9 7 23l5-3 5 3-1.2-9.1"></path>',
+    clipboard:'<path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="m9 14 2 2 4-4"></path>',
+    calendar:'<rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path>',
+    trending:'<path d="M23 6 13.5 15.5l-5-5L1 18"></path><path d="M17 6h6v6"></path>',
+    users:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+    dispute:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>',
+    shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>'
+  };
+
+  var SERVICES=[
+    {code:'01 · Incorporation',name:'Company incorporation',icon:'building',tags:['PVT LTD','OPC','LLP','SECTION 8'],
+      desc:'Private Limited, OPC, LLP, Section 8, and conversions, with the whole process visible before you pay. Pricing below is exactly what you see at checkout, entity by entity.',
+      entities:[
+        {name:'Private Limited',tiers:[
+          {name:'Basic',price:'₹14,999',billing:'one-time',features:['DSC for 2 directors','DIN for 2 directors','Name approval (RUN)','MOA &amp; AOA drafting','Incorporation certificate','Company PAN &amp; TAN']},
+          {name:'Standard',price:'₹19,999',billing:'one-time',rec:true,features:['Everything in Basic','Current bank account','GST registration','Commencement certificate','Share certificates','Priority support']},
+          {name:'Premium',price:'₹29,999',billing:'one-time',features:['Everything in Standard','MSME / Udyam registration','Trademark registration','ESI &amp; PF registration','Professional tax','Dedicated account manager']}
+        ]},
+        {name:'OPC',tiers:[
+          {name:'Basic',price:'₹12,999',billing:'one-time',features:['DSC for director','DIN for director','Name approval','MOA &amp; AOA','Incorporation certificate','PAN &amp; TAN']},
+          {name:'Standard',price:'₹17,999',billing:'one-time',rec:true,features:['Everything in Basic','Bank account','GST registration','Share certificate','Priority support']},
+          {name:'Premium',price:'₹24,999',billing:'one-time',features:['Everything in Standard','MSME registration','Trademark filing','Tax consultation','Account manager']}
+        ]},
+        {name:'LLP',tiers:[
+          {name:'Basic',price:'₹11,999',billing:'one-time',features:['DSC for 2 partners','DIN for designated partners','Name approval','LLP agreement drafting','LLP registration','PAN &amp; TAN']},
+          {name:'Standard',price:'₹16,999',billing:'one-time',rec:true,features:['Everything in Basic','Bank account assistance','GST registration','Certificate of incorporation','Priority support']},
+          {name:'Premium',price:'₹23,999',billing:'one-time',features:['Everything in Standard','MSME registration','Trademark filing','Legal consultation','Dedicated manager']}
+        ]},
+        {name:'Section 8',tiers:[
+          {name:'Basic',price:'₹16,999',billing:'one-time',features:['DSC for 2 directors','DIN for 2 directors','Name approval','MOA &amp; AOA (non-profit clauses)','Section 8 licence &amp; incorporation','PAN &amp; TAN']},
+          {name:'Standard',price:'₹22,999',billing:'one-time',rec:true,features:['Everything in Basic','12A &amp; 80G groundwork','Bank account','Priority support']},
+          {name:'Premium',price:'₹32,999',billing:'one-time',features:['Everything in Standard','FCRA readiness review','Dedicated account manager','Annual compliance briefing']}
+        ]}
+      ],
+      steps:[['01','Obtain digital signatures and Director Identification Numbers for all directors or partners.'],['02','Reserve your entity name through the RUN / name-approval service.'],['03','File the incorporation form with drafted MOA / AOA or partnership agreement.'],['04','The registrar verifies documents; any query is relayed to you in plain language.'],['05','Receive your incorporation certificate, PAN, and TAN.'],['06','Open a current account and your compliance calendar switches on.']],
+      note:'No minimum capital required. Private Limited needs at least 2 directors (max 15); OPC needs 1; LLPs and Partnerships need at least 2 partners.'},
+    {code:'02 · Trademark & IP',name:'Trademark and IP',icon:'award',tags:['SEARCH','FILING','OPPOSITION','COPYRIGHT'],
+      desc:'Search, filing, opposition, renewal, copyright, and patent assistance, handled by the bench. Government fees are billed at actuals on top of the professional fee below.',
+      tiers:[
+        {name:'Search &amp; file',price:'₹4,999',billing:'+ govt fee',features:['Comprehensive trademark search','Filing in one class','Applicant-type fee guidance','Application tracking']},
+        {name:'Filing &amp; defence',price:'₹9,999',billing:'+ govt fee',rec:true,features:['Everything in Search &amp; file','Examination report response','Opposition reply drafting','Hearing brief preparation']},
+        {name:'Full IP cover',price:'₹18,999',billing:'+ govt fee',features:['Everything in Filing &amp; defence','Copyright registration (1 work)','Renewal reminders for 10 years','Dedicated IP counsel']}
+      ],
+      steps:[['01','A comprehensive search across classes to flag conflicting marks before you file.'],['02','Filing with the Trademark Registry under the correct class and applicant type.'],['03','Examination report, if raised, is answered by the bench within the statutory window.'],['04','Opposition, if filed by a third party, is defended with a counter-statement and evidence.'],['05','Registration certificate issues; renewal reminders are set for year nine.']],
+      note:'Government e-filing fee is ₹4,500 per class for individuals, startups, and MSMEs, and ₹9,000 per class for other applicants, billed at actuals.'},
+    {code:'03 · Registrations',name:'Business registrations',icon:'clipboard',tags:['GST','MSME','IEC','FSSAI','SHOPS'],
+      desc:'The registrations a running business collects, done once and done right. Pricing is per registration; ask about bundle discounts when ordered together.',
+      entities:[
+        {name:'GST',tiers:[
+          {name:'Basic',price:'₹2,999',billing:'one-time',features:['GST registration filing','GSTIN certificate','Filing assistance','Expert guidance','Email support']},
+          {name:'Standard',price:'₹4,999',billing:'one-time',rec:true,features:['Everything in Basic','Return filing (3 months)','Invoice generation tool','Priority support','Compliance calendar']},
+          {name:'Premium',price:'₹9,999',billing:'one-time',features:['Everything in Standard','Annual return filing','Tax planning session','Dedicated CA','Audit support']}
+        ]},
+        {name:'IEC',tiers:[
+          {name:'Basic',price:'₹2,999',billing:'one-time',features:['IEC number registration','Document preparation','Application filing','Certificate delivery']},
+          {name:'Standard',price:'₹4,999',billing:'one-time',rec:true,features:['Everything in Basic','Priority processing','PAN–IEC linking','Compliance checklist','Dedicated support']},
+          {name:'Premium',price:'₹7,999',billing:'one-time',features:['Everything in Standard','Post-registration guidance','Export compliance training','Legal consultation (2 sessions)','Dedicated account manager']}
+        ]},
+        {name:'MSME / Udyam',tiers:[
+          {name:'Assisted filing',price:'₹1,499',billing:'one-time',rec:true,features:['Udyam registration filing','Certificate delivery','Investment &amp; turnover classification check','Email support']}
+        ]},
+        {name:'FSSAI',tiers:[
+          {name:'Basic registration',price:'₹2,999',billing:'+ govt fee',rec:true,features:['Eligibility check (basic / state / central)','Application filing','Document preparation','Certificate delivery']}
+        ]},
+        {name:'Shops &amp; Establishment',tiers:[
+          {name:'Assisted filing',price:'₹1,999',billing:'+ govt fee',rec:true,features:['State-specific application filing','Document preparation','Certificate delivery']}
+        ]}
+      ],
+      steps:[['01','Tell us which registrations your business needs; we confirm documents and fees upfront.'],['02','Our team prepares and files each application with the relevant authority.'],['03','Queries from the department, if any, are handled and relayed to you.'],['04','Certificates land in your locker as each registration is approved.']]},
+    {code:'04 · ROC compliance',name:'ROC and annual compliance',icon:'calendar',tags:['AOC-4','MGT-7','DIR-3 KYC','REGISTERS'],
+      desc:'Annual filings, resolutions, registers, and AGM paperwork on a calendar that cannot miss a date.',
+      tiers:[
+        {name:'Annual compliance',price:'₹18,000',billing:'/ year',rec:true,features:['AOC-4 and MGT-7 annual filings','DIR-3 KYC for all directors','Statutory registers maintained','Board &amp; AGM minutes drafted','Compliance calendar with WhatsApp reminders']}
+      ],
+      steps:[['01','Your compliance calendar switches on the moment incorporation completes.'],['02','Reminders land on email and WhatsApp before every statutory deadline.'],['03','Filings are prepared, shared for your sign-off, and filed with the ROC.'],['04','Registers and minutes are kept current and stored in your locker.']],
+      note:'Covers one financial year for a single company with standard filings. Event-based filings (share transfers, charge creation, director changes) are quoted separately.'},
+    {code:'05 · Fundraising',name:'Fundraising advisory',icon:'trending',tags:['ESOP','CAP TABLE','TERM SHEET','FEMA'],
+      desc:'ESOP schemes, cap tables, term sheets, and FEMA / RBI paperwork for your round, priced by deliverable so you know the cost before you commit.',
+      tiers:[
+        {name:'Term sheet review',price:'₹14,999',billing:'fixed fee',features:['Clause-by-clause review','Investor-friendliness flags','One round of negotiation notes','Turnaround in 3 business days']},
+        {name:'ESOP scheme',price:'₹24,999',billing:'fixed fee',rec:true,features:["ESOP pool structuring",'Scheme drafting and board resolutions','Cap table modelling','Grant letter templates']},
+        {name:'Full round support',price:'Custom quote',billing:'engagement',features:["Shareholders' agreement drafting",'FEMA / RBI filings (FC-GPR)','Cap table and waterfall modelling','Closing checklist management']}
+      ],
+      steps:[['01','Share your term sheet or round structure; we scope the exact deliverables.'],['02','Drafting and structuring work runs on a fixed-fee, fixed-timeline basis.'],['03','FEMA / RBI filings are prepared and tracked to closing.'],['04','Signed documents and filings land in your locker.']]},
+    {code:'06 · Employment & HR',name:'Employment and HR legal',icon:'users',tags:['CONTRACTS','POSH','PF / ESI','POLICIES'],
+      desc:'Contracts, POSH compliance, PF and ESI, and policy manuals as you hire, so growth never outruns your paperwork.',
+      tiers:[
+        {name:'Contract pack',price:'₹2,999',billing:'per template',features:['Employment agreement, role-specific','Offer letter and NDA','Plain-language explainer per clause']},
+        {name:'POSH compliance',price:'₹9,999',billing:'one-time',rec:true,features:['POSH policy drafting','Internal Committee (IC) constitution','Employee awareness deck','Annual report template']},
+        {name:'Full HR legal pack',price:'₹19,999',billing:'one-time',features:['Everything in Contract pack and POSH','PF &amp; ESI registration guidance','Employee handbook and policy manuals','Priority support']}
+      ],
+      steps:[['01','Tell us your headcount and hiring plan; we recommend the right pack.'],['02','Contracts and policies are drafted from India-specific, versioned templates.'],['03','POSH committee setup and registrations are handled end to end.'],['04','Everything is stored in your locker, ready to send on day one.']]},
+    {code:'07 · Disputes',name:'Disputes and recovery',icon:'dispute',tags:['NOTICES','RECOVERY','MEDIATION'],
+      desc:'Legal notices, payment recovery, and mediation support, informational and clear.',
+      tiers:[
+        {name:'Legal notice',price:'₹2,999',billing:'per notice',features:['Drafted by the bench','Sent via registered post and email','One round of revisions']},
+        {name:'Payment recovery',price:'₹4,999',billing:'starting',rec:true,features:['Demand notice drafting and dispatch','Structured follow-up cadence','Settlement negotiation support']},
+        {name:'Mediation support',price:'Custom quote',billing:'engagement',features:['Mediation-readiness review','Documentation and evidence organisation','Referral to empanelled mediators']}
+      ],
+      steps:[['01','Describe the dispute; we confirm scope, documents needed, and cost.'],['02','Notices are drafted, reviewed with you, and dispatched.'],['03','Follow-up and negotiation are tracked with visible status.'],['04','For matters needing representation, we refer you to empanelled counsel.']],
+      note:'Turn2Law is a technology platform, not a law firm, and does not provide courtroom representation.'},
+    {code:'08 · Virtual GC',name:'Virtual general counsel',icon:'shield',tags:['RETAINER','PRIORITY SLA','MONTHLY'],
+      desc:'A monthly retainer: your request queue, priority SLAs, one bench behind it, for teams that need ongoing legal support without a full-time hire.',
+      tiers:[
+        {name:'Starter',price:'₹14,999',billing:'/ month',features:['Up to 5 requests / month','48-hour turnaround SLA','Contract review and redlines','Email support']},
+        {name:'Growth',price:'₹29,999',billing:'/ month',rec:true,features:['Up to 12 requests / month','24-hour turnaround SLA','Contract review, policy drafting, notices','Priority support channel']},
+        {name:'Scale',price:'₹49,999',billing:'/ month',features:['Unlimited standard requests','Same-day turnaround SLA','Named lead counsel','Quarterly legal health review']}
+      ],
+      steps:[['01','Pick a tier based on your monthly request volume.'],['02','Requests are logged in a shared queue with visible status and owners.'],['03','The bench works to your SLA; escalations are flagged, not buried in email.'],['04','A quarterly review keeps the retainer scoped to what you actually need.']]}
+  ];
+
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var overlay=$('#svcOverlay'),content=$('#svcContent');
+
+  function tierHTML(t){
+    return '<div class="svc-tier'+(t.rec?' rec':'')+'">'+(t.rec?'<div class="stg">Recommended</div>':'')+'<div class="stn">'+t.name+'</div><div class="stp">'+t.price+'<small>'+t.billing+'</small></div><ul>'+t.features.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul></div>';
+  }
+  function renderTiers(tiers){return '<div class="svc-tiers">'+tiers.map(tierHTML).join('')+'</div>';}
+
+  function render(svc,entityIdx){
+    entityIdx=entityIdx||0;
+    var tags=svc.tags.map(function(t){return '<span class="chip"><i></i>'+t+'</span>';}).join('');
+    var tiersBlock;
+    if(svc.entities){
+      var tabs=svc.entities.map(function(e,i){return '<button class="svc-tab'+(i===entityIdx?' on':'')+'" data-e="'+i+'" type="button">'+e.name+'</button>';}).join('');
+      tiersBlock='<div class="svc-sub">Pricing</div><div class="svc-tabs">'+tabs+'</div>'+renderTiers(svc.entities[entityIdx].tiers);
+    }else{
+      tiersBlock='<div class="svc-sub">Pricing</div>'+renderTiers(svc.tiers);
+    }
+    var noteBlock=svc.note?'<div class="svc-note">'+svc.note+'</div>':'';
+    var stepsBlock=svc.steps?'<div class="svc-sub">How it works</div><div class="svc-steps">'+svc.steps.map(function(s){return '<div class="svc-step"><b>'+s[0]+'</b><div>'+s[1]+'</div></div>';}).join('')+'</div>':'';
+    content.innerHTML=
+      '<div class="svc-head"><div class="nglow"><svg><use href="#nmark"></use></svg></div><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">'+ICONS[svc.icon]+'</svg></div><div class="svc-code">'+svc.code+'</div><div class="svc-title">'+svc.name+'</div><div class="svc-tags">'+tags+'</div></div>'+
+      '<div class="svc-body"><p class="svc-desc">'+svc.desc+'</p>'+tiersBlock+noteBlock+stepsBlock+
+      '<div class="svc-foot"><a href="/signup.html" class="btn btn-gold">Get started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="/#contact" class="btn btn-ghost">Talk to us</a></div></div>';
+    if(svc.entities){
+      $$('.svc-tab',content).forEach(function(btn){
+        btn.addEventListener('click',function(){render(svc,parseInt(btn.getAttribute('data-e'),10));});
+      });
+    }
+    content.parentNode.scrollTop=0;
+  }
+
+  function openSvc(idx){
+    render(SERVICES[idx],0);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+  function closeSvc(){
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeSvc();});
+  $('#svcClose').addEventListener('click',closeSvc);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSvc();});
+  $$('.cat[data-svc]').forEach(function(card){
+    card.addEventListener('click',function(){openSvc(parseInt(card.getAttribute('data-svc'),10));});
+    card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openSvc(parseInt(card.getAttribute('data-svc'),10));}});
+  });
+})();</script></body></html>

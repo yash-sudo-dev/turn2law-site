@@ -1,0 +1,977 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Resources | India's Legal Knowledge Hub · Turn2Law</title><meta name="description" content="Turn2Law Resources is India's legal knowledge hub. Search judgments, acts, templates, government portals, and legal events. Stay updated on MCA, SEBI, RBI, GST, and Supreme Court developments, curated for founders, lawyers, and legal teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TURN2LAW: Design System
+   Gold on white, nothing louder.
+   ============================================================ */
+:root{
+  --gold:#D8AB5B;
+  --gold-deep:#B98F42;
+  --gold-soft:rgba(216,171,91,.14);
+  --ink:#111111;
+  --navy:#0A1628;
+  --navy-2:#0E1D33;
+  --gray:#6F6F6F;
+  --gray-2:#9A9A9A;
+  --line:#EAEAEA;
+  --line-soft:#F1F1F1;
+  --bg:#FFFFFF;
+  --bg-tint:#FBFAF7;
+  --glass:rgba(255,255,255,.65);
+  --glass-line:rgba(255,255,255,.7);
+  --ok:#1E824C;--ok-soft:rgba(30,130,76,.09);--ok-line:rgba(30,130,76,.24);
+  --blue:#2563C4;--blue-soft:rgba(37,99,196,.08);--blue-line:rgba(37,99,196,.22);
+  --red:#C1442B;--red-soft:rgba(193,68,43,.08);--red-line:rgba(193,68,43,.22);
+  --shadow-sm:0 2px 10px rgba(17,17,17,.05);
+  --shadow-md:0 12px 34px rgba(17,17,17,.09);
+  --shadow-lg:0 30px 70px rgba(17,17,17,.14);
+  --shadow-gold:0 18px 50px rgba(216,171,91,.30);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1200px;
+  --r:22px;
+  --r-lg:28px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:118px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input{font-family:inherit}
+::selection{background:var(--gold);color:#fff}
+
+/* Typography */
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.mono{font-family:'DM Mono',monospace}
+.eyebrow{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
+.eyebrow.center{justify-content:center}
+.h2{font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.025em}
+.lede{font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--gray);max-width:640px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+.pad{padding:clamp(60px,8vw,100px) 0}
+.pad-s{padding:clamp(40px,5vw,64px) 0}
+.pad-t{padding-top:clamp(60px,8vw,100px)}
+
+/* ============ Ambient N glow ============ */
+.nglow{position:absolute;pointer-events:none;z-index:0;opacity:.5;color:var(--gold);filter:blur(2px)}
+.nglow svg{width:100%;height:100%;filter:drop-shadow(0 0 60px rgba(216,171,91,.55))}
+
+/* ============ Buttons ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:100px;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);position:relative;white-space:nowrap;will-change:transform}
+.btn svg{width:17px;height:17px}
+.btn-gold{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-gold::after{content:"";position:absolute;inset:0;border-radius:100px;background:linear-gradient(120deg,var(--gold),var(--gold-deep));opacity:0;transition:opacity .35s var(--ease);z-index:-1}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:var(--shadow-gold);color:#111}
+.btn-gold:hover::after{opacity:1}
+.btn-gold{z-index:0;overflow:hidden}
+.btn-ghost{background:rgba(255,255,255,.5);color:var(--ink);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:var(--shadow-md)}
+.btn-sm{padding:9px 16px;font-size:13.5px}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .5s var(--ease),background .4s,box-shadow .4s,border-color .4s}
+.nav-inner{max-width:var(--maxw);margin:14px auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-radius:100px;transition:all .4s var(--ease);border:1px solid transparent}
+.nav.scrolled .nav-inner{background:var(--glass);backdrop-filter:blur(18px) saturate(1.6);border-color:rgba(17,17,17,.06);box-shadow:0 10px 40px rgba(17,17,17,.07)}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand .mark{width:26px;height:31px;color:var(--ink)}
+.brand b{color:var(--gold-deep)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--gray);padding:9px 15px;border-radius:100px;transition:color .25s,background .25s;position:relative}
+.nav-links a:hover{color:var(--ink);background:rgba(17,17,17,.04)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-login{font-size:14px;font-weight:600;color:var(--ink);padding:9px 14px}
+.nav-login:hover{color:var(--gold-deep)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;align-items:center;justify-content:center;background:rgba(255,255,255,.6);border:1px solid var(--line)}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:.3s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+body.menu-open .burger span{background:transparent}
+body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--gold-deep));z-index:102}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:32px;opacity:0;pointer-events:none;transform:translateY(-14px);transition:.45s var(--ease)}
+body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
+.mobile-menu>a{font-family:'Poppins',sans-serif;font-weight:600;font-size:30px;padding:10px 0;color:var(--ink);border-bottom:1px solid var(--line-soft)}
+.mobile-menu>a:last-of-type{border:none}
+.mobile-menu .mm-actions{margin-top:24px;display:flex;gap:12px}
+.mobile-menu .mm-actions .btn-gold{color:#fff}
+
+/* ============ Reveal ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Sub-page hero ===== */
+.phero{position:relative;overflow:hidden;padding:150px 0 56px;text-align:center}
+.phero .nglow{top:-18%;left:50%;transform:translateX(-50%);width:min(680px,70vw);height:min(760px,78vw);opacity:.2}
+.phero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.phero h1{font-size:clamp(34px,5.6vw,64px);line-height:1.03;letter-spacing:-.035em;margin:22px 0 0}
+.phero h1 .g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
+.phero .lede{margin:22px auto 0}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.crumb a{color:var(--gold-deep)}
+
+/* SEARCH */
+.searchbar{position:relative;max-width:700px;margin:34px auto 0;z-index:3}
+.searchbar-in{
+  display:flex;align-items:center;gap:12px;border-radius:18px;padding:8px 8px 8px 20px;
+  background:rgba(255,255,255,.75);backdrop-filter:blur(20px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow-lg);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+}
+.searchbar-in:focus-within{border-color:var(--gold);box-shadow:var(--shadow-lg),0 0 0 4px var(--gold-soft)}
+.searchbar .sic{width:22px;height:22px;stroke:var(--gold-deep);fill:none;stroke-width:2;flex:none}
+.searchbar input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:16.5px;padding:12px 0}
+.searchbar input::placeholder{color:var(--gray-2)}
+.searchbar .aihint{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:100px;padding:5px 10px;display:flex;align-items:center;gap:6px;flex:none}
+.searchbar .aihint i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.search-meta{margin-top:14px;font-size:12.5px;color:var(--gray);display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.search-meta b{color:var(--ink)}
+
+/* quick-access chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:var(--gray);border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 16px;transition:.3s var(--ease)}
+.chip:hover{color:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.chip svg{width:15px;height:15px;stroke:var(--gold-deep);fill:none;stroke-width:1.9}
+.chip .emo{font-size:14px}
+
+/* hero stats */
+.hstats{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-top:38px}
+.hstat{text-align:center}
+.hstat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em}
+.hstat .v b{color:var(--gold-deep)}
+.hstat .k{font-size:12px;color:var(--gray);margin-top:2px;font-family:'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+
+/* STICKY SUBNAV */
+.subnav{position:sticky;top:76px;z-index:90;margin-top:4px}
+.subnav-in{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+.subnav-track{display:flex;gap:4px;overflow-x:auto;padding:9px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:100px;box-shadow:var(--shadow-md);scrollbar-width:none}
+.subnav-track::-webkit-scrollbar{display:none}
+.subnav-track a{white-space:nowrap;font-size:13px;font-weight:500;color:var(--gray);padding:8px 14px;border-radius:100px;transition:.25s var(--ease);display:inline-flex;align-items:center;gap:7px}
+.subnav-track a:hover{color:var(--ink);background:rgba(17,17,17,.04)}
+.subnav-track a.on{color:#111;background:linear-gradient(120deg,var(--gold),var(--gold-deep))}
+.subnav-track a .emo{font-size:13px}
+
+/* section head */
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
+.shead .st{display:flex;align-items:center;gap:13px}
+.shead .sicon{width:44px;height:44px;border-radius:13px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.shead h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em}
+.shead .sdesc{font-size:13.5px;color:var(--gray);margin-top:3px}
+.shead .slink{font-size:13.5px;font-weight:600;color:var(--gold-deep);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.shead .slink svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .3s var(--ease)}
+.shead .slink:hover svg{transform:translateX(4px)}
+
+/* generic grid */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+
+/* resource / news card */
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:22px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease);pointer-events:none}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.card:hover::before{opacity:1}
+.card .ctop{display:flex;align-items:center;gap:10px;margin-bottom:14px;position:relative}
+.src-pill{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);border:1px solid rgba(216,171,91,.28);border-radius:100px;padding:4px 10px}
+.src-pill.blue{color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.src-pill.ok{color:var(--ok);background:var(--ok-soft);border-color:var(--ok-line)}
+.src-pill.red{color:var(--red);background:var(--red-soft);border-color:var(--red-line)}
+.card .cdate{margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;color:var(--gray-2)}
+.card h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:16.5px;line-height:1.32;letter-spacing:-.01em;margin-bottom:8px;position:relative}
+.card .cbody{font-size:13.5px;line-height:1.6;color:var(--gray);flex:1;position:relative}
+.card .cpub{font-size:12px;color:var(--gray-2);margin-top:14px;display:flex;align-items:center;gap:8px;position:relative}
+.card .cpub svg{width:13px;height:13px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+.card .ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;position:relative}
+.ctag{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);border:1px solid var(--line);border-radius:100px;padding:4px 9px}
+.card .cfoot{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);position:relative}
+.card .cread{font-size:13.5px;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+.card .cread svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:2;transition:transform .3s var(--ease)}
+.card:hover .cread svg{transform:translate(3px,-3px)}
+.iconbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;transition:.25s var(--ease);flex:none}
+.iconbtn svg{width:15px;height:15px;stroke:var(--gray);fill:none;stroke-width:1.9;transition:.25s var(--ease)}
+.iconbtn:hover{border-color:var(--ink);background:var(--bg-tint)}
+.iconbtn:hover svg{stroke:var(--ink)}
+.iconbtn.bm.saved{border-color:var(--gold);background:var(--gold-soft)}
+.iconbtn.bm.saved svg{stroke:var(--gold-deep);fill:var(--gold-deep)}
+.cfoot .push{margin-left:auto}
+
+/* featured collections */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{position:relative;border-radius:var(--r-lg);border:1px solid var(--line);padding:28px;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;transition:.45s var(--ease);background:linear-gradient(160deg,#fff,var(--bg-tint))}
+.feat:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.feat .fglow{position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,var(--gold-soft),transparent 70%);pointer-events:none}
+.feat .fk{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);position:relative}
+.feat h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.02em;margin:auto 0 8px;position:relative}
+.feat p{font-size:13.5px;color:var(--gray);margin:0 0 14px;position:relative;line-height:1.55}
+.feat .fmeta{font-size:12px;color:var(--gray-2);position:relative;display:flex;align-items:center;gap:8px}
+.feat .fmeta svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+
+/* government portals */
+.portals{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.portal{display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);border-radius:16px;background:#fff;padding:20px;transition:.4s var(--ease)}
+.portal:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:transparent}
+.portal .plogo{width:44px;height:44px;border-radius:12px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--gold-deep)}
+.portal .pn{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.01em}
+.portal .pd{font-size:11.5px;color:var(--gray-2);line-height:1.45}
+.portal .pgo{margin-top:auto;font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-deep);display:inline-flex;align-items:center;gap:6px}
+.portal .pgo svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* acts list */
+.acts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.act{display:flex;align-items:center;gap:15px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px 18px;transition:.35s var(--ease)}
+.act:hover{border-color:var(--gold);background:var(--bg-tint);transform:translateX(4px)}
+.act .an{width:40px;height:40px;border-radius:11px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.act .an svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:1.7}
+.act .at{font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px;letter-spacing:-.01em}
+.act .as{font-size:12px;color:var(--gray-2);margin-top:1px}
+.act .ayr{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);flex:none}
+
+/* EVENTS */
+.events-hero{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg-tint);padding:clamp(22px,3vw,34px);position:relative;overflow:hidden;margin-bottom:26px}
+.events-hero .eg{position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,var(--gold-soft),transparent 70%);pointer-events:none}
+.ev-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.ev-tab{font-size:13px;font-weight:500;color:var(--gray);border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 16px;transition:.3s var(--ease);display:inline-flex;align-items:center;gap:8px}
+.ev-tab .n{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray-2)}
+.ev-tab:hover{color:var(--ink);border-color:var(--ink)}
+.ev-tab.on{color:#111;background:linear-gradient(120deg,var(--gold),var(--gold-deep));border-color:transparent}
+.ev-tab.on .n{color:rgba(17,17,17,.55)}
+.ev-filters{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding-top:18px;border-top:1px solid var(--line)}
+.ev-fgroup{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ev-fgroup .flabel{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-2);margin-right:2px}
+.ev-f{font-size:12px;font-weight:500;color:var(--gray);background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 12px;transition:.25s var(--ease)}
+.ev-f:hover{color:var(--ink);border-color:var(--ink)}
+.ev-f.on{color:var(--gold-deep);border-color:var(--gold);background:var(--gold-soft)}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.eventcard{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.eventcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.eventcard.hide{display:none}
+.ev-banner{position:relative;height:92px;background:linear-gradient(135deg,rgba(216,171,91,.20),rgba(216,171,91,.06));display:flex;align-items:flex-start;justify-content:space-between;padding:14px}
+.ev-banner.b2{background:linear-gradient(135deg,rgba(37,99,196,.16),rgba(216,171,91,.08))}
+.ev-banner.b3{background:linear-gradient(135deg,rgba(30,130,76,.14),rgba(216,171,91,.08))}
+.ev-banner.b4{background:linear-gradient(135deg,rgba(193,68,43,.12),rgba(216,171,91,.08))}
+.ev-cat{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#111;background:var(--gold);border-radius:100px;padding:4px 10px;font-weight:500}
+.ev-date-badge{background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:11px;padding:6px 10px;text-align:center;backdrop-filter:blur(6px)}
+.ev-date-badge .d{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1;color:var(--ink)}
+.ev-date-badge .m{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-top:2px}
+.ev-body{padding:18px;display:flex;flex-direction:column;flex:1}
+.ev-body h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;line-height:1.32;letter-spacing:-.01em;margin-bottom:6px}
+.ev-org{font-size:12.5px;color:var(--gray);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.ev-org svg{width:13px;height:13px;stroke:var(--gold-deep);fill:none;stroke-width:2;flex:none}
+.ev-meta{display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:var(--gray);margin-bottom:12px}
+.ev-meta .row{display:flex;align-items:center;gap:9px}
+.ev-meta .row svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;flex:none}
+.ev-meta .row b{color:var(--ink);font-weight:500}
+.ev-mode{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid}
+.ev-mode.online{color:var(--blue);border-color:var(--blue-line);background:var(--blue-soft)}
+.ev-mode.offline{color:var(--gold-deep);border-color:rgba(216,171,91,.3);background:var(--gold-soft)}
+.ev-mode.free{color:var(--ok);border-color:var(--ok-line);background:var(--ok-soft)}
+.ev-modes{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.ev-desc{font-size:12.5px;color:var(--gray);line-height:1.55;margin-bottom:12px;flex:1}
+.ev-speakers{display:flex;align-items:center;margin-bottom:14px}
+.ev-speakers .av{width:28px;height:28px;border-radius:50%;border:2px solid #fff;margin-left:-8px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:10px;box-shadow:var(--shadow-sm)}
+.ev-speakers .av:first-child{margin-left:0}
+.ev-speakers .more{font-size:11.5px;color:var(--gray-2);margin-left:9px}
+.ev-deadline{font-family:'DM Mono',monospace;font-size:10.5px;color:#9a6a1f;display:flex;align-items:center;gap:6px;margin-bottom:14px}
+.ev-deadline svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.ev-actions{display:flex;align-items:center;gap:8px;margin-top:auto}
+.ev-actions .btn{flex:1;padding:10px 14px;font-size:13px}
+
+/* GLOSSARY */
+.glossary-az{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}
+.az{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:#fff;font-family:'DM Mono',monospace;font-size:12px;color:var(--gray);display:inline-flex;align-items:center;justify-content:center;transition:.25s var(--ease)}
+.az:hover{color:var(--ink);border-color:var(--ink)}
+.az.on{color:#111;background:var(--gold);border-color:transparent;font-weight:500}
+.az:disabled{opacity:.28;cursor:default}
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.term{border:1px solid var(--line);border-radius:16px;background:#fff;padding:20px;transition:.35s var(--ease)}
+.term.hide{display:none}
+.term:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+.term .tl{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.term .tt{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:-.01em}
+.term .tinit{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-deep);border:1px solid rgba(216,171,91,.35);border-radius:6px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none}
+.term p{font-size:13px;color:var(--gray);line-height:1.6;margin:0}
+
+/* TIMELINE (landmark judgments) */
+.jtimeline{position:relative;padding-left:34px}
+.jtimeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),rgba(216,171,91,.1))}
+.jnode{position:relative;padding:0 0 26px}
+.jnode:last-child{padding-bottom:0}
+.jnode::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px var(--gold-soft)}
+.jnode .jyr{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold-deep);letter-spacing:.04em}
+.jnode .jt{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:-.01em;margin:4px 0 5px}
+.jnode .jd{font-size:13px;color:var(--gray);line-height:1.6;max-width:640px}
+.jnode .jcite{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--gray-2);margin-top:6px}
+
+/* pill list (free resources / learning) */
+.mini-card{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px;transition:.35s var(--ease)}
+.mini-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+.mini-card .mi{width:42px;height:42px;border-radius:12px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.mini-card .mt{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.01em}
+.mini-card .md{font-size:12.5px;color:var(--gray);line-height:1.5;margin-top:3px}
+.mini-card .mtag{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);margin-top:8px;display:inline-block}
+
+/* load more */
+.loadmore{display:flex;justify-content:center;margin-top:28px}
+.hidden-row{display:none!important}
+
+/* search results */
+#searchResults{display:none}
+#searchResults.on{display:block}
+.sr-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px;flex-wrap:wrap}
+.sr-head .srt{font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.02em}
+.sr-head .srt b{color:var(--gold-deep)}
+.sr-clear{font-size:13px;font-weight:600;color:var(--gray);display:inline-flex;align-items:center;gap:7px}
+.sr-clear:hover{color:var(--ink)}
+.sr-clear svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.sr-empty{text-align:center;padding:60px 20px;color:var(--gray)}
+.sr-empty .ei{font-size:40px;margin-bottom:14px}
+#searchResultsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+/* newsletter (dark accent band, brand-consistent) */
+.newsletter{position:relative;border-radius:var(--r-lg);background:var(--navy);color:#fff;overflow:hidden;padding:clamp(48px,7vw,84px) 32px;text-align:center}
+.newsletter .nglow{top:-40%;left:50%;transform:translateX(-50%);width:500px;height:580px;opacity:.2}
+.newsletter h2{font-size:clamp(26px,3.6vw,42px);color:#fff;position:relative;z-index:1;letter-spacing:-.03em}
+.newsletter p{color:#9fb0c4;max-width:500px;margin:16px auto 28px;position:relative;z-index:1}
+.nl-form{position:relative;z-index:1;display:flex;gap:10px;max-width:460px;margin:0 auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:7px 7px 7px 18px}
+.nl-form:focus-within{border-color:var(--gold)}
+.nl-form input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:15px}
+.nl-form input::placeholder{color:#8ea0b6}
+.nl-form .btn-gold{background:var(--gold);color:#111}
+.nl-form .btn-gold::after{background:#fff}
+.nl-fine{position:relative;z-index:1;margin-top:16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8ea0b6}
+
+/* toast */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#fff;border:1px solid var(--line);border-radius:100px;padding:12px 22px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow-lg);z-index:200;opacity:0;pointer-events:none;transition:.4s var(--ease);display:flex;align-items:center;gap:10px;color:var(--ink)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:16px;height:16px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+
+/* back to top */
+.totop{position:fixed;bottom:26px;right:26px;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:95;opacity:0;pointer-events:none;transform:translateY(12px);transition:.4s var(--ease)}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+.totop:hover{border-color:var(--gold);box-shadow:var(--shadow-lg)}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand .brand{font-size:20px;margin-bottom:16px}
+.foot-brand p{font-size:14px;color:var(--gray);max-width:280px;line-height:1.6}
+.foot-col h4{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-2);font-weight:500;margin:0 0 16px}
+.foot-col a{display:block;font-size:14px;color:var(--gray);padding:6px 0;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-statutory{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--gray-2);border-top:1px solid var(--line);padding-top:22px;line-height:1.9}
+.foot-disc{font-size:12px;color:var(--gray-2);line-height:1.65;margin-top:18px;max-width:820px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap;gap:16px}
+.foot-bottom .cr{font-size:13px;color:var(--gray)}
+.foot-social{display:flex;gap:10px}
+.foot-social a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease)}
+.foot-social a:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.foot-social svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* responsive */
+@media (max-width:1080px){
+  .portals{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:980px){
+  .nav-links,.nav-cta .nav-login{display:none}
+  .burger{display:flex}
+  .g3,.events-grid,.terms,#searchResultsGrid,.feat-grid{grid-template-columns:repeat(2,1fr)}
+  .acts{grid-template-columns:1fr}
+  .subnav{top:72px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  .subnav-in{padding:0 12px}
+  .phero{padding-top:120px}
+  .g3,.g2,.g4,.events-grid,.terms,#searchResultsGrid,.feat-grid,.portals{grid-template-columns:1fr}
+  .searchbar .aihint{display:none}
+  .nav-inner{margin:10px 12px}
+  .nav-cta .btn-gold{display:none}
+  .hstats{gap:22px}
+  .shead{align-items:flex-start}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="nmark" viewBox="0 0 96 118"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 108 V26 L70 100 V34"></path><path d="M49 44 L70 18 L91 44"></path></g></symbol></svg>
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="nav"><div class="nav-inner">
+  <a href="/" class="brand" aria-label="Turn2Law home"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async" style="height:28px;width:auto;display:block"></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html" style="color:var(--ink);background:rgba(17,17,17,.05)">Resources</a></nav>
+  <div class="nav-cta">
+    <a href="/login.html" class="nav-login">Login</a>
+    <a href="/signup.html" class="btn btn-gold">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile"><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a><div class="mm-actions"><a href="/login.html" class="btn btn-ghost">Login</a><a href="/signup.html" class="btn btn-gold">Get Started</a></div></nav>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="phero"><div class="nglow"><svg><use href="#nmark"></use></svg></div>
+  <div class="wrap"><div class="phero-inner">
+    <span class="crumb reveal"><a href="/">Home</a> / Resources</span>
+    <h1 class="reveal" style="--d:60ms">Everything legal,<br><span class="g">searchable in one place.</span></h1>
+    <p class="lede reveal" style="--d:140ms;margin-left:auto;margin-right:auto">Judgments, acts, templates, government portals, and legal events, curated for founders, lawyers, students, and legal teams. Search it, save it, and stay updated with India's legal ecosystem.</p>
+
+    <div class="searchbar reveal" style="--d:200ms">
+      <div class="searchbar-in">
+        <svg class="sic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        <input id="globalSearch" type="text" autocomplete="off" aria-label="Search resources" placeholder="Search judgments...">
+        <span class="aihint"><i></i>AI Search</span>
+        <button class="btn btn-gold" id="searchBtn">Search</button>
+      </div>
+      <div class="search-meta"><b id="idxCount">1,240+</b> resources indexed <span>·</span> Try <b>&ldquo;anticipatory bail&rdquo;</b>, <b>&ldquo;GST deadline&rdquo;</b>, or <b>&ldquo;startup law summit&rdquo;</b></div>
+    </div>
+
+    <div class="chips reveal" style="--d:260ms">
+      <a href="#news" class="chip"><span class="emo"></span>Legal News</a>
+      <a href="#caselaw" class="chip"><span class="emo">️</span>Case Law</a>
+      <a href="#acts" class="chip"><span class="emo"></span>Acts &amp; Regulations</a>
+      <a href="#documents" class="chip"><span class="emo"></span>Templates</a>
+      <a href="#portals" class="chip"><span class="emo"></span>Government Portals</a>
+      <a href="#events" class="chip"><span class="emo"></span>Legal Events</a>
+      <a href="#learning" class="chip"><span class="emo"></span>Learning</a>
+      <a href="#glossary" class="chip"><span class="emo"></span>Glossary</a>
+    </div>
+
+    <div class="hstats reveal" style="--d:320ms">
+      <div class="hstat"><div class="v"><b>1,240+</b></div><div class="k">Judgments</div></div>
+      <div class="hstat"><div class="v"><b>85+</b></div><div class="k">Templates</div></div>
+      <div class="hstat"><div class="v"><b>40+</b></div><div class="k">Gov Portals</div></div>
+      <div class="hstat"><div class="v"><b>Daily</b></div><div class="k">Updated</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= STICKY SUBNAV ================= -->
+<div class="subnav" id="subnav"><div class="subnav-in"><nav class="subnav-track" id="subnavTrack" aria-label="Categories">
+  <a href="#featured" class="on"><span class="emo"></span>Featured</a>
+  <a href="#news"><span class="emo"></span>News</a>
+  <a href="#compliance"><span class="emo"></span>Compliance</a>
+  <a href="#events"><span class="emo"></span>Events</a>
+  <a href="#caselaw"><span class="emo">️</span>Case Law</a>
+  <a href="#acts"><span class="emo"></span>Acts</a>
+  <a href="#documents"><span class="emo"></span>Documents</a>
+  <a href="#portals"><span class="emo"></span>Portals</a>
+  <a href="#free"><span class="emo"></span>Free</a>
+  <a href="#learning"><span class="emo"></span>Learning</a>
+  <a href="#research"><span class="emo"></span>Research</a>
+  <a href="#media"><span class="emo"></span>Podcasts</a>
+  <a href="#courses"><span class="emo"></span>Courses</a>
+  <a href="#glossary"><span class="emo"></span>Glossary</a>
+  <a href="#timeline"><span class="emo">️</span>Landmarks</a>
+</nav></div></div>
+
+<!-- ================= SEARCH RESULTS ================= -->
+<section id="searchResults" class="pad-s"><div class="wrap">
+  <div class="sr-head">
+    <div class="srt">Results for &ldquo;<b id="srQuery"></b>&rdquo; <span class="mono" style="font-size:14px;color:var(--gray-2)" id="srCount"></span></div>
+    <button class="sr-clear" id="srClear"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg>Clear search</button>
+  </div>
+  <div id="searchResultsGrid"></div>
+  <div class="sr-empty" id="srEmpty" style="display:none"><div class="ei"></div><div>No resources matched your search. Try a broader term like <b style="color:var(--ink)">bail</b>, <b style="color:var(--ink)">GST</b>, or <b style="color:var(--ink)">event</b>.</div></div>
+</div></section>
+
+<!-- ================= BROWSE ================= -->
+<div id="browse">
+
+<!-- FEATURED -->
+<section id="featured" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Featured collections</h2><div class="sdesc">Editor-curated resources, refreshed weekly</div></div></div><a href="#news" class="slink">Browse all<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="feat-grid">
+    <a href="#compliance" class="feat reveal" data-item data-title="Founder's Compliance Starter Kit" data-cat="Featured Collection" data-tags="compliance founder checklist roc gst"><div class="fglow"></div><span class="fk">Collection · 12 resources</span><h3>Founder's Compliance Starter Kit</h3><p>Everything a new company needs in year one: ROC calendar, GST basics, board resolutions, and registers.</p><div class="fmeta"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.6-3.6-6.6 3.6 1.3-7-5-4.8 7-.9z"></path></svg>Most saved this month</div></a>
+    <a href="#caselaw" class="feat reveal" style="--d:80ms" data-item data-title="BNS, BNSS & BSA Transition Guide" data-cat="Featured Collection" data-tags="bns bnss bsa criminal law new codes"><div class="fglow"></div><span class="fk">Collection · 9 resources</span><h3>New Criminal Codes: BNS, BNSS &amp; BSA</h3><p>Section-by-section mapping from the IPC, CrPC, and Evidence Act to the three new codes, with landmark reading.</p><div class="fmeta"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>Trending in Case Law</div></a>
+    <a href="#events" class="feat reveal" style="--d:160ms" data-item data-title="Legal Tech & Startup Law Events 2026" data-cat="Featured Collection" data-tags="events summit conference startup legaltech"><div class="fglow"></div><span class="fk">Collection · 18 events</span><h3>Startup Law &amp; Legal Tech Events 2026</h3><p>Conferences, summits, and meetups worth attending this year, for founders, litigators, and law students alike.</p><div class="fmeta"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Updated 2 days ago</div></a>
+  </div>
+</div></section>
+
+<!-- LATEST NEWS -->
+<section id="news" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Latest legal news</h2><div class="sdesc">MCA, SEBI, RBI, GST, Supreme Court, High Courts, Startup India &amp; DPIIT</div></div></div><a href="https://www.livelaw.in/" target="_blank" rel="noopener noreferrer" class="slink">More on LiveLaw<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
+  <div class="grid g3" id="newsGrid">
+    <article class="card reveal js-card" data-item data-title="MCA extends AOC-4 and MGT-7 filing deadline" data-cat="Legal News" data-tags="mca roc filing compliance annual return"><div class="ctop"><span class="src-pill">MCA</span><span class="cdate">08 Jul 2026</span></div><h3>MCA extends annual filing deadline for AOC-4 and MGT-7</h3><p class="cbody">The Ministry of Corporate Affairs has granted additional time for annual financial statement and return filings for FY 2025-26, citing V3 portal transition load.</p><div class="ctags"><span class="ctag">ROC</span><span class="ctag">Annual Filing</span><span class="ctag">Companies Act</span></div><div class="cfoot"><a class="cread" href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-mca-aoc" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="MCA extends annual filing deadline" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="SEBI tightens disclosure norms for AIFs" data-cat="Legal News" data-tags="sebi aif disclosure investors securities"><div class="ctop"><span class="src-pill blue">SEBI</span><span class="cdate">05 Jul 2026</span></div><h3>SEBI tightens disclosure norms for Alternative Investment Funds</h3><p class="cbody">New circular mandates enhanced periodic disclosures and valuation transparency for AIFs, affecting how startups raising from funds structure their rounds.</p><div class="ctags"><span class="ctag">AIF</span><span class="ctag">Fundraising</span><span class="ctag">Securities</span></div><div class="cfoot"><a class="cread" href="https://www.sebi.gov.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-sebi-aif" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="SEBI tightens AIF disclosure norms" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Supreme Court on arbitration seat and venue" data-cat="Legal News" data-tags="supreme court arbitration seat venue judgment"><div class="ctop"><span class="src-pill red">SUPREME COURT</span><span class="cdate">03 Jul 2026</span></div><h3>Supreme Court clarifies seat vs venue in arbitration agreements</h3><p class="cbody">A three-judge bench settles conflicting precedent on determining the juridical seat of arbitration, with direct impact on commercial contract drafting.</p><div class="ctags"><span class="ctag">Arbitration</span><span class="ctag">Commercial</span><span class="ctag">Contracts</span></div><div class="cfoot"><a class="cread" href="https://www.barandbench.com/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-sc-arb" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="SC clarifies seat vs venue in arbitration" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+
+    <article class="card reveal js-card hidden-row nm" data-item data-title="RBI revises FEMA reporting for FDI" data-cat="Legal News" data-tags="rbi fema fdi foreign investment fcgpr"><div class="ctop"><span class="src-pill ok">RBI</span><span class="cdate">01 Jul 2026</span></div><h3>RBI revises FEMA reporting timelines for foreign investment</h3><p class="cbody">Updated FC-GPR and FC-TRS filing windows tighten reporting for startups receiving FDI, with penalties for late single-master-form submissions.</p><div class="ctags"><span class="ctag">FEMA</span><span class="ctag">FDI</span><span class="ctag">FC-GPR</span></div><div class="cfoot"><a class="cread" href="https://www.rbi.org.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-rbi-fema" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="RBI revises FEMA reporting for FDI" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+
+    <article class="card reveal js-card hidden-row nm" data-item data-title="GST Council recommends rate rationalisation" data-cat="Legal News" data-tags="gst council rate itc returns tax"><div class="ctop"><span class="src-pill">GST</span><span class="cdate">28 Jun 2026</span></div><h3>GST Council recommends rate rationalisation and ITC changes</h3><p class="cbody">The 54th GST Council meeting proposes slab restructuring and clarifies input tax credit eligibility on several disputed categories relevant to SaaS and services.</p><div class="ctags"><span class="ctag">GST</span><span class="ctag">ITC</span><span class="ctag">Tax</span></div><div class="cfoot"><a class="cread" href="https://www.gst.gov.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-gst-rate" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="GST Council recommends rate rationalisation" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+
+    <article class="card reveal js-card hidden-row nm" data-item data-title="DPIIT eases Startup India recognition criteria" data-cat="Legal News" data-tags="dpiit startup india recognition tax exemption 80iac"><div class="ctop"><span class="src-pill ok">DPIIT · STARTUP INDIA</span><span class="cdate">24 Jun 2026</span></div><h3>DPIIT eases Startup India recognition and 80-IAC criteria</h3><p class="cbody">Revised eligibility broadens access to tax exemptions and self-certification benefits under the Startup India scheme for early-stage ventures.</p><div class="ctags"><span class="ctag">Startup India</span><span class="ctag">80-IAC</span><span class="ctag">DPIIT</span></div><div class="cfoot"><a class="cread" href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-dpiit" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="DPIIT eases Startup India recognition" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
+  </div>
+  <div class="loadmore"><button class="btn btn-ghost" data-loadmore="newsGrid">Load more news <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+</div></section>
+
+<!-- COMPLIANCE UPDATES -->
+<section id="compliance" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Compliance updates &amp; deadlines</h2><div class="sdesc">Upcoming statutory deadlines you should not miss</div></div></div><a href="#free" class="slink">Get the calendar<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="grid g4">
+    <article class="card reveal js-card" data-item data-title="GSTR-3B monthly return due" data-cat="Compliance Deadline" data-tags="gst gstr-3b return monthly deadline"><div class="ctop"><span class="src-pill red">DUE SOON</span><span class="cdate">20 Jul</span></div><h3>GSTR-3B summary return</h3><p class="cbody">Monthly summary return and tax payment for June 2026 for regular taxpayers.</p><div class="cpub"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>11 days left</div></article>
+    <article class="card reveal js-card" style="--d:60ms" data-item data-title="TDS payment for June" data-cat="Compliance Deadline" data-tags="tds income tax payment deadline"><div class="ctop"><span class="src-pill">INCOME TAX</span><span class="cdate">07 Jul</span></div><h3>TDS / TCS deposit</h3><p class="cbody">Deposit of tax deducted or collected at source for the month of June 2026.</p><div class="cpub"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Recurring monthly</div></article>
+    <article class="card reveal js-card" style="--d:120ms" data-item data-title="DPT-3 return of deposits" data-cat="Compliance Deadline" data-tags="dpt-3 mca roc deposits annual"><div class="ctop"><span class="src-pill">MCA</span><span class="cdate">31 Jul</span></div><h3>DPT-3 return of deposits</h3><p class="cbody">Annual return of deposits and outstanding loans for companies for FY 2025-26.</p><div class="cpub"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>22 days left</div></article>
+    <article class="card reveal js-card" style="--d:180ms" data-item data-title="ITR filing for individuals" data-cat="Compliance Deadline" data-tags="itr income tax return filing individuals"><div class="ctop"><span class="src-pill blue">INCOME TAX</span><span class="cdate">31 Jul</span></div><h3>ITR filing (non-audit)</h3><p class="cbody">Income tax return due date for individuals and non-audit cases for AY 2026-27.</p><div class="cpub"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>22 days left</div></article>
+  </div>
+</div></section>
+
+<!-- ================= EVENTS ================= -->
+<section id="events" class="pad"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal events &amp; opportunities</h2><div class="sdesc">Conferences, summits, webinars, moots, hackathons &amp; meetups across India</div></div></div><a href="#events" class="slink" id="allEventsLink">Submit an event<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+
+  <div class="events-hero reveal">
+    <div class="eg"></div>
+    <div class="ev-tabs" id="evTabs" role="tablist">
+      <button class="ev-tab on" data-evtab="all" role="tab">All events <span class="n">18</span></button>
+      <button class="ev-tab" data-evtab="featured" role="tab"> Featured <span class="n">4</span></button>
+      <button class="ev-tab" data-evtab="trending" role="tab"> Trending <span class="n">5</span></button>
+      <button class="ev-tab" data-evtab="week" role="tab"> This week <span class="n">3</span></button>
+      <button class="ev-tab" data-evtab="deadline" role="tab"> Closing soon <span class="n">4</span></button>
+      <button class="ev-tab" data-evtab="new" role="tab"> Recently added <span class="n">6</span></button>
+    </div>
+    <div class="ev-filters">
+      <div class="ev-fgroup"><span class="flabel">Mode</span><button class="ev-f" data-fk="mode" data-fv="online">Online</button><button class="ev-f" data-fk="mode" data-fv="offline">Offline</button></div>
+      <div class="ev-fgroup"><span class="flabel">Price</span><button class="ev-f" data-fk="price" data-fv="free">Free</button><button class="ev-f" data-fk="price" data-fv="paid">Paid</button></div>
+      <div class="ev-fgroup"><span class="flabel">For</span><button class="ev-f" data-fk="aud" data-fv="student">Students</button><button class="ev-f" data-fk="aud" data-fv="founder">Founders</button><button class="ev-f" data-fk="aud" data-fv="lawyer">Lawyers</button></div>
+      <div class="ev-fgroup"><span class="flabel">Category</span><button class="ev-f" data-fk="cat" data-fv="conference">Conference</button><button class="ev-f" data-fk="cat" data-fv="webinar">Webinar</button><button class="ev-f" data-fk="cat" data-fv="moot">Moot</button><button class="ev-f" data-fk="cat" data-fv="hackathon">Hackathon</button><button class="ev-f" data-fk="cat" data-fv="meetup">Meetup</button></div>
+      <button class="ev-f" id="evReset" style="margin-left:auto;color:var(--gold-deep);border-color:var(--gold)">Reset filters</button>
+    </div>
+  </div>
+
+  <div class="events-grid" id="eventsGrid">
+    <!-- Event 1 -->
+    <article class="eventcard reveal js-card" data-item data-title="India Legal Tech Summit 2026" data-cat="Legal Event" data-tags="legaltech conference summit ai law bengaluru" data-mode="offline" data-price="paid" data-aud="lawyer founder" data-evcat="conference" data-groups="featured trending">
+      <div class="ev-banner"><span class="ev-cat">Conference</span><div class="ev-date-badge"><div class="d">14</div><div class="m">Aug</div></div></div>
+      <div class="ev-body">
+        <h3>India Legal Tech Summit 2026</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>SFLC.in &amp; NALSAR</div>
+        <div class="ev-modes"><span class="ev-mode offline">Offline</span><span class="ev-mode">Bengaluru</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>14 Aug 2026 · <b>9:30 AM IST</b></div><div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Taj MG Road, Bengaluru</div></div>
+        <p class="ev-desc">A full-day summit on AI in legal practice, contract automation, and the future of dispute resolution in India.</p>
+        <div class="ev-speakers"><span class="av">RS</span><span class="av">MK</span><span class="av">AP</span><span class="more">+9 speakers</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Registration closes 07 Aug 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="India Legal Tech Summit 2026" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-legaltech" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+
+    <!-- Event 2 -->
+    <article class="eventcard reveal js-card" style="--d:70ms" data-item data-title="Startup Law &amp; Fundraising Webinar" data-cat="Legal Event" data-tags="startup fundraising term sheet esop webinar online" data-mode="online" data-price="free" data-aud="founder" data-evcat="webinar" data-groups="trending week new">
+      <div class="ev-banner b2"><span class="ev-cat">Webinar</span><div class="ev-date-badge"><div class="d">11</div><div class="m">Jul</div></div></div>
+      <div class="ev-body">
+        <h3>Startup Law &amp; Fundraising 101</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>Turn2Law &amp; Founder's Office</div>
+        <div class="ev-modes"><span class="ev-mode online">Online</span><span class="ev-mode free">Free</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>11 Jul 2026 · <b>6:00 PM IST</b></div><div class="row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"></rect><path d="M2 8l10 5 10-5"></path></svg>Zoom · Link on registration</div></div>
+        <p class="ev-desc">Term sheets, ESOP pools, and cap tables, explained for first-time founders. Live Q&amp;A with our legal team.</p>
+        <div class="ev-speakers"><span class="av">VS</span><span class="av">HM</span><span class="more">+2 speakers</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Registration closes 11 Jul 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="Startup Law &amp; Fundraising 101" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-startuplaw" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+
+    <!-- Event 3 -->
+    <article class="eventcard reveal js-card" style="--d:140ms" data-item data-title="National Moot Court Competition" data-cat="Legal Event" data-tags="moot court competition law student constitutional delhi" data-mode="offline" data-price="paid" data-aud="student" data-evcat="moot" data-groups="featured deadline new">
+      <div class="ev-banner b3"><span class="ev-cat">Moot Court</span><div class="ev-date-badge"><div class="d">22</div><div class="m">Sep</div></div></div>
+      <div class="ev-body">
+        <h3>National Constitutional Law Moot 2026</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>NLU Delhi</div>
+        <div class="ev-modes"><span class="ev-mode offline">Offline</span><span class="ev-mode">New Delhi</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>22 - 24 Sep 2026</div><div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>NLU Delhi Campus</div></div>
+        <p class="ev-desc">India's premier constitutional law moot for law students, with cash prizes and internship offers for finalists.</p>
+        <div class="ev-speakers"><span class="av">JD</span><span class="av">SC</span><span class="more">Judges panel</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Team registration closes 15 Jul 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="National Constitutional Law Moot 2026" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-moot" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+
+    <!-- Event 4 -->
+    <article class="eventcard reveal js-card hidden-row ev-more" data-item data-title="LegalTech Hackathon" data-cat="Legal Event" data-tags="hackathon legaltech developers ai online" data-mode="online" data-price="free" data-aud="student founder" data-evcat="hackathon" data-groups="trending new">
+      <div class="ev-banner b4"><span class="ev-cat">Hackathon</span><div class="ev-date-badge"><div class="d">02</div><div class="m">Aug</div></div></div>
+      <div class="ev-body">
+        <h3>Build for Justice: LegalTech Hackathon</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>Agami &amp; ThoughtWorks</div>
+        <div class="ev-modes"><span class="ev-mode online">Online</span><span class="ev-mode free">Free</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>02 - 04 Aug 2026</div><div class="row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"></rect><path d="M2 8l10 5 10-5"></path></svg>Online · Devfolio</div></div>
+        <p class="ev-desc">48 hours to build tools that improve access to justice. Open to students, developers, and founders.</p>
+        <div class="ev-speakers"><span class="av">AG</span><span class="av">TW</span><span class="more">Mentors</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Applications close 28 Jul 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="Build for Justice LegalTech Hackathon" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-hack" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+
+    <!-- Event 5 -->
+    <article class="eventcard reveal js-card hidden-row ev-more" data-item data-title="Founder & Investor Legal Meetup" data-cat="Legal Event" data-tags="meetup networking founder investor mumbai" data-mode="offline" data-price="free" data-aud="founder" data-evcat="meetup" data-groups="week new">
+      <div class="ev-banner b2"><span class="ev-cat">Meetup</span><div class="ev-date-badge"><div class="d">13</div><div class="m">Jul</div></div></div>
+      <div class="ev-body">
+        <h3>Founder x Investor Legal Meetup</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>Turn2Law Community</div>
+        <div class="ev-modes"><span class="ev-mode offline">Offline</span><span class="ev-mode free">Free</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>13 Jul 2026 · <b>5:00 PM IST</b></div><div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>WeWork BKC, Mumbai</div></div>
+        <p class="ev-desc">An informal evening connecting founders with investors and legal advisors over term-sheet clinics.</p>
+        <div class="ev-speakers"><span class="av">T2</span><span class="av">IN</span><span class="more">+30 attending</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>RSVP by 12 Jul 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="Founder x Investor Legal Meetup" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-meetup" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+
+    <!-- Event 6 -->
+    <article class="eventcard reveal js-card hidden-row ev-more" data-item data-title="Corporate Law Workshop" data-cat="Legal Event" data-tags="workshop corporate law compliance offline hyderabad" data-mode="offline" data-price="paid" data-aud="lawyer student" data-evcat="conference" data-groups="featured">
+      <div class="ev-banner"><span class="ev-cat">Workshop</span><div class="ev-date-badge"><div class="d">05</div><div class="m">Sep</div></div></div>
+      <div class="ev-body">
+        <h3>Corporate Law &amp; M&amp;A Workshop</h3>
+        <div class="ev-org"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>ICSI Hyderabad Chapter</div>
+        <div class="ev-modes"><span class="ev-mode offline">Offline</span><span class="ev-mode">Hyderabad</span></div>
+        <div class="ev-meta"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>05 Sep 2026 · <b>10:00 AM IST</b></div><div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>ICSI Bhavan, Hyderabad</div></div>
+        <p class="ev-desc">Hands-on workshop on due diligence, share purchase agreements, and regulatory approvals in M&amp;A deals.</p>
+        <div class="ev-speakers"><span class="av">CS</span><span class="av">PK</span><span class="more">+4 speakers</span></div>
+        <div class="ev-deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Seats limited · closes 30 Aug 2026</div>
+        <div class="ev-actions"><a href="/#contact" class="btn btn-gold btn-sm" style="flex:1">Register</a><button class="iconbtn cal" data-cal="Corporate Law M&A Workshop" aria-label="Add to calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg></button><button class="iconbtn bm" data-bm="ev-workshop" aria-label="Bookmark event"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div>
+      </div>
+    </article>
+  </div>
+  <div class="loadmore"><button class="btn btn-ghost" id="eventsMore">Show more events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+</div></section>
+
+<!-- CASE LAW LIBRARY -->
+<section id="caselaw" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon">️</div><div><h2>Case law library</h2><div class="sdesc">Judgments with plain-language summaries and key takeaways</div></div></div><a href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer" class="slink">Full database<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
+  <div class="grid g2">
+    <article class="card reveal js-card" data-item data-title="Sushila Aggarwal v State NCT Delhi anticipatory bail" data-cat="Judgment" data-tags="anticipatory bail crpc bnss constitution bench supreme court"><div class="ctop"><span class="src-pill">SUPREME COURT</span><span class="cdate">(2020) 5 SCC 1</span></div><h3>Sushila Aggarwal v. State (NCT of Delhi)</h3><p class="cbody"><b style="color:var(--ink)">Holding:</b> Anticipatory bail need not be limited to a fixed period and can continue until the end of trial, subject to conditions.</p><div class="ctags"><span class="ctag">Anticipatory Bail</span><span class="ctag">Constitution Bench</span><span class="ctag">CrPC / BNSS</span></div><div class="cfoot"><a class="cread" href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer">Read summary<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="case-sushila" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="Arnesh Kumar v State of Bihar arrest guidelines" data-cat="Judgment" data-tags="arrest section 41 crpc bnss guidelines supreme court"><div class="ctop"><span class="src-pill">SUPREME COURT</span><span class="cdate">(2014) 8 SCC 273</span></div><h3>Arnesh Kumar v. State of Bihar</h3><p class="cbody"><b style="color:var(--ink)">Holding:</b> Lays down mandatory checks before arrest in offences punishable up to seven years, curbing automatic arrests.</p><div class="ctags"><span class="ctag">Arrest</span><span class="ctag">Section 41 CrPC</span><span class="ctag">Good Law</span></div><div class="cfoot"><a class="cread" href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer">Read summary<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="case-arnesh" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+
+    <article class="card reveal js-card hidden-row cl-more" data-item data-title="Kesavananda Bharati basic structure" data-cat="Judgment" data-tags="basic structure constitution amendment landmark supreme court"><div class="ctop"><span class="src-pill">SUPREME COURT</span><span class="cdate">(1973) 4 SCC 225</span></div><h3>Kesavananda Bharati v. State of Kerala</h3><p class="cbody"><b style="color:var(--ink)">Holding:</b> Establishes the basic structure doctrine: Parliament cannot amend the Constitution to destroy its essential features.</p><div class="ctags"><span class="ctag">Basic Structure</span><span class="ctag">Constitutional</span><span class="ctag">Landmark</span></div><div class="cfoot"><a class="cread" href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer">Read summary<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="case-kesav" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+
+    <article class="card reveal js-card hidden-row cl-more" data-item data-title="Vishaka v State of Rajasthan workplace harassment" data-cat="Judgment" data-tags="posh workplace harassment women guidelines supreme court"><div class="ctop"><span class="src-pill">SUPREME COURT</span><span class="cdate">(1997) 6 SCC 241</span></div><h3>Vishaka v. State of Rajasthan</h3><p class="cbody"><b style="color:var(--ink)">Holding:</b> Framed guidelines against sexual harassment at the workplace, later codified in the POSH Act, 2013.</p><div class="ctags"><span class="ctag">POSH</span><span class="ctag">Workplace</span><span class="ctag">Superseded by Statute</span></div><div class="cfoot"><a class="cread" href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer">Read summary<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="case-vishaka" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+  <div class="loadmore"><button class="btn btn-ghost" data-loadmore-class="cl-more">Load more judgments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+</div></section>
+
+<!-- ACTS & REGULATIONS -->
+<section id="acts" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Acts &amp; regulations</h2><div class="sdesc">Bare acts and rules that govern companies, contracts, and commerce</div></div></div></div>
+  <div class="acts">
+    <a href="https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" target="_blank" rel="noopener noreferrer" class="act reveal js-card" data-item data-title="Companies Act 2013" data-cat="Act" data-tags="companies act corporate roc incorporation"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Companies Act, 2013</div><div class="as">Incorporation, governance, ROC filings</div></div><span class="ayr">2013</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:60ms" data-item data-title="Indian Contract Act 1872" data-cat="Act" data-tags="contract act agreements consideration"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Indian Contract Act, 1872</div><div class="as">Agreements, consideration, breach</div></div><span class="ayr">1872</span></a>
+    <a href="https://www.gst.gov.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:120ms" data-item data-title="Central Goods and Services Tax Act 2017" data-cat="Act" data-tags="gst cgst tax itc returns"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">CGST Act, 2017</div><div class="as">GST registration, ITC, returns</div></div><span class="ayr">2017</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" data-item data-title="Bharatiya Nyaya Sanhita 2023" data-cat="Act" data-tags="bns criminal ipc offences"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Bharatiya Nyaya Sanhita, 2023</div><div class="as">The new penal code (replaces IPC)</div></div><span class="ayr">2023</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:60ms" data-item data-title="Information Technology Act 2000" data-cat="Act" data-tags="it act data privacy cyber intermediary"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Information Technology Act, 2000</div><div class="as">Cyber law, intermediaries, records</div></div><span class="ayr">2000</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:120ms" data-item data-title="Digital Personal Data Protection Act 2023" data-cat="Act" data-tags="dpdp data protection privacy consent"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Digital Personal Data Protection Act, 2023</div><div class="as">Consent, data fiduciaries, penalties</div></div><span class="ayr">2023</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" data-item data-title="Trade Marks Act 1999" data-cat="Act" data-tags="trademark ip brand registration"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Trade Marks Act, 1999</div><div class="as">Brand protection, opposition, renewal</div></div><span class="ayr">1999</span></a>
+    <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:60ms" data-item data-title="Code on Wages 2019 labour" data-cat="Act" data-tags="labour wages employment pf esi"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Labour Codes (Wages, IR, OSH, SS)</div><div class="as">The four consolidated labour codes</div></div><span class="ayr">2019-20</span></a>
+  </div>
+</div></section>
+
+<!-- DOCUMENT LIBRARY -->
+<section id="documents" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal document library</h2><div class="sdesc">Templates, agreements, and forms, drafted for Indian startups</div></div></div><a href="/docengine.html" class="slink">Generate with DocEngine<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="grid g3">
+    <article class="card reveal js-card" data-item data-title="Mutual Non-Disclosure Agreement NDA template" data-cat="Template" data-tags="nda confidentiality template download founder"><div class="ctop"><span class="src-pill ok">TEMPLATE</span><span class="cdate">DOCX · PDF</span></div><h3>Mutual Non-Disclosure Agreement</h3><p class="cbody">A balanced two-way NDA for early conversations with vendors, hires, and partners.</p><div class="cfoot"><a class="cread" href="/docengine.html">Get template<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="doc-nda" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="Founders Agreement template equity vesting" data-cat="Template" data-tags="founders agreement equity vesting template cofounder"><div class="ctop"><span class="src-pill ok">TEMPLATE</span><span class="cdate">DOCX · PDF</span></div><h3>Founders' Agreement</h3><p class="cbody">Roles, equity split, vesting, and exit terms between co-founders, in plain language.</p><div class="cfoot"><a class="cread" href="/docengine.html">Get template<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="doc-founders" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Employment Agreement offer letter template" data-cat="Template" data-tags="employment agreement offer letter hr template"><div class="ctop"><span class="src-pill ok">TEMPLATE</span><span class="cdate">DOCX · PDF</span></div><h3>Employment Agreement</h3><p class="cbody">A compliant employment contract with IP assignment, confidentiality, and notice clauses.</p><div class="cfoot"><a class="cread" href="/docengine.html">Get template<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="doc-emp" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+</div></section>
+
+<!-- GOVERNMENT PORTALS -->
+<section id="portals" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Government portals</h2><div class="sdesc">Verified official links to the registries and portals you actually use</div></div></div></div>
+  <div class="portals">
+    <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" data-item data-title="MCA Ministry of Corporate Affairs portal" data-cat="Government Portal" data-tags="mca roc incorporation filing portal"><div class="plogo">MCA</div><div><div class="pn">MCA V3</div><div class="pd">Incorporation, ROC filings, DIN</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.gst.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:50ms" data-item data-title="GST portal" data-cat="Government Portal" data-tags="gst returns registration portal tax"><div class="plogo">GST</div><div><div class="pn">GST Portal</div><div class="pd">Registration, returns, e-invoicing</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:100ms" data-item data-title="Startup India portal DPIIT" data-cat="Government Portal" data-tags="startup india dpiit recognition portal"><div class="plogo">SI</div><div><div class="pn">Startup India</div><div class="pd">DPIIT recognition, benefits</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.incometax.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:150ms" data-item data-title="Income Tax e-filing portal" data-cat="Government Portal" data-tags="income tax itr tds portal efiling"><div class="plogo">IT</div><div><div class="pn">Income Tax</div><div class="pd">ITR filing, TDS, PAN, AIS</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://ipindia.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:200ms" data-item data-title="IP India Trademark Patent registry" data-cat="Government Portal" data-tags="trademark patent ip registry portal"><div class="plogo">IP</div><div><div class="pn">IP India</div><div class="pd">Trademark &amp; patent registry</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.rbi.org.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" data-item data-title="RBI Reserve Bank of India" data-cat="Government Portal" data-tags="rbi fema fdi banking portal"><div class="plogo">RBI</div><div><div class="pn">RBI</div><div class="pd">FEMA, FDI reporting, circulars</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.sebi.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:50ms" data-item data-title="SEBI Securities Exchange Board" data-cat="Government Portal" data-tags="sebi securities aif investors portal"><div class="plogo">SEBI</div><div><div class="pn">SEBI</div><div class="pd">Securities, AIFs, disclosures</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:100ms" data-item data-title="Udyam MSME registration" data-cat="Government Portal" data-tags="udyam msme registration portal"><div class="plogo">MSME</div><div><div class="pn">Udyam</div><div class="pd">MSME / Udyam registration</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://www.dgft.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:150ms" data-item data-title="DGFT Import Export Code IEC" data-cat="Government Portal" data-tags="dgft iec import export portal"><div class="plogo">DGFT</div><div><div class="pn">DGFT</div><div class="pd">Import Export Code (IEC)</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+    <a href="https://efilingservices.ecourts.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:200ms" data-item data-title="eCourts judiciary case status" data-cat="Government Portal" data-tags="ecourts case status judiciary portal"><div class="plogo">e-C</div><div><div class="pn">eCourts</div><div class="pd">Case status &amp; e-filing</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
+  </div>
+</div></section>
+
+<!-- FREE RESOURCES -->
+<section id="free" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Free resources</h2><div class="sdesc">Checklists, guides, and calendars to download and keep</div></div></div></div>
+  <div class="grid g2">
+    <a href="/#contact" class="mini-card reveal js-card" data-item data-title="Annual compliance calendar 2026-27 download" data-cat="Free Resource" data-tags="compliance calendar checklist download roc gst"><div class="mi"></div><div><div class="mt">Annual Compliance Calendar 2026-27</div><div class="md">Every ROC, GST, and income-tax due date for the year, on one page.</div><span class="mtag">PDF · Free download</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:60ms" data-item data-title="Founders legal handbook guide" data-cat="Free Resource" data-tags="founder handbook guide incorporation legal basics"><div class="mi"></div><div><div class="mt">Founder's Legal Handbook</div><div class="md">From incorporation to first hire: the legal basics every founder needs.</div><span class="mtag">Guide · 32 pages</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:120ms" data-item data-title="Fundraising due diligence checklist" data-cat="Free Resource" data-tags="fundraising due diligence checklist investor"><div class="mi"></div><div><div class="mt">Fundraise Due-Diligence Checklist</div><div class="md">The documents investors will ask for, organised before you need them.</div><span class="mtag">Checklist · Free</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:180ms" data-item data-title="Contract review red flags guide" data-cat="Free Resource" data-tags="contract review red flags clauses guide"><div class="mi"></div><div><div class="mt">Contract Red-Flags Guide</div><div class="md">The one-sided clauses to catch before you sign anything.</div><span class="mtag">Guide · Free</span></div></a>
+  </div>
+</div></section>
+
+<!-- LEARNING CENTER -->
+<section id="learning" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Learning center</h2><div class="sdesc">Articles, explainers, and beginner guides to legal concepts</div></div></div></div>
+  <div class="grid g3">
+    <article class="card reveal js-card" data-item data-title="What is an ESOP explained founders" data-cat="Article" data-tags="esop equity explainer learning founder guide"><div class="ctop"><span class="src-pill blue">EXPLAINER</span><span class="cdate">8 min read</span></div><h3>ESOPs, explained for founders</h3><p class="cbody">What an option pool is, how vesting works, and the tax moments that matter, without the jargon.</p><div class="cfoot"><a class="cread" href="/#contact">Read article<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="learn-esop" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="Private limited vs LLP which to choose" data-cat="Article" data-tags="private limited llp incorporation guide entity"><div class="ctop"><span class="src-pill blue">GUIDE</span><span class="cdate">6 min read</span></div><h3>Pvt Ltd vs LLP: which to choose</h3><p class="cbody">A side-by-side on liability, compliance, funding, and taxes to pick the right structure on day one.</p><div class="cfoot"><a class="cread" href="/#contact">Read article<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="learn-entity" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Video how to read a term sheet" data-cat="Video" data-tags="term sheet video learning fundraising founder"><div class="ctop"><span class="src-pill red">VIDEO</span><span class="cdate">12 min</span></div><h3>How to read a term sheet</h3><p class="cbody">A walkthrough of the clauses that decide control and economics in your first funding round.</p><div class="cfoot"><a class="cread" href="/#contact">Watch<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="learn-termsheet" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+</div></section>
+
+<!-- RESEARCH & MEDIA row -->
+<section id="research" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Research papers &amp; whitepapers</h2><div class="sdesc">Deeper reading on law, technology, and policy</div></div></div></div>
+  <div class="grid g3">
+    <article class="card reveal js-card" data-item data-title="LegalTech in India whitepaper research" data-cat="Whitepaper" data-tags="legaltech research whitepaper policy india"><div class="ctop"><span class="src-pill">WHITEPAPER</span><span class="cdate">2026</span></div><h3>The State of LegalTech in India</h3><p class="cbody">Market map, adoption barriers, and where AI is changing legal work first.</p><div class="cfoot"><a class="cread" href="/#contact">Download PDF<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="res-legaltech" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="New criminal codes analysis BNS BNSS BSA" data-cat="Research Paper" data-tags="bns bnss bsa criminal law research analysis"><div class="ctop"><span class="src-pill">RESEARCH</span><span class="cdate">2026</span></div><h3>Reading the New Criminal Codes</h3><p class="cbody">A structural analysis of the BNS, BNSS, and BSA and what changes in practice.</p><div class="cfoot"><a class="cread" href="/#contact">Download PDF<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="res-codes" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Data protection DPDP compliance paper" data-cat="Whitepaper" data-tags="dpdp data protection privacy compliance research"><div class="ctop"><span class="src-pill">WHITEPAPER</span><span class="cdate">2026</span></div><h3>DPDP Act: A Startup's Compliance Path</h3><p class="cbody">What the Digital Personal Data Protection Act means for product and data teams.</p><div class="cfoot"><a class="cread" href="/#contact">Download PDF<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="res-dpdp" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+</div></section>
+
+<!-- PODCASTS & COURSES row -->
+<section id="media" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Podcasts &amp; webinars</h2><div class="sdesc">Listen and watch on the move</div></div></div></div>
+  <div class="grid g3">
+    <article class="card reveal js-card" data-item data-title="The Startup Legal Podcast episode" data-cat="Podcast" data-tags="podcast startup legal audio founder"><div class="ctop"><span class="src-pill">PODCAST</span><span class="cdate">EP 14</span></div><h3>The Startup Legal Podcast</h3><p class="cbody">Founders and lawyers on the legal decisions that shaped their companies.</p><div class="cfoot"><a class="cread" href="/#contact">Listen<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="pod-startup" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="Compliance clinic webinar recording" data-cat="Webinar" data-tags="webinar compliance recording roc gst"><div class="ctop"><span class="src-pill blue">WEBINAR</span><span class="cdate">On demand</span></div><h3>Monthly Compliance Clinic</h3><p class="cbody">A recurring session answering the compliance questions founders actually ask.</p><div class="cfoot"><a class="cread" href="/#contact">Watch replay<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="web-clinic" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Litigation strategy webinar lawyers" data-cat="Webinar" data-tags="litigation strategy webinar lawyers criminal"><div class="ctop"><span class="src-pill blue">WEBINAR</span><span class="cdate">On demand</span></div><h3>Building a Case: Research to Argument</h3><p class="cbody">How litigators move from precedent research to a courtroom-ready argument.</p><div class="cfoot"><a class="cread" href="/#contact">Watch replay<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="web-litigation" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+</div></section>
+
+<!-- COURSES -->
+<section id="courses" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Courses &amp; certifications</h2><div class="sdesc">Structured learning for founders, students, and professionals</div></div></div></div>
+  <div class="grid g3">
+    <article class="card reveal js-card" data-item data-title="Startup law essentials course certification" data-cat="Course" data-tags="course certification startup law founder learning"><div class="ctop"><span class="src-pill ok">COURSE</span><span class="cdate">Self-paced</span></div><h3>Startup Law Essentials</h3><p class="cbody">Six modules from incorporation to fundraising, with a certificate on completion.</p><div class="cfoot"><a class="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="course-startup" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:80ms" data-item data-title="Contract drafting certification course" data-cat="Course" data-tags="contract drafting course certification lawyer"><div class="ctop"><span class="src-pill ok">CERTIFICATION</span><span class="cdate">4 weeks</span></div><h3>Contract Drafting &amp; Review</h3><p class="cbody">Practical drafting skills with real clauses, redlining exercises, and feedback.</p><div class="cfoot"><a class="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="course-contracts" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+    <article class="card reveal js-card" style="--d:160ms" data-item data-title="Legal research masterclass litigators" data-cat="Course" data-tags="legal research masterclass course litigator judgment"><div class="ctop"><span class="src-pill ok">MASTERCLASS</span><span class="cdate">Live cohort</span></div><h3>Legal Research Masterclass</h3><p class="cbody">Precedent search, citation checking, and building arguments, for practising lawyers.</p><div class="cfoot"><a class="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="course-research" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
+  </div>
+</div></section>
+
+<!-- GLOSSARY -->
+<section id="glossary" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal glossary</h2><div class="sdesc">A to Z of legal terms, in plain English</div></div></div></div>
+  <div class="glossary-az reveal" id="glossaryAZ"></div>
+  <div class="terms" id="termsGrid">
+    <div class="term reveal js-card" data-item data-letter="A" data-title="Anticipatory Bail" data-cat="Glossary" data-tags="bail criminal glossary"><div class="tl"><span class="tinit">A</span><span class="tt">Anticipatory Bail</span></div><p>A direction to release a person on bail before arrest, sought when someone fears arrest for a non-bailable offence.</p></div>
+    <div class="term reveal js-card" data-item data-letter="C" data-title="Cap Table" data-cat="Glossary" data-tags="equity fundraising glossary"><div class="tl"><span class="tinit">C</span><span class="tt">Cap Table</span></div><p>A record of who owns what in a company: shares, options, and convertibles, and each holder's ownership percentage.</p></div>
+    <div class="term reveal js-card" data-item data-letter="D" data-title="Due Diligence" data-cat="Glossary" data-tags="fundraising investor glossary"><div class="tl"><span class="tinit">D</span><span class="tt">Due Diligence</span></div><p>The investigation of a company's legal, financial, and business affairs before an investment or acquisition.</p></div>
+    <div class="term reveal js-card" data-item data-letter="E" data-title="ESOP" data-cat="Glossary" data-tags="equity employees glossary"><div class="tl"><span class="tinit">E</span><span class="tt">ESOP</span></div><p>Employee Stock Option Plan: a pool of equity set aside to grant employees the option to buy shares over time.</p></div>
+    <div class="term reveal js-card" data-item data-letter="F" data-title="FEMA" data-cat="Glossary" data-tags="foreign investment rbi glossary"><div class="tl"><span class="tinit">F</span><span class="tt">FEMA</span></div><p>The Foreign Exchange Management Act, which governs foreign investment and cross-border transactions in India.</p></div>
+    <div class="term reveal js-card" data-item data-letter="I" data-title="Indemnity" data-cat="Glossary" data-tags="contract clause glossary"><div class="tl"><span class="tinit">I</span><span class="tt">Indemnity</span></div><p>A contractual promise to compensate the other party for specified losses or liabilities.</p></div>
+    <div class="term reveal js-card" data-item data-letter="J" data-title="Jurisdiction" data-cat="Glossary" data-tags="litigation court glossary"><div class="tl"><span class="tinit">J</span><span class="tt">Jurisdiction</span></div><p>The authority of a court to hear and decide a matter, based on subject, territory, or value.</p></div>
+    <div class="term reveal js-card" data-item data-letter="L" data-title="Liquidation Preference" data-cat="Glossary" data-tags="fundraising term sheet glossary"><div class="tl"><span class="tinit">L</span><span class="tt">Liquidation Preference</span></div><p>A term-sheet clause setting who gets paid first, and how much, when a company is sold or wound up.</p></div>
+    <div class="term reveal js-card" data-item data-letter="M" data-title="Moratorium" data-cat="Glossary" data-tags="insolvency ibc glossary"><div class="tl"><span class="tinit">M</span><span class="tt">Moratorium</span></div><p>A period during insolvency proceedings when legal actions against the company are paused.</p></div>
+    <div class="term reveal js-card" data-item data-letter="P" data-title="Precedent" data-cat="Glossary" data-tags="litigation judgment glossary"><div class="tl"><span class="tinit">P</span><span class="tt">Precedent</span></div><p>A past judgment that guides or binds later decisions on similar facts and questions of law.</p></div>
+    <div class="term reveal js-card" data-item data-letter="V" data-title="Vesting" data-cat="Glossary" data-tags="equity esop glossary"><div class="tl"><span class="tinit">V</span><span class="tt">Vesting</span></div><p>The schedule over which a founder or employee earns their equity or options, often over four years.</p></div>
+    <div class="term reveal js-card" data-item data-letter="W" data-title="Writ Petition" data-cat="Glossary" data-tags="constitutional court glossary"><div class="tl"><span class="tinit">W</span><span class="tt">Writ Petition</span></div><p>An application to a High Court or the Supreme Court seeking enforcement of fundamental or legal rights.</p></div>
+  </div>
+</div></section>
+
+<!-- LANDMARK TIMELINE -->
+<section id="timeline" class="pad-s"><div class="wrap">
+  <div class="shead reveal"><div class="st"><div class="sicon">️</div><div><h2>Landmark judgments timeline</h2><div class="sdesc">The decisions that shaped Indian law</div></div></div></div>
+  <div class="jtimeline reveal">
+    <div class="jnode js-card" data-item data-title="Kesavananda Bharati basic structure timeline" data-cat="Landmark Judgment" data-tags="basic structure constitution 1973 landmark"><div class="jyr">1973</div><div class="jt">Kesavananda Bharati v. State of Kerala</div><div class="jd">The basic structure doctrine: Parliament's power to amend the Constitution cannot destroy its essential features.</div><div class="jcite">(1973) 4 SCC 225 · 13-judge bench</div></div>
+    <div class="jnode js-card" data-item data-title="Maneka Gandhi due process timeline" data-cat="Landmark Judgment" data-tags="article 21 due process 1978 landmark"><div class="jyr">1978</div><div class="jt">Maneka Gandhi v. Union of India</div><div class="jd">Expanded Article 21: the right to life and liberty requires fair, just, and reasonable procedure.</div><div class="jcite">(1978) 1 SCC 248</div></div>
+    <div class="jnode js-card" data-item data-title="Vishaka guidelines workplace timeline" data-cat="Landmark Judgment" data-tags="posh workplace 1997 landmark women"><div class="jyr">1997</div><div class="jt">Vishaka v. State of Rajasthan</div><div class="jd">Judicial guidelines against workplace sexual harassment, later codified in the POSH Act, 2013.</div><div class="jcite">(1997) 6 SCC 241</div></div>
+    <div class="jnode js-card" data-item data-title="Puttaswamy right to privacy timeline" data-cat="Landmark Judgment" data-tags="privacy fundamental right 2017 aadhaar landmark"><div class="jyr">2017</div><div class="jt">K.S. Puttaswamy v. Union of India</div><div class="jd">Recognised privacy as a fundamental right under the Constitution, shaping data protection law.</div><div class="jcite">(2017) 10 SCC 1 · 9-judge bench</div></div>
+    <div class="jnode js-card" data-item data-title="Navtej Johar Section 377 timeline" data-cat="Landmark Judgment" data-tags="section 377 equality 2018 landmark"><div class="jyr">2018</div><div class="jt">Navtej Singh Johar v. Union of India</div><div class="jd">Decriminalised consensual same-sex relations, reading down Section 377 on grounds of dignity and equality.</div><div class="jcite">(2018) 10 SCC 1</div></div>
+    <div class="jnode js-card" data-item data-title="Sushila Aggarwal anticipatory bail timeline" data-cat="Landmark Judgment" data-tags="anticipatory bail 2020 landmark"><div class="jyr">2020</div><div class="jt">Sushila Aggarwal v. State (NCT of Delhi)</div><div class="jd">Anticipatory bail need not be time-bound and can extend through trial, subject to conditions.</div><div class="jcite">(2020) 5 SCC 1 · Constitution Bench</div></div>
+  </div>
+</div></section>
+
+</div><!-- /browse -->
+
+<!-- NEWSLETTER -->
+<section class="pad"><div class="wrap"><div class="newsletter reveal">
+  <div class="nglow"><svg><use href="#nmark"></use></svg></div>
+  <h2>Never miss a deadline<br>or a development.</h2>
+  <p>Get the week's legal updates, new resources, and upcoming events in one email. No noise, just what matters.</p>
+  <form class="nl-form" id="nlForm" novalidate><input type="email" id="nlEmail" placeholder="you@company.com" aria-label="Email address" required><button type="submit" class="btn btn-gold">Subscribe</button></form>
+  <div class="nl-fine">Weekly · Unsubscribe anytime · No spam</div>
+</div></div></section>
+
+</main>
+
+<footer class="footer"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><div class="brand"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async" style="height:30px;width:auto;display:block"></div>
+    <p>India's Legal OS. One platform for the founder who cannot afford a lawyer on retainer and the lawyer who cannot afford a bench.</p></div>
+    <div class="foot-col"><h4>Products</h4><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a></div>
+    <div class="foot-col"><h4>Resources</h4><a href="#news">Legal News</a><a href="#events">Legal Events</a><a href="#caselaw">Case Law</a><a href="#glossary">Glossary</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="/">Home</a><a href="/#contact">Contact</a><a href="mailto:hello@turn2law.in">hello@turn2law.in</a><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+  <div class="foot-statutory">Effivia Turn2Law Legal Pvt. Ltd.&nbsp; · &nbsp;CIN: U63110DL2025PTC443434&nbsp; · &nbsp;PAN: AAICE6828R&nbsp; · &nbsp;TAN: DELE19430F&nbsp; · &nbsp;turn2law.in</div>
+  <p class="foot-disc">Turn2Law is a technology platform, not a law firm, and does not provide legal representation. Resources here are for information only and are not legal advice. Statutes, judgments, and deadlines change: verify against the official source and consult qualified counsel before acting. External links are provided for convenience and are not endorsements.</p>
+  <div class="foot-bottom"><div class="cr">© 2026 Effivia Turn2Law Legal Pvt. Ltd. All rights reserved.</div>
+    <div class="foot-social"><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="11"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+    <a href="mailto:hello@turn2law.in" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></a></div>
+  </div>
+</div></footer>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span id="toastMsg">Saved</span></div>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+<script>(function(){'use strict';
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* nav + progress */
+  var nav=$('#nav'),progress=$('#progress'),totop=$('#totop');
+  function onScroll(){var st=window.pageYOffset||document.documentElement.scrollTop;var h=document.documentElement.scrollHeight-window.innerHeight;progress.style.transform='scaleX('+(h>0?st/h:0)+')';nav.classList.toggle('scrolled',st>20);totop.classList.toggle('show',st>800);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+
+  /* burger */
+  var burger=$('#burger');
+  if(burger){burger.addEventListener('click',function(){var open=document.body.classList.toggle('menu-open');burger.setAttribute('aria-expanded',open);});
+  $$('#mobileMenu a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');});});}
+
+  /* reveal */
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+  function observeReveals(){$$('.reveal:not(.in)').forEach(function(el){io.observe(el);});}
+  observeReveals();
+
+  /* toast */
+  var toast=$('#toast'),toastMsg=$('#toastMsg'),toastT;
+  function showToast(msg){toastMsg.textContent=msg;toast.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toast.classList.remove('show');},2200);}
+
+  /* ---------- Bookmarks (localStorage) ---------- */
+  var BM_KEY='t2l_resources_bookmarks';
+  function getBM(){try{return JSON.parse(localStorage.getItem(BM_KEY)||'[]');}catch(e){return [];}}
+  function setBM(a){try{localStorage.setItem(BM_KEY,JSON.stringify(a));}catch(e){}}
+  function syncBM(){var saved=getBM();$$('.iconbtn.bm').forEach(function(b){var id=b.getAttribute('data-bm');b.classList.toggle('saved',saved.indexOf(id)>-1);});}
+  document.addEventListener('click',function(e){
+    var bm=e.target.closest?e.target.closest('.iconbtn.bm'):null;
+    if(bm){e.preventDefault();var id=bm.getAttribute('data-bm');var saved=getBM();var i=saved.indexOf(id);if(i>-1){saved.splice(i,1);bm.classList.remove('saved');showToast('Removed from saved');}else{saved.push(id);bm.classList.add('saved');showToast('Saved to your library');}setBM(saved);return;}
+    var sh=e.target.closest?e.target.closest('.iconbtn.share'):null;
+    if(sh){e.preventDefault();var title=sh.getAttribute('data-share')||document.title;var url=location.href;if(navigator.share){navigator.share({title:title,url:url}).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(title+' - '+url).then(function(){showToast('Link copied to clipboard');});}else{showToast('Share: '+title);}return;}
+    var cal=e.target.closest?e.target.closest('.iconbtn.cal'):null;
+    if(cal){e.preventDefault();showToast('Added to calendar reminders');return;}
+  });
+  syncBM();
+
+  /* ---------- Sticky subnav scrollspy ---------- */
+  var subLinks=$$('#subnavTrack a');
+  var sections=subLinks.map(function(a){return $(a.getAttribute('href'));}).filter(Boolean);
+  var subnavTrackEl=$('#subnavTrack');
+  var prevId='';
+  function spy(){
+    var pos=window.pageYOffset+160;var cur=sections[0];
+    sections.forEach(function(s){if(s&&s.offsetTop<=pos)cur=s;});
+    var curId=cur?cur.id:'';
+    subLinks.forEach(function(a){var on=cur&&a.getAttribute('href')==='#'+cur.id;a.classList.toggle('on',on);});
+    if(curId!==prevId){prevId=curId;subLinks.forEach(function(a){if(a.classList.contains('on')&&subnavTrackEl){var sl=a.offsetLeft-subnavTrackEl.offsetWidth/2+a.offsetWidth/2;subnavTrackEl.scrollTo({left:sl,behavior:'smooth'});}});}
+  }
+  window.addEventListener('scroll',spy,{passive:true});
+
+  /* ---------- Global search ---------- */
+  var searchInput=$('#globalSearch'),browse=$('#browse'),results=$('#searchResults'),resultsGrid=$('#searchResultsGrid'),srQuery=$('#srQuery'),srCount=$('#srCount'),srEmpty=$('#srEmpty'),subnav=$('#subnav');
+  var items=$$('#browse [data-item]');
+  function itemText(el){return ((el.getAttribute('data-title')||'')+' '+(el.getAttribute('data-cat')||'')+' '+(el.getAttribute('data-tags')||'')+' '+el.textContent).toLowerCase();}
+  var cache=items.map(function(el){return {el:el,text:itemText(el),cat:el.getAttribute('data-cat')||''};});
+  var searchT;
+  function runSearch(q){
+    q=q.trim().toLowerCase();
+    if(!q){results.classList.remove('on');browse.style.display='';subnav.style.display='';return;}
+    browse.style.display='none';subnav.style.display='none';results.classList.add('on');
+    srQuery.textContent=q;
+    resultsGrid.innerHTML='';
+    var matches=cache.filter(function(c){return c.text.indexOf(q)>-1;});
+    /* de-duplicate: skip items nested inside another matched item */
+    matches=matches.filter(function(c){return !matches.some(function(o){return o!==c&&o.el!==c.el&&o.el.contains(c.el);});});
+    srCount.textContent='· '+matches.length+' found';
+    if(!matches.length){srEmpty.style.display='';return;}
+    srEmpty.style.display='none';
+    matches.slice(0,60).forEach(function(c){
+      var clone=c.el.cloneNode(true);
+      clone.classList.remove('hidden-row','hide','reveal');clone.classList.add('in');
+      clone.style.display='';
+      resultsGrid.appendChild(clone);
+    });
+    syncBM();
+    window.scrollTo({top:results.offsetTop-120,behavior:reduce?'auto':'smooth'});
+  }
+  if(searchInput){
+    searchInput.addEventListener('input',function(){clearTimeout(searchT);searchT=setTimeout(function(){runSearch(searchInput.value);},220);});
+    searchInput.addEventListener('keydown',function(e){if(e.key==='Enter'){clearTimeout(searchT);runSearch(searchInput.value);}if(e.key==='Escape'){searchInput.value='';runSearch('');}});
+  }
+  $('#searchBtn').addEventListener('click',function(){runSearch(searchInput.value);});
+  $('#srClear').addEventListener('click',function(){searchInput.value='';runSearch('');window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+
+  /* rotating placeholder */
+  var phrases=['Search judgments...','Search legal templates...','Search startup compliance...','Search government resources...','Search legal events...','Search acts and regulations...'];
+  var pi=0;
+  if(searchInput&&!reduce){setInterval(function(){if(document.activeElement===searchInput||searchInput.value)return;pi=(pi+1)%phrases.length;searchInput.setAttribute('placeholder',phrases[pi]);},2600);}
+
+  /* ---------- Event tabs + filters ---------- */
+  var evCards=$$('#eventsGrid .eventcard');
+  var evTabState='all';var evFilters={};
+  function applyEvents(){
+    evCards.forEach(function(card){
+      var show=true;
+      if(evTabState!=='all'){var groups=(card.getAttribute('data-groups')||'');show=groups.indexOf(evTabState)>-1;}
+      Object.keys(evFilters).forEach(function(k){
+        var vals=evFilters[k];if(!vals.length)return;
+        var cardVal=(card.getAttribute(k==='cat'?'data-evcat':'data-'+k)||'');
+        var ok=vals.some(function(v){return cardVal.indexOf(v)>-1;});
+        if(!ok)show=false;
+      });
+      card.classList.toggle('hide',!show);
+    });
+  }
+  $$('#evTabs .ev-tab').forEach(function(tab){tab.addEventListener('click',function(){$$('#evTabs .ev-tab').forEach(function(t){t.classList.remove('on');});tab.classList.add('on');evTabState=tab.getAttribute('data-evtab');expandEvents();applyEvents();});});
+  $$('.ev-f[data-fk]').forEach(function(f){f.addEventListener('click',function(){
+    var k=f.getAttribute('data-fk'),v=f.getAttribute('data-fv');
+    f.classList.toggle('on');
+    evFilters[k]=evFilters[k]||[];
+    var i=evFilters[k].indexOf(v);if(i>-1)evFilters[k].splice(i,1);else evFilters[k].push(v);
+    expandEvents();applyEvents();
+  });});
+  $('#evReset').addEventListener('click',function(){evFilters={};evTabState='all';$$('.ev-f.on').forEach(function(f){f.classList.remove('on');});$$('#evTabs .ev-tab').forEach(function(t){t.classList.remove('on');});$('#evTabs .ev-tab').classList.add('on');collapseEvents();applyEvents();});
+  function expandEvents(){$$('#eventsGrid .ev-more').forEach(function(c){c.classList.remove('hidden-row');});var b=$('#eventsMore');if(b)b.parentElement.style.display='none';}
+  function collapseEvents(){$$('#eventsGrid .ev-more').forEach(function(c){c.classList.add('hidden-row');c.classList.remove('hide');});var b=$('#eventsMore');if(b)b.parentElement.style.display='';}
+  $('#eventsMore').addEventListener('click',function(){expandEvents();observeReveals();});
+
+  /* ---------- generic load-more (id based) ---------- */
+  $$('[data-loadmore]').forEach(function(btn){btn.addEventListener('click',function(){var grid=$('#'+btn.getAttribute('data-loadmore'));$$('.hidden-row.nm',grid).forEach(function(el){el.classList.remove('hidden-row');});btn.parentElement.style.display='none';observeReveals();});});
+  $$('[data-loadmore-class]').forEach(function(btn){btn.addEventListener('click',function(){var cls=btn.getAttribute('data-loadmore-class');$$('.'+cls).forEach(function(el){el.classList.remove('hidden-row');});btn.parentElement.style.display='none';observeReveals();});});
+
+  /* ---------- Glossary A-Z ---------- */
+  var azWrap=$('#glossaryAZ'),terms=$$('#termsGrid .term');
+  var present={};terms.forEach(function(t){present[t.getAttribute('data-letter')]=true;});
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function(L){
+    var b=document.createElement('button');b.className='az';b.textContent=L;
+    if(!present[L]){b.disabled=true;}
+    b.addEventListener('click',function(){
+      $$('.az.on',azWrap).forEach(function(x){x.classList.remove('on');});
+      var already=b.classList.contains('on');
+      if(already){terms.forEach(function(t){t.classList.remove('hide');});return;}
+      b.classList.add('on');
+      terms.forEach(function(t){t.classList.toggle('hide',t.getAttribute('data-letter')!==L);});
+    });
+    azWrap.appendChild(b);
+  });
+
+  /* ---------- Newsletter ---------- */
+  $('#nlForm').addEventListener('submit',function(e){e.preventDefault();var email=$('#nlEmail');if(email.value&&/.+@.+\..+/.test(email.value)){showToast('You are subscribed. Watch your inbox.');email.value='';}else{showToast('Please enter a valid email');email.focus();}});
+})();</script>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Log in · Turn2Law</title>
+<meta name="description" content="Log in to your Turn2Law account — India's Legal Operating System for founders and lawyers.">
+<link rel="icon" href="/turn2law-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D8AB5B;--gold-deep:#B98F42;--gold-text:#8A6A2E;--gold-soft:rgba(216,171,91,.14);
+  --ink:#111111;--navy:#0A1628;--gray:#6F6F6F;--gray-2:#767676;
+  --line:#EAEAEA;--line-soft:#F1F1F1;--bg:#FFFFFF;--bg-tint:#FBFAF7;
+  --glass:rgba(255,255,255,.7);
+  --shadow-sm:0 2px 10px rgba(17,17,17,.05);
+  --shadow-md:0 12px 34px rgba(17,17,17,.09);
+  --shadow-lg:0 30px 70px rgba(17,17,17,.14);
+  --shadow-gold:0 18px 50px rgba(216,171,91,.30);
+  --ease:cubic-bezier(.22,1,.36,1);--r:22px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--gold);color:#fff}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:8px}
+h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mono{font-family:'DM Mono',monospace}
+
+.auth{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.02fr .98fr}
+.brandside{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:clamp(26px,3.4vw,46px);background:linear-gradient(165deg,#fff 0%,var(--bg-tint) 100%)}
+.brandside .mesh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 45% at 80% 12%,rgba(216,171,91,.22),transparent 60%),radial-gradient(45% 45% at 10% 88%,rgba(216,171,91,.16),transparent 60%)}
+.brandside .grid-lines{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 80%)}
+.brandside>*{position:relative;z-index:1}
+.brand-logo{height:30px;width:auto;display:block}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:100px;background:var(--glass);border:1px solid rgba(17,17,17,.07);backdrop-filter:blur(10px);font-size:13px;font-weight:500;box-shadow:var(--shadow-sm);width:max-content;margin:clamp(22px,4vh,40px) 0 0}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.brand-head{margin-top:18px}
+.brand-head h1{font-size:clamp(30px,3.4vw,44px);line-height:1.06;letter-spacing:-.03em}
+.brand-head p{font-size:clamp(14.5px,1.1vw,16px);color:var(--gray);max-width:330px;margin:14px 0 0}
+
+.illus{flex:1;display:flex;align-items:center;justify-content:center;min-height:200px;margin:6px 0}
+.stage{position:relative;width:min(420px,86%);aspect-ratio:1/.82}
+.stage .halo{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:78%;height:78%;border-radius:50%;background:radial-gradient(circle,rgba(216,171,91,.30),transparent 68%);filter:blur(6px)}
+.stage .podium{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);width:66%;height:40px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(17,17,17,.10),transparent 70%)}
+.stage .n{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:44%;filter:drop-shadow(0 24px 34px rgba(184,143,66,.34))}
+.stage .n svg{width:100%;height:auto;display:block}
+.fcard{position:absolute;width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(14px);box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center}
+.fcard svg{width:24px;height:24px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fcard.c1{top:14%;right:6%;animation:floaty 5.5s ease-in-out infinite}
+.fcard.c2{top:48%;right:-2%;animation:floaty 6.5s ease-in-out infinite .7s}
+.fcard.c3{top:30%;left:-2%;animation:floaty 6s ease-in-out infinite .3s}
+.fcard.c4{bottom:16%;left:10%;animation:floaty 7s ease-in-out infinite 1s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:8px}
+.feat{background:rgba(255,255,255,.72);backdrop-filter:blur(6px);padding:14px 16px;display:flex;gap:11px;align-items:center}
+.feat .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--gold-soft);border:1px solid rgba(216,171,91,.3);display:flex;align-items:center;justify-content:center}
+.feat .ic svg{width:17px;height:17px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat b{font-family:'Poppins',sans-serif;font-weight:600;font-size:12.5px;display:block;letter-spacing:-.01em}
+.feat span{font-size:11px;color:var(--gray);line-height:1.35;display:block;margin-top:1px}
+
+.formside{display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,44px);background:var(--bg-tint)}
+.card{width:100%;max-width:440px;background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-lg);padding:clamp(26px,3vw,40px)}
+.card .mob-logo{display:none}
+.card h2{font-size:clamp(22px,2.4vw,27px);font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:-.02em}
+.card .sub{font-size:14px;color:var(--gray);margin:6px 0 24px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px}
+.inp{position:relative}
+.inp>svg.lead{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--gray-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.inp input{width:100%;font-family:inherit;font-size:14.5px;padding:13px 15px 13px 42px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);transition:.25s var(--ease)}
+.inp input::placeholder{color:var(--gray-2)}
+.inp input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.inp input[aria-invalid="true"]{border-color:#B4231B;box-shadow:0 0 0 3px rgba(180,35,27,.12)}
+.inp .toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gray-2)}
+.inp .toggle:hover{color:var(--ink);background:var(--line-soft)}
+.inp .toggle svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ferr{display:none;color:#B4231B;font-size:12px;font-weight:500;margin-top:6px}
+.ferr.show{display:block}
+.row-between{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:2px 0 8px}
+.remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);cursor:pointer}
+.remember input{width:16px;height:16px;accent-color:var(--gold-deep)}
+.forgot{font-size:13px;font-weight:600;color:var(--gold-text)}
+.forgot:hover{text-decoration:underline}
+.submit{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15px;padding:14px;border-radius:12px;background:var(--ink);color:#fff;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;z-index:0;transition:transform .35s var(--ease),box-shadow .35s var(--ease),color .3s;margin-top:6px}
+.submit::after{content:"";position:absolute;inset:0;border-radius:12px;background:linear-gradient(120deg,var(--gold),var(--gold-deep));opacity:0;transition:opacity .3s var(--ease);z-index:-1}
+.submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-gold);color:#111}
+.submit:hover:not(:disabled)::after{opacity:1}
+.submit:disabled{opacity:.75;cursor:default}
+.submit svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.divider{display:flex;align-items:center;gap:14px;margin:20px 0;color:var(--gray-2);font-size:12px;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.soc{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:600;color:var(--ink);transition:.25s var(--ease)}
+.soc:hover{border-color:var(--ink);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.soc svg{flex:none}
+.alt{text-align:center;font-size:13.5px;color:var(--gray);margin-top:22px}
+.alt a{color:var(--gold-text);font-weight:600}
+.alt a:hover{text-decoration:underline}
+.formok{display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold-deep);font-weight:600;background:var(--gold-soft);border:1px solid rgba(216,171,91,.3);border-radius:12px;padding:14px;margin-top:8px}
+.formok svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:2;flex:none}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:12px 18px;border-radius:100px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:.35s var(--ease);z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.back{position:absolute;top:clamp(20px,3vw,32px);right:clamp(20px,3vw,32px);z-index:2;font-size:13.5px;font-weight:600;color:var(--gray);display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:100px;transition:.25s}
+.back:hover{color:var(--ink);background:rgba(17,17,17,.04)}
+.back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+@media (max-width:920px){
+  .auth{grid-template-columns:1fr}
+  .brandside{display:none}
+  .formside{min-height:100svh;padding:24px 20px}
+  .card .mob-logo{display:block;margin:0 auto 22px}
+  .card .mob-logo img{height:30px;width:auto;margin:0 auto}
+  .card{box-shadow:var(--shadow-md)}
+}
+@media (prefers-reduced-motion:reduce){.fcard{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="nmark" viewBox="0 0 96 118"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 108 V26 L70 100 V34"></path><path d="M49 44 L70 18 L91 44"></path></g></symbol></svg>
+
+<a href="/" class="back" aria-label="Back to home"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to site</a>
+
+<main class="auth">
+  <section class="brandside" aria-hidden="true">
+    <div class="mesh"></div>
+    <div class="grid-lines"></div>
+    <a href="/" aria-label="Turn2Law home"><img class="brand-logo" src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async"></a>
+    <span class="badge"><span class="dot"></span>India's Legal Operating System</span>
+    <div class="brand-head">
+      <h1>Welcome<br><span class="g">back.</span></h1>
+      <p>Log in to pick up right where you left off.</p>
+    </div>
+    <div class="illus">
+      <div class="stage">
+        <div class="halo"></div>
+        <div class="podium"></div>
+        <div class="n" style="color:var(--gold-deep)"><svg viewBox="0 0 96 118"><use href="#nmark"></use></svg></div>
+        <div class="fcard c1"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline></svg></div>
+        <div class="fcard c2"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 7h10M5 21h14"></path><path d="M6 7l-3 6a3 3 0 0 0 6 0zM18 7l-3 6a3 3 0 0 0 6 0z"></path></svg></div>
+        <div class="fcard c3"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+        <div class="fcard c4"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9zM4 10v4M20 10v4M10 4h4M10 20h4"></path></svg></div>
+      </div>
+    </div>
+    <div class="features">
+      <div class="feat"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9zM4 10v4M20 10v4M10 4h4M10 20h4"></path></svg></span><div><b>AI-Powered</b><span>Built for legal pros</span></div></div>
+      <div class="feat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></span><div><b>Secure &amp; Private</b><span>Your data protected</span></div></div>
+      <div class="feat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span><div><b>Built for India</b><span>Designed for Indian law</span></div></div>
+    </div>
+  </section>
+
+  <section class="formside">
+    <div class="card">
+      <a href="/" class="mob-logo" aria-label="Turn2Law home"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async"></a>
+      <h2>Welcome back</h2>
+      <p class="sub">Log in to your Turn2Law account.</p>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email address</label>
+          <div class="inp">
+            <svg class="lead" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            <input id="email" name="email" type="email" placeholder="you@company.in" autocomplete="email" required aria-required="true" aria-describedby="emailErr">
+          </div>
+          <small class="ferr" id="emailErr" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="inp">
+            <svg class="lead" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+            <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required aria-required="true" aria-describedby="passwordErr">
+            <button type="button" class="toggle" id="pwToggle" aria-label="Show password" aria-pressed="false">
+              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <small class="ferr" id="passwordErr" role="alert"></small>
+        </div>
+        <div class="row-between">
+          <label class="remember"><input type="checkbox" id="remember">Remember me</label>
+          <a href="#" class="forgot">Forgot password?</a>
+        </div>
+        <button type="submit" class="submit">Log in <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+        <div class="formok" id="formOk"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4 12 14.01l-3-3"></path></svg><span>Logged in. Taking you in…</span></div>
+      </form>
+      <div class="divider">or continue with</div>
+      <div class="socials">
+        <button type="button" class="soc" data-soc="Google" aria-label="Continue with Google"><svg viewBox="0 0 48 48" width="18" height="18"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"></path><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"></path><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"></path><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"></path></svg></button>
+        <button type="button" class="soc" data-soc="Microsoft" aria-label="Continue with Microsoft"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#F25022" d="M1 1h10v10H1z"></path><path fill="#7FBA00" d="M13 1h10v10H13z"></path><path fill="#00A4EF" d="M1 13h10v10H1z"></path><path fill="#FFB900" d="M13 13h10v10H13z"></path></svg></button>
+        <button type="button" class="soc" data-soc="Apple" aria-label="Continue with Apple"><svg viewBox="0 0 24 24" width="17" height="17" fill="#111"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path></svg></button>
+      </div>
+      <p class="alt">New to Turn2Law? <a href="/signup.html">Create an account</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s){return document.querySelector(s)};
+  var pw=$('#password'),tog=$('#pwToggle');
+  var eye='<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+  var eyeOff='<svg viewBox="0 0 24 24"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a13.2 13.2 0 0 1-1.67 2.68M6.6 6.6A13.5 13.5 0 0 0 2 11s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M14.12 14.12A3 3 0 1 1 9.88 9.88"></path><path d="M2 2l20 20"></path></svg>';
+  tog.addEventListener('click',function(){
+    var show=pw.type==='password';
+    pw.type=show?'text':'password';
+    tog.innerHTML=show?eyeOff:eye;
+    tog.setAttribute('aria-pressed',show);
+    tog.setAttribute('aria-label',show?'Hide password':'Show password');
+    pw.focus();
+  });
+  var toast=$('#toast'),tt;
+  function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show');},2600);}
+  function setErr(id,msg){
+    var el=$('#'+id),e=$('#'+id+'Err');
+    if(msg){if(el)el.setAttribute('aria-invalid','true');if(e){e.textContent=msg;e.classList.add('show');}}
+    else{if(el)el.removeAttribute('aria-invalid');if(e){e.textContent='';e.classList.remove('show');}}
+  }
+  var form=$('#loginForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=$('#email').value.trim(),pwv=$('#password').value;
+    var okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var firstBad=null;
+    setErr('email',email?(okEmail?'':'Enter a valid email address.'):'Please enter your email.');if(!email||!okEmail)firstBad=firstBad||'email';
+    setErr('password',pwv?'':'Please enter your password.');if(!pwv)firstBad=firstBad||'password';
+    if(firstBad){var f=$('#'+firstBad);if(f)f.focus();return;}
+    var btn=form.querySelector('.submit');btn.disabled=true;btn.textContent='Logging in…';
+    setTimeout(function(){$('#formOk').style.display='flex';setTimeout(function(){window.location.href='/';},1100);},700);
+  });
+  ['email','password'].forEach(function(id){$('#'+id).addEventListener('input',function(){setErr(id,'');});});
+  $('.forgot').addEventListener('click',function(e){e.preventDefault();showToast('Password reset is coming soon.');});
+  document.querySelectorAll('.soc').forEach(function(b){
+    b.addEventListener('click',function(){showToast(b.getAttribute('data-soc')+' sign-in is coming soon.');});
+  });
+})();
+</script>
+</body></html>

@@ -1,6 +1,6 @@
 # Turn2Law
 
-India's Legal Operating System — marketing site.
+India's Legal Operating System  marketing site.
 
 Static site (HTML/CSS/JS). Deployed on Vercel.
 

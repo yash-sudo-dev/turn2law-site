@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Resources | India's Legal Knowledge Hub · Turn2Law</title><meta name="description" content="Turn2Law Resources is India's legal knowledge hub. Search judgments, acts, templates, government portals, and legal events. Stay updated on MCA, SEBI, RBI, GST, and Supreme Court developments, curated for founders, lawyers, and legal teams.">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ffffff"><title>Resources | India's Legal Knowledge Hub · Turn2Law</title><meta name="description" content="Turn2Law Resources is India's legal knowledge hub. Search judgments, acts, templates, government portals, and legal events. Stay updated on MCA, SEBI, RBI, GST, and Supreme Court developments, curated for founders, lawyers, and legal teams.">
 <link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -39,7 +39,7 @@ body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:'Inter',system-ui,-apple-system,sans-serif;
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;overflow-x:hidden;
+  text-rendering:optimizeLegibility;overflow-x:hidden;overflow-x:clip;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -60,7 +60,7 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02
 .h2{font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.025em}
 .lede{font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--gray);max-width:640px}
 
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(clamp(20px,4vw,32px),env(safe-area-inset-left));padding-right:max(clamp(20px,4vw,32px),env(safe-area-inset-right))}
 section{position:relative}
 .pad{padding:clamp(60px,8vw,100px) 0}
 .pad-s{padding:clamp(40px,5vw,64px) 0}
@@ -83,7 +83,7 @@ section{position:relative}
 .btn-sm{padding:9px 16px;font-size:13.5px}
 
 /* ============ NAV ============ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .5s var(--ease),background .4s,box-shadow .4s,border-color .4s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right));transition:transform .5s var(--ease),background .4s,box-shadow .4s,border-color .4s}
 .nav-inner{max-width:var(--maxw);margin:14px auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-radius:100px;transition:all .4s var(--ease);border:1px solid transparent}
 .nav.scrolled .nav-inner{background:var(--glass);backdrop-filter:blur(18px) saturate(1.6);border-color:rgba(17,17,17,.06);box-shadow:0 10px 40px rgba(17,17,17,.07)}
 .brand{display:flex;align-items:center;gap:11px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em}
@@ -103,8 +103,8 @@ body.menu-open .burger span{background:transparent}
 body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
 body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--gold-deep));z-index:102}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:32px;opacity:0;pointer-events:none;transform:translateY(-14px);transition:.45s var(--ease)}
-body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;justify-content:safe center;gap:6px;overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) max(32px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(32px,env(safe-area-inset-left,0px));opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-14px);transition:opacity .45s var(--ease),transform .45s var(--ease),visibility .45s var(--ease)}
+body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
 .mobile-menu>a{font-family:'Poppins',sans-serif;font-weight:600;font-size:30px;padding:10px 0;color:var(--ink);border-bottom:1px solid var(--line-soft)}
 .mobile-menu>a:last-of-type{border:none}
 .mobile-menu .mm-actions{margin-top:24px;display:flex;gap:12px}
@@ -115,10 +115,10 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 .reveal.in{opacity:1;transform:none}
 
 /* ===== Sub-page hero ===== */
-.phero{position:relative;overflow:hidden;padding:150px 0 56px;text-align:center}
+.phero{position:relative;overflow:hidden;padding:clamp(118px,90px + 5vw,150px) 0 clamp(44px,6vw,56px);text-align:center}
 .phero .nglow{top:-18%;left:50%;transform:translateX(-50%);width:min(680px,70vw);height:min(760px,78vw);opacity:.2}
 .phero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
-.phero h1{font-size:clamp(34px,5.6vw,64px);line-height:1.03;letter-spacing:-.035em;margin:22px 0 0}
+.phero h1{font-size:min(clamp(34px,5.6vw,64px),11.5vw);line-height:1.03;letter-spacing:-.035em;margin:22px 0 0}
 .phero h1 .g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
 .phero .lede{margin:22px auto 0}
 .crumb{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
@@ -133,7 +133,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 }
 .searchbar-in:focus-within{border-color:var(--gold);box-shadow:var(--shadow-lg),0 0 0 4px var(--gold-soft)}
 .searchbar .sic{width:22px;height:22px;stroke:var(--gold-deep);fill:none;stroke-width:2;flex:none}
-.searchbar input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:16.5px;padding:12px 0}
+.searchbar input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--ink);font-size:16.5px;padding:12px 0}
 .searchbar input::placeholder{color:var(--gray-2)}
 .searchbar .aihint{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:100px;padding:5px 10px;display:flex;align-items:center;gap:6px;flex:none}
 .searchbar .aihint i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
@@ -157,18 +157,21 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 /* STICKY SUBNAV */
 .subnav{position:sticky;top:76px;z-index:90;margin-top:4px}
+#featured{padding-top:clamp(56px,7vw,80px)}
 .subnav-in{max-width:var(--maxw);margin:0 auto;padding:0 32px}
 .subnav-track{display:flex;gap:4px;overflow-x:auto;padding:9px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:100px;box-shadow:var(--shadow-md);scrollbar-width:none}
 .subnav-track::-webkit-scrollbar{display:none}
 .subnav-track a{white-space:nowrap;font-size:13px;font-weight:500;color:var(--gray);padding:8px 14px;border-radius:100px;transition:.25s var(--ease);display:inline-flex;align-items:center;gap:7px}
 .subnav-track a:hover{color:var(--ink);background:rgba(17,17,17,.04)}
 .subnav-track a.on{color:#111;background:linear-gradient(120deg,var(--gold),var(--gold-deep))}
-.subnav-track a .emo{font-size:13px}
+.subnav-track a .emo{display:inline-flex}
+.subnav-track a .emo svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* section head */
 .shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
 .shead .st{display:flex;align-items:center;gap:13px}
-.shead .sicon{width:44px;height:44px;border-radius:13px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.shead .sicon{width:44px;height:44px;border-radius:13px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.shead .sicon svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .shead h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em}
 .shead .sdesc{font-size:13.5px;color:var(--gray);margin-top:3px}
 .shead .slink{font-size:13.5px;font-weight:600;color:var(--gold-deep);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
@@ -276,7 +279,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 .ev-meta .row{display:flex;align-items:center;gap:9px}
 .ev-meta .row svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;flex:none}
 .ev-meta .row b{color:var(--ink);font-weight:500}
-.ev-mode{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid}
+.ev-mode{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid;color:var(--gray);border-color:var(--line);background:var(--bg-tint)}
 .ev-mode.online{color:var(--blue);border-color:var(--blue-line);background:var(--blue-soft)}
 .ev-mode.offline{color:var(--gold-deep);border-color:rgba(216,171,91,.3);background:var(--gold-soft)}
 .ev-mode.free{color:var(--ok);border-color:var(--ok-line);background:var(--ok-soft)}
@@ -320,7 +323,8 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 /* pill list (free resources / learning) */
 .mini-card{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px;transition:.35s var(--ease)}
 .mini-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
-.mini-card .mi{width:42px;height:42px;border-radius:12px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.mini-card .mi{width:42px;height:42px;border-radius:12px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.mini-card .mi svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .mini-card .mt{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.01em}
 .mini-card .md{font-size:12.5px;color:var(--gray);line-height:1.5;margin-top:3px}
 .mini-card .mtag{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);margin-top:8px;display:inline-block}
@@ -339,7 +343,8 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 .sr-clear:hover{color:var(--ink)}
 .sr-clear svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
 .sr-empty{text-align:center;padding:60px 20px;color:var(--gray)}
-.sr-empty .ei{font-size:40px;margin-bottom:14px}
+.sr-empty .ei{margin-bottom:14px}
+.sr-empty .ei svg{width:40px;height:40px;stroke:var(--gray-2);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 #searchResultsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
 /* newsletter (dark accent band, brand-consistent) */
@@ -356,12 +361,12 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 .nl-fine{position:relative;z-index:1;margin-top:16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8ea0b6}
 
 /* toast */
-.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#fff;border:1px solid var(--line);border-radius:100px;padding:12px 22px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow-lg);z-index:200;opacity:0;pointer-events:none;transition:.4s var(--ease);display:flex;align-items:center;gap:10px;color:var(--ink)}
+.toast{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);background:#fff;border:1px solid var(--line);border-radius:100px;padding:12px 22px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow-lg);z-index:200;opacity:0;pointer-events:none;transition:.4s var(--ease);display:flex;align-items:center;gap:10px;color:var(--ink)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:16px;height:16px;stroke:var(--gold-deep);fill:none;stroke-width:2}
 
 /* back to top */
-.totop{position:fixed;bottom:26px;right:26px;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:95;opacity:0;pointer-events:none;transform:translateY(12px);transition:.4s var(--ease)}
+.totop{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom,0px));right:max(26px,env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:95;opacity:0;pointer-events:none;transform:translateY(12px);transition:.4s var(--ease)}
 .totop.show{opacity:1;pointer-events:auto;transform:none}
 .totop svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:2}
 .totop:hover{border-color:var(--gold);box-shadow:var(--shadow-lg)}
@@ -397,16 +402,28 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
 @media (max-width:640px){
-  .wrap{padding:0 20px}
   .subnav-in{padding:0 12px}
-  .phero{padding-top:120px}
   .g3,.g2,.g4,.events-grid,.terms,#searchResultsGrid,.feat-grid,.portals{grid-template-columns:1fr}
   .searchbar .aihint{display:none}
-  .nav-inner{margin:10px 12px}
   .nav-cta .btn-gold{display:none}
   .hstats{gap:22px}
   .shead{align-items:flex-start}
   .foot-grid{grid-template-columns:1fr}
+}
+/* ============ MOBILE ERGONOMICS ============ */
+@media (max-width:520px){
+  .nl-form{flex-direction:column;padding:10px;border-radius:18px}
+  .nl-form input{padding:10px 8px;text-align:center;font-size:16px}
+  .nl-form .btn{width:100%}
+}
+@media (max-width:768px){
+  /* 16px+ prevents iOS Safari zoom-on-focus */
+  .nl-form input{font-size:16px}
+}
+@media (pointer:coarse){
+  .iconbtn{width:40px;height:40px}
+  .az{width:38px;height:38px}
+  .foot-social a{width:44px;height:44px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
@@ -448,14 +465,14 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
     </div>
 
     <div class="chips reveal" style="--d:260ms">
-      <a href="#news" class="chip"><span class="emo"></span>Legal News</a>
-      <a href="#caselaw" class="chip"><span class="emo">️</span>Case Law</a>
-      <a href="#acts" class="chip"><span class="emo"></span>Acts &amp; Regulations</a>
-      <a href="#documents" class="chip"><span class="emo"></span>Templates</a>
-      <a href="#portals" class="chip"><span class="emo"></span>Government Portals</a>
-      <a href="#events" class="chip"><span class="emo"></span>Legal Events</a>
-      <a href="#learning" class="chip"><span class="emo"></span>Learning</a>
-      <a href="#glossary" class="chip"><span class="emo"></span>Glossary</a>
+      <a href="#news" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></span>Legal News</a>
+      <a href="#caselaw" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 7h10M5 21h14"></path><path d="M6 7l-3 6a3 3 0 0 0 6 0zM18 7l-3 6a3 3 0 0 0 6 0z"></path></svg></span>Case Law</a>
+      <a href="#acts" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>Acts &amp; Regulations</a>
+      <a href="#documents" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline><line x1="8" y1="13" x2="15" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></span>Templates</a>
+      <a href="#portals" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.5 4 6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-6-4-9s1.5-6.5 4-9z"></path></svg></span>Government Portals</a>
+      <a href="#events" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span>Legal Events</a>
+      <a href="#learning" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></span>Learning</a>
+      <a href="#glossary" class="chip"><span class="emo"><svg viewBox="0 0 24 24"><path d="M12 7c-2-2-6-2-8-1v13c2-1 6-1 8 1 2-2 6-2 8-1V6c-2-1-6-1-8 1z"></path><path d="M12 7v13"></path></svg></span>Glossary</a>
     </div>
 
     <div class="hstats reveal" style="--d:320ms">
@@ -469,21 +486,21 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- ================= STICKY SUBNAV ================= -->
 <div class="subnav" id="subnav"><div class="subnav-in"><nav class="subnav-track" id="subnavTrack" aria-label="Categories">
-  <a href="#featured" class="on"><span class="emo"></span>Featured</a>
-  <a href="#news"><span class="emo"></span>News</a>
-  <a href="#compliance"><span class="emo"></span>Compliance</a>
-  <a href="#events"><span class="emo"></span>Events</a>
-  <a href="#caselaw"><span class="emo">️</span>Case Law</a>
-  <a href="#acts"><span class="emo"></span>Acts</a>
-  <a href="#documents"><span class="emo"></span>Documents</a>
-  <a href="#portals"><span class="emo"></span>Portals</a>
-  <a href="#free"><span class="emo"></span>Free</a>
-  <a href="#learning"><span class="emo"></span>Learning</a>
-  <a href="#research"><span class="emo"></span>Research</a>
-  <a href="#media"><span class="emo"></span>Podcasts</a>
-  <a href="#courses"><span class="emo"></span>Courses</a>
-  <a href="#glossary"><span class="emo"></span>Glossary</a>
-  <a href="#timeline"><span class="emo">️</span>Landmarks</a>
+  <a href="#featured" class="on"><span class="emo"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.6-3.6-6.6 3.6 1.3-7-5-4.8 7-.9z"></path></svg></span>Featured</a>
+  <a href="#news"><span class="emo"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></span>News</a>
+  <a href="#compliance"><span class="emo"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 14l2 2 4-4"></path></svg></span>Compliance</a>
+  <a href="#events"><span class="emo"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span>Events</a>
+  <a href="#caselaw"><span class="emo"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 7h10M5 21h14"></path><path d="M6 7l-3 6a3 3 0 0 0 6 0zM18 7l-3 6a3 3 0 0 0 6 0z"></path></svg></span>Case Law</a>
+  <a href="#acts"><span class="emo"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>Acts</a>
+  <a href="#documents"><span class="emo"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline><line x1="8" y1="13" x2="15" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></span>Documents</a>
+  <a href="#portals"><span class="emo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.5 4 6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-6-4-9s1.5-6.5 4-9z"></path></svg></span>Portals</a>
+  <a href="#free"><span class="emo"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg></span>Free</a>
+  <a href="#learning"><span class="emo"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></span>Learning</a>
+  <a href="#research"><span class="emo"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 8.5V3"></path></svg></span>Research</a>
+  <a href="#media"><span class="emo"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0M12 19v3"></path></svg></span>Podcasts</a>
+  <a href="#courses"><span class="emo"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg></span>Courses</a>
+  <a href="#glossary"><span class="emo"><svg viewBox="0 0 24 24"><path d="M12 7c-2-2-6-2-8-1v13c2-1 6-1 8 1 2-2 6-2 8-1V6c-2-1-6-1-8 1z"></path><path d="M12 7v13"></path></svg></span>Glossary</a>
+  <a href="#timeline"><span class="emo"><svg viewBox="0 0 24 24"><path d="M4 22V4M4 4h14l-2 4 2 4H4"></path></svg></span>Landmarks</a>
 </nav></div></div>
 
 <!-- ================= SEARCH RESULTS ================= -->
@@ -493,7 +510,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
     <button class="sr-clear" id="srClear"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg>Clear search</button>
   </div>
   <div id="searchResultsGrid"></div>
-  <div class="sr-empty" id="srEmpty" style="display:none"><div class="ei"></div><div>No resources matched your search. Try a broader term like <b style="color:var(--ink)">bail</b>, <b style="color:var(--ink)">GST</b>, or <b style="color:var(--ink)">event</b>.</div></div>
+  <div class="sr-empty" id="srEmpty" style="display:none"><div class="ei"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path><line x1="8" y1="11" x2="14" y2="11"></line></svg></div><div>No resources matched your search. Try a broader term like <b style="color:var(--ink)">bail</b>, <b style="color:var(--ink)">GST</b>, or <b style="color:var(--ink)">event</b>.</div></div>
 </div></section>
 
 <!-- ================= BROWSE ================= -->
@@ -501,7 +518,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- FEATURED -->
 <section id="featured" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Featured collections</h2><div class="sdesc">Editor-curated resources, refreshed weekly</div></div></div><a href="#news" class="slink">Browse all<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.6-3.6-6.6 3.6 1.3-7-5-4.8 7-.9z"></path></svg></div><div><h2>Featured collections</h2><div class="sdesc">Editor-curated resources, refreshed weekly</div></div></div><a href="#news" class="slink">Browse all<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
   <div class="feat-grid">
     <a href="#compliance" class="feat reveal" data-item data-title="Founder's Compliance Starter Kit" data-cat="Featured Collection" data-tags="compliance founder checklist roc gst"><div class="fglow"></div><span class="fk">Collection · 12 resources</span><h3>Founder's Compliance Starter Kit</h3><p>Everything a new company needs in year one: ROC calendar, GST basics, board resolutions, and registers.</p><div class="fmeta"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.6-3.6-6.6 3.6 1.3-7-5-4.8 7-.9z"></path></svg>Most saved this month</div></a>
     <a href="#caselaw" class="feat reveal" style="--d:80ms" data-item data-title="BNS, BNSS & BSA Transition Guide" data-cat="Featured Collection" data-tags="bns bnss bsa criminal law new codes"><div class="fglow"></div><span class="fk">Collection · 9 resources</span><h3>New Criminal Codes: BNS, BNSS &amp; BSA</h3><p>Section-by-section mapping from the IPC, CrPC, and Evidence Act to the three new codes, with landmark reading.</p><div class="fmeta"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>Trending in Case Law</div></a>
@@ -511,7 +528,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- LATEST NEWS -->
 <section id="news" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Latest legal news</h2><div class="sdesc">MCA, SEBI, RBI, GST, Supreme Court, High Courts, Startup India &amp; DPIIT</div></div></div><a href="https://www.livelaw.in/" target="_blank" rel="noopener noreferrer" class="slink">More on LiveLaw<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></div><div><h2>Latest legal news</h2><div class="sdesc">MCA, SEBI, RBI, GST, Supreme Court, High Courts, Startup India &amp; DPIIT</div></div></div><a href="https://www.livelaw.in/" target="_blank" rel="noopener noreferrer" class="slink">More on LiveLaw<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
   <div class="grid g3" id="newsGrid">
     <article class="card reveal js-card" data-item data-title="MCA extends AOC-4 and MGT-7 filing deadline" data-cat="Legal News" data-tags="mca roc filing compliance annual return"><div class="ctop"><span class="src-pill">MCA</span><span class="cdate">08 Jul 2026</span></div><h3>MCA extends annual filing deadline for AOC-4 and MGT-7</h3><p class="cbody">The Ministry of Corporate Affairs has granted additional time for annual financial statement and return filings for FY 2025-26, citing V3 portal transition load.</p><div class="ctags"><span class="ctag">ROC</span><span class="ctag">Annual Filing</span><span class="ctag">Companies Act</span></div><div class="cfoot"><a class="cread" href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer">Read more<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="news-mca-aoc" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button><button class="iconbtn share" data-share="MCA extends annual filing deadline" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button></div></article>
 
@@ -530,7 +547,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- COMPLIANCE UPDATES -->
 <section id="compliance" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Compliance updates &amp; deadlines</h2><div class="sdesc">Upcoming statutory deadlines you should not miss</div></div></div><a href="#free" class="slink">Get the calendar<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 14l2 2 4-4"></path></svg></div><div><h2>Compliance updates &amp; deadlines</h2><div class="sdesc">Upcoming statutory deadlines you should not miss</div></div></div><a href="#free" class="slink">Get the calendar<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
   <div class="grid g4">
     <article class="card reveal js-card" data-item data-title="GSTR-3B monthly return due" data-cat="Compliance Deadline" data-tags="gst gstr-3b return monthly deadline"><div class="ctop"><span class="src-pill red">DUE SOON</span><span class="cdate">20 Jul</span></div><h3>GSTR-3B summary return</h3><p class="cbody">Monthly summary return and tax payment for June 2026 for regular taxpayers.</p><div class="cpub"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>11 days left</div></article>
     <article class="card reveal js-card" style="--d:60ms" data-item data-title="TDS payment for June" data-cat="Compliance Deadline" data-tags="tds income tax payment deadline"><div class="ctop"><span class="src-pill">INCOME TAX</span><span class="cdate">07 Jul</span></div><h3>TDS / TCS deposit</h3><p class="cbody">Deposit of tax deducted or collected at source for the month of June 2026.</p><div class="cpub"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Recurring monthly</div></article>
@@ -541,17 +558,17 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- ================= EVENTS ================= -->
 <section id="events" class="pad"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal events &amp; opportunities</h2><div class="sdesc">Conferences, summits, webinars, moots, hackathons &amp; meetups across India</div></div></div><a href="#events" class="slink" id="allEventsLink">Submit an event<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div><div><h2>Legal events &amp; opportunities</h2><div class="sdesc">Conferences, summits, webinars, moots, hackathons &amp; meetups across India</div></div></div><a href="#events" class="slink" id="allEventsLink">Submit an event<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></a></div>
 
   <div class="events-hero reveal">
     <div class="eg"></div>
     <div class="ev-tabs" id="evTabs" role="tablist">
       <button class="ev-tab on" data-evtab="all" role="tab">All events <span class="n">18</span></button>
-      <button class="ev-tab" data-evtab="featured" role="tab"> Featured <span class="n">4</span></button>
-      <button class="ev-tab" data-evtab="trending" role="tab"> Trending <span class="n">5</span></button>
-      <button class="ev-tab" data-evtab="week" role="tab"> This week <span class="n">3</span></button>
-      <button class="ev-tab" data-evtab="deadline" role="tab"> Closing soon <span class="n">4</span></button>
-      <button class="ev-tab" data-evtab="new" role="tab"> Recently added <span class="n">6</span></button>
+      <button class="ev-tab" data-evtab="featured" role="tab">Featured <span class="n">4</span></button>
+      <button class="ev-tab" data-evtab="trending" role="tab">Trending <span class="n">5</span></button>
+      <button class="ev-tab" data-evtab="week" role="tab">This week <span class="n">3</span></button>
+      <button class="ev-tab" data-evtab="deadline" role="tab">Closing soon <span class="n">4</span></button>
+      <button class="ev-tab" data-evtab="new" role="tab">Recently added <span class="n">6</span></button>
     </div>
     <div class="ev-filters">
       <div class="ev-fgroup"><span class="flabel">Mode</span><button class="ev-f" data-fk="mode" data-fv="online">Online</button><button class="ev-f" data-fk="mode" data-fv="offline">Offline</button></div>
@@ -658,7 +675,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- CASE LAW LIBRARY -->
 <section id="caselaw" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon">️</div><div><h2>Case law library</h2><div class="sdesc">Judgments with plain-language summaries and key takeaways</div></div></div><a href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer" class="slink">Full database<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 7h10M5 21h14"></path><path d="M6 7l-3 6a3 3 0 0 0 6 0zM18 7l-3 6a3 3 0 0 0 6 0z"></path></svg></div><div><h2>Case law library</h2><div class="sdesc">Judgments with plain-language summaries and key takeaways</div></div></div><a href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer" class="slink">Full database<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a></div>
   <div class="grid g2">
     <article class="card reveal js-card" data-item data-title="Sushila Aggarwal v State NCT Delhi anticipatory bail" data-cat="Judgment" data-tags="anticipatory bail crpc bnss constitution bench supreme court"><div class="ctop"><span class="src-pill">SUPREME COURT</span><span class="cdate">(2020) 5 SCC 1</span></div><h3>Sushila Aggarwal v. State (NCT of Delhi)</h3><p class="cbody"><b style="color:var(--ink)">Holding:</b> Anticipatory bail need not be limited to a fixed period and can continue until the end of trial, subject to conditions.</p><div class="ctags"><span class="ctag">Anticipatory Bail</span><span class="ctag">Constitution Bench</span><span class="ctag">CrPC / BNSS</span></div><div class="cfoot"><a class="cread" href="https://www.scconline.com/" target="_blank" rel="noopener noreferrer">Read summary<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></a><button class="iconbtn bm push" data-bm="case-sushila" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
 
@@ -673,7 +690,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- ACTS & REGULATIONS -->
 <section id="acts" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Acts &amp; regulations</h2><div class="sdesc">Bare acts and rules that govern companies, contracts, and commerce</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div><h2>Acts &amp; regulations</h2><div class="sdesc">Bare acts and rules that govern companies, contracts, and commerce</div></div></div></div>
   <div class="acts">
     <a href="https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" target="_blank" rel="noopener noreferrer" class="act reveal js-card" data-item data-title="Companies Act 2013" data-cat="Act" data-tags="companies act corporate roc incorporation"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Companies Act, 2013</div><div class="as">Incorporation, governance, ROC filings</div></div><span class="ayr">2013</span></a>
     <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener noreferrer" class="act reveal js-card" style="--d:60ms" data-item data-title="Indian Contract Act 1872" data-cat="Act" data-tags="contract act agreements consideration"><span class="an"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><div><div class="at">Indian Contract Act, 1872</div><div class="as">Agreements, consideration, breach</div></div><span class="ayr">1872</span></a>
@@ -688,7 +705,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- DOCUMENT LIBRARY -->
 <section id="documents" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal document library</h2><div class="sdesc">Templates, agreements, and forms, drafted for Indian startups</div></div></div><a href="/docengine.html" class="slink">Generate with DocEngine<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline><line x1="8" y1="13" x2="15" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></div><div><h2>Legal document library</h2><div class="sdesc">Templates, agreements, and forms, drafted for Indian startups</div></div></div><a href="/docengine.html" class="slink">Generate with DocEngine<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
   <div class="grid g3">
     <article class="card reveal js-card" data-item data-title="Mutual Non-Disclosure Agreement NDA template" data-cat="Template" data-tags="nda confidentiality template download founder"><div class="ctop"><span class="src-pill ok">TEMPLATE</span><span class="cdate">DOCX · PDF</span></div><h3>Mutual Non-Disclosure Agreement</h3><p class="cbody">A balanced two-way NDA for early conversations with vendors, hires, and partners.</p><div class="cfoot"><a class="cread" href="/docengine.html">Get template<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="doc-nda" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
     <article class="card reveal js-card" style="--d:80ms" data-item data-title="Founders Agreement template equity vesting" data-cat="Template" data-tags="founders agreement equity vesting template cofounder"><div class="ctop"><span class="src-pill ok">TEMPLATE</span><span class="cdate">DOCX · PDF</span></div><h3>Founders' Agreement</h3><p class="cbody">Roles, equity split, vesting, and exit terms between co-founders, in plain language.</p><div class="cfoot"><a class="cread" href="/docengine.html">Get template<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="doc-founders" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
@@ -698,7 +715,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- GOVERNMENT PORTALS -->
 <section id="portals" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Government portals</h2><div class="sdesc">Verified official links to the registries and portals you actually use</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.5 4 6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-6-4-9s1.5-6.5 4-9z"></path></svg></div><div><h2>Government portals</h2><div class="sdesc">Verified official links to the registries and portals you actually use</div></div></div></div>
   <div class="portals">
     <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" data-item data-title="MCA Ministry of Corporate Affairs portal" data-cat="Government Portal" data-tags="mca roc incorporation filing portal"><div class="plogo">MCA</div><div><div class="pn">MCA V3</div><div class="pd">Incorporation, ROC filings, DIN</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
     <a href="https://www.gst.gov.in/" target="_blank" rel="noopener noreferrer" class="portal reveal js-card" style="--d:50ms" data-item data-title="GST portal" data-cat="Government Portal" data-tags="gst returns registration portal tax"><div class="plogo">GST</div><div><div class="pn">GST Portal</div><div class="pd">Registration, returns, e-invoicing</div></div><span class="pgo">Visit<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"></path></svg></span></a>
@@ -715,18 +732,18 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- FREE RESOURCES -->
 <section id="free" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Free resources</h2><div class="sdesc">Checklists, guides, and calendars to download and keep</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg></div><div><h2>Free resources</h2><div class="sdesc">Checklists, guides, and calendars to download and keep</div></div></div></div>
   <div class="grid g2">
-    <a href="/#contact" class="mini-card reveal js-card" data-item data-title="Annual compliance calendar 2026-27 download" data-cat="Free Resource" data-tags="compliance calendar checklist download roc gst"><div class="mi"></div><div><div class="mt">Annual Compliance Calendar 2026-27</div><div class="md">Every ROC, GST, and income-tax due date for the year, on one page.</div><span class="mtag">PDF · Free download</span></div></a>
-    <a href="/#contact" class="mini-card reveal js-card" style="--d:60ms" data-item data-title="Founders legal handbook guide" data-cat="Free Resource" data-tags="founder handbook guide incorporation legal basics"><div class="mi"></div><div><div class="mt">Founder's Legal Handbook</div><div class="md">From incorporation to first hire: the legal basics every founder needs.</div><span class="mtag">Guide · 32 pages</span></div></a>
-    <a href="/#contact" class="mini-card reveal js-card" style="--d:120ms" data-item data-title="Fundraising due diligence checklist" data-cat="Free Resource" data-tags="fundraising due diligence checklist investor"><div class="mi"></div><div><div class="mt">Fundraise Due-Diligence Checklist</div><div class="md">The documents investors will ask for, organised before you need them.</div><span class="mtag">Checklist · Free</span></div></a>
-    <a href="/#contact" class="mini-card reveal js-card" style="--d:180ms" data-item data-title="Contract review red flags guide" data-cat="Free Resource" data-tags="contract review red flags clauses guide"><div class="mi"></div><div><div class="mt">Contract Red-Flags Guide</div><div class="md">The one-sided clauses to catch before you sign anything.</div><span class="mtag">Guide · Free</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" data-item data-title="Annual compliance calendar 2026-27 download" data-cat="Free Resource" data-tags="compliance calendar checklist download roc gst"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div><div><div class="mt">Annual Compliance Calendar 2026-27</div><div class="md">Every ROC, GST, and income-tax due date for the year, on one page.</div><span class="mtag">PDF · Free download</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:60ms" data-item data-title="Founders legal handbook guide" data-cat="Free Resource" data-tags="founder handbook guide incorporation legal basics"><div class="mi"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div><div class="mt">Founder's Legal Handbook</div><div class="md">From incorporation to first hire: the legal basics every founder needs.</div><span class="mtag">Guide · 32 pages</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:120ms" data-item data-title="Fundraising due diligence checklist" data-cat="Free Resource" data-tags="fundraising due diligence checklist investor"><div class="mi"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 14l2 2 4-4"></path></svg></div><div><div class="mt">Fundraise Due-Diligence Checklist</div><div class="md">The documents investors will ask for, organised before you need them.</div><span class="mtag">Checklist · Free</span></div></a>
+    <a href="/#contact" class="mini-card reveal js-card" style="--d:180ms" data-item data-title="Contract review red flags guide" data-cat="Free Resource" data-tags="contract review red flags clauses guide"><div class="mi"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg></div><div><div class="mt">Contract Red-Flags Guide</div><div class="md">The one-sided clauses to catch before you sign anything.</div><span class="mtag">Guide · Free</span></div></a>
   </div>
 </div></section>
 
 <!-- LEARNING CENTER -->
 <section id="learning" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Learning center</h2><div class="sdesc">Articles, explainers, and beginner guides to legal concepts</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></div><div><h2>Learning center</h2><div class="sdesc">Articles, explainers, and beginner guides to legal concepts</div></div></div></div>
   <div class="grid g3">
     <article class="card reveal js-card" data-item data-title="What is an ESOP explained founders" data-cat="Article" data-tags="esop equity explainer learning founder guide"><div class="ctop"><span class="src-pill blue">EXPLAINER</span><span class="cdate">8 min read</span></div><h3>ESOPs, explained for founders</h3><p class="cbody">What an option pool is, how vesting works, and the tax moments that matter, without the jargon.</p><div class="cfoot"><a class="cread" href="/#contact">Read article<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="learn-esop" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
     <article class="card reveal js-card" style="--d:80ms" data-item data-title="Private limited vs LLP which to choose" data-cat="Article" data-tags="private limited llp incorporation guide entity"><div class="ctop"><span class="src-pill blue">GUIDE</span><span class="cdate">6 min read</span></div><h3>Pvt Ltd vs LLP: which to choose</h3><p class="cbody">A side-by-side on liability, compliance, funding, and taxes to pick the right structure on day one.</p><div class="cfoot"><a class="cread" href="/#contact">Read article<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="learn-entity" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
@@ -736,7 +753,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- RESEARCH & MEDIA row -->
 <section id="research" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Research papers &amp; whitepapers</h2><div class="sdesc">Deeper reading on law, technology, and policy</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 8.5V3"></path></svg></div><div><h2>Research papers &amp; whitepapers</h2><div class="sdesc">Deeper reading on law, technology, and policy</div></div></div></div>
   <div class="grid g3">
     <article class="card reveal js-card" data-item data-title="LegalTech in India whitepaper research" data-cat="Whitepaper" data-tags="legaltech research whitepaper policy india"><div class="ctop"><span class="src-pill">WHITEPAPER</span><span class="cdate">2026</span></div><h3>The State of LegalTech in India</h3><p class="cbody">Market map, adoption barriers, and where AI is changing legal work first.</p><div class="cfoot"><a class="cread" href="/#contact">Download PDF<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="res-legaltech" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
     <article class="card reveal js-card" style="--d:80ms" data-item data-title="New criminal codes analysis BNS BNSS BSA" data-cat="Research Paper" data-tags="bns bnss bsa criminal law research analysis"><div class="ctop"><span class="src-pill">RESEARCH</span><span class="cdate">2026</span></div><h3>Reading the New Criminal Codes</h3><p class="cbody">A structural analysis of the BNS, BNSS, and BSA and what changes in practice.</p><div class="cfoot"><a class="cread" href="/#contact">Download PDF<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg></a><button class="iconbtn bm push" data-bm="res-codes" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
@@ -746,7 +763,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- PODCASTS & COURSES row -->
 <section id="media" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Podcasts &amp; webinars</h2><div class="sdesc">Listen and watch on the move</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0M12 19v3"></path></svg></div><div><h2>Podcasts &amp; webinars</h2><div class="sdesc">Listen and watch on the move</div></div></div></div>
   <div class="grid g3">
     <article class="card reveal js-card" data-item data-title="The Startup Legal Podcast episode" data-cat="Podcast" data-tags="podcast startup legal audio founder"><div class="ctop"><span class="src-pill">PODCAST</span><span class="cdate">EP 14</span></div><h3>The Startup Legal Podcast</h3><p class="cbody">Founders and lawyers on the legal decisions that shaped their companies.</p><div class="cfoot"><a class="cread" href="/#contact">Listen<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="pod-startup" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
     <article class="card reveal js-card" style="--d:80ms" data-item data-title="Compliance clinic webinar recording" data-cat="Webinar" data-tags="webinar compliance recording roc gst"><div class="ctop"><span class="src-pill blue">WEBINAR</span><span class="cdate">On demand</span></div><h3>Monthly Compliance Clinic</h3><p class="cbody">A recurring session answering the compliance questions founders actually ask.</p><div class="cfoot"><a class="cread" href="/#contact">Watch replay<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></a><button class="iconbtn bm push" data-bm="web-clinic" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
@@ -756,7 +773,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- COURSES -->
 <section id="courses" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Courses &amp; certifications</h2><div class="sdesc">Structured learning for founders, students, and professionals</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg></div><div><h2>Courses &amp; certifications</h2><div class="sdesc">Structured learning for founders, students, and professionals</div></div></div></div>
   <div class="grid g3">
     <article class="card reveal js-card" data-item data-title="Startup law essentials course certification" data-cat="Course" data-tags="course certification startup law founder learning"><div class="ctop"><span class="src-pill ok">COURSE</span><span class="cdate">Self-paced</span></div><h3>Startup Law Essentials</h3><p class="cbody">Six modules from incorporation to fundraising, with a certificate on completion.</p><div class="cfoot"><a class="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="course-startup" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
     <article class="card reveal js-card" style="--d:80ms" data-item data-title="Contract drafting certification course" data-cat="Course" data-tags="contract drafting course certification lawyer"><div class="ctop"><span class="src-pill ok">CERTIFICATION</span><span class="cdate">4 weeks</span></div><h3>Contract Drafting &amp; Review</h3><p class="cbody">Practical drafting skills with real clauses, redlining exercises, and feedback.</p><div class="cfoot"><a class="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><button class="iconbtn bm push" data-bm="course-contracts" aria-label="Bookmark"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></article>
@@ -766,7 +783,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- GLOSSARY -->
 <section id="glossary" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon"></div><div><h2>Legal glossary</h2><div class="sdesc">A to Z of legal terms, in plain English</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M12 7c-2-2-6-2-8-1v13c2-1 6-1 8 1 2-2 6-2 8-1V6c-2-1-6-1-8 1z"></path><path d="M12 7v13"></path></svg></div><div><h2>Legal glossary</h2><div class="sdesc">A to Z of legal terms, in plain English</div></div></div></div>
   <div class="glossary-az reveal" id="glossaryAZ"></div>
   <div class="terms" id="termsGrid">
     <div class="term reveal js-card" data-item data-letter="A" data-title="Anticipatory Bail" data-cat="Glossary" data-tags="bail criminal glossary"><div class="tl"><span class="tinit">A</span><span class="tt">Anticipatory Bail</span></div><p>A direction to release a person on bail before arrest, sought when someone fears arrest for a non-bailable offence.</p></div>
@@ -786,7 +803,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
 
 <!-- LANDMARK TIMELINE -->
 <section id="timeline" class="pad-s"><div class="wrap">
-  <div class="shead reveal"><div class="st"><div class="sicon">️</div><div><h2>Landmark judgments timeline</h2><div class="sdesc">The decisions that shaped Indian law</div></div></div></div>
+  <div class="shead reveal"><div class="st"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M4 22V4M4 4h14l-2 4 2 4H4"></path></svg></div><div><h2>Landmark judgments timeline</h2><div class="sdesc">The decisions that shaped Indian law</div></div></div></div>
   <div class="jtimeline reveal">
     <div class="jnode js-card" data-item data-title="Kesavananda Bharati basic structure timeline" data-cat="Landmark Judgment" data-tags="basic structure constitution 1973 landmark"><div class="jyr">1973</div><div class="jt">Kesavananda Bharati v. State of Kerala</div><div class="jd">The basic structure doctrine: Parliament's power to amend the Constitution cannot destroy its essential features.</div><div class="jcite">(1973) 4 SCC 225 · 13-judge bench</div></div>
     <div class="jnode js-card" data-item data-title="Maneka Gandhi due process timeline" data-cat="Landmark Judgment" data-tags="article 21 due process 1978 landmark"><div class="jyr">1978</div><div class="jt">Maneka Gandhi v. Union of India</div><div class="jd">Expanded Article 21: the right to life and liberty requires fair, just, and reasonable procedure.</div><div class="jcite">(1978) 1 SCC 248</div></div>
@@ -818,7 +835,7 @@ body.menu-open .mobile-menu{opacity:1;pointer-events:auto;transform:none}
     <div class="foot-col"><h4>Resources</h4><a href="#news">Legal News</a><a href="#events">Legal Events</a><a href="#caselaw">Case Law</a><a href="#glossary">Glossary</a></div>
     <div class="foot-col"><h4>Company</h4><a href="/">Home</a><a href="/#contact">Contact</a><a href="mailto:hello@turn2law.in">hello@turn2law.in</a><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
-  <div class="foot-statutory">Effivia Turn2Law Legal Pvt. Ltd.&nbsp; · &nbsp;CIN: U63110DL2025PTC443434&nbsp; · &nbsp;PAN: AAICE6828R&nbsp; · &nbsp;TAN: DELE19430F&nbsp; · &nbsp;turn2law.in</div>
+  <div class="foot-statutory">Effivia Turn2Law Legal Pvt. Ltd.&nbsp; · &nbsp;CIN: U63110DL2025PTC443434</div>
   <p class="foot-disc">Turn2Law is a technology platform, not a law firm, and does not provide legal representation. Resources here are for information only and are not legal advice. Statutes, judgments, and deadlines change: verify against the official source and consult qualified counsel before acting. External links are provided for convenience and are not endorsements.</p>
   <div class="foot-bottom"><div class="cr">© 2026 Effivia Turn2Law Legal Pvt. Ltd. All rights reserved.</div>
     <div class="foot-social"><a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="11"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>

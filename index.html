@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0095) -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <title>Turn2Law: India's Legal Operating System</title>
 <meta name="description" content="India&#39;s Legal OS. One platform, two audiences: founders and lawyers. Legal Services, Doc Engine, and Introspector, all grounded in Indian law.">
@@ -53,12 +53,12 @@
   --r-lg:28px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:96px}
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:'Inter',system-ui,-apple-system,sans-serif;
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;overflow-x:hidden;
+  text-rendering:optimizeLegibility;overflow-x:hidden;overflow-x:clip;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -83,9 +83,9 @@ h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;
 }
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
 .eyebrow.center{justify-content:center}
-.h2{font-size:clamp(30px,4.4vw,50px);line-height:1.08;letter-spacing:-.025em}
+.h2{font-size:min(clamp(30px,4.4vw,50px),10.5vw);line-height:1.08;letter-spacing:-.025em}
 .lede{font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--gray);max-width:640px}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(clamp(20px,4vw,32px),env(safe-area-inset-left));padding-right:max(clamp(20px,4vw,32px),env(safe-area-inset-right))}
 section{position:relative}
 .pad{padding:clamp(56px,7vw,88px) 0}
 .pad-t{padding-top:clamp(56px,7vw,88px)}
@@ -121,9 +121,9 @@ section{position:relative}
 /* ============ NAV ============ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
+  padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right));
   transition:transform .5s var(--ease),opacity .5s var(--ease),background .4s,box-shadow .4s,border-color .4s;
 }
-
 
 .nav-inner{
   max-width:var(--maxw);margin:10px auto;padding:10px 18px;
@@ -160,7 +160,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 /* mobile menu */
 .mobile-menu{
   position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);
-  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:32px;
+  display:flex;flex-direction:column;justify-content:center;justify-content:safe center;gap:6px;overflow-y:auto;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(32px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(32px,env(safe-area-inset-left,0px));
   opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-14px);transition:opacity .45s var(--ease),transform .45s var(--ease),visibility .45s var(--ease);
 }
 body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
@@ -169,7 +170,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .mobile-menu .mm-actions{margin-top:24px;display:flex;gap:12px}
 .mobile-menu .mm-actions .btn-gold{color:#fff}
 /* ============ HERO ============ */
-.hero{min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(88px,12vh,108px) 0 clamp(40px,6vh,52px)}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(88px,12vh,108px) 0 clamp(40px,6vh,52px)}
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-mesh{
   position:absolute;inset:0;
@@ -189,14 +190,15 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .hero-inner{position:relative;z-index:2;display:flex;justify-content:center;width:100%}
 .hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:760px;width:100%}
 .hero-badge{
-  display:inline-flex;align-items:center;gap:10px;padding:7px 8px 7px 16px;border-radius:100px;
+  display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;row-gap:6px;max-width:100%;
+  gap:10px;padding:7px 8px 7px 16px;border-radius:100px;
   background:var(--glass);border:1px solid rgba(17,17,17,.07);backdrop-filter:blur(10px);
   font-size:13px;font-weight:500;color:var(--ink);box-shadow:var(--shadow-sm);
 }
 .hero-badge .tag{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.06em;background:var(--ink);color:#fff;padding:4px 10px;border-radius:100px}
 .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
 .hero h1{
-  font-size:clamp(40px,6vw,74px);line-height:1.02;letter-spacing:-.035em;margin:26px 0 0;
+  font-size:min(clamp(40px,6vw,74px),12.5vw);line-height:1.02;letter-spacing:-.035em;margin:26px 0 0;
 }
 .hero h1 .g{
   background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);
@@ -239,11 +241,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .hp-badge.b1{top:-18px;right:14px;animation:floaty 5s ease-in-out infinite}
 .hp-badge.b2{bottom:-16px;left:-14px;animation:floaty 6s ease-in-out infinite .8s}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-/* stat strip */
-
-
-
-
 
 /* ============ MARQUEE ============ */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:var(--bg-tint)}
@@ -288,7 +285,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .p-link svg{width:16px;height:16px;transition:transform .4s var(--ease)}
 .pcard:hover .p-link svg{transform:translateX(5px)}
 /* ============ BENTO ============ */
-.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:186px;gap:20px;perspective:1400px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(186px,auto);gap:20px;perspective:1400px}
 .bcell{
   border-radius:var(--r);border:1px solid var(--line);background:#fff;padding:24px;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);position:relative;overflow:hidden;will-change:transform;
@@ -299,7 +296,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .bcell .bd{font-size:13px;line-height:1.55;color:var(--gray)}
 .bcell.feat{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
 .bcell.feat .k{color:var(--gold-text)}
-.bcell.feat .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(56px,7vw,88px);line-height:1;letter-spacing:-.03em}
+.bcell.feat .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:min(clamp(56px,7vw,88px),18vw);line-height:1;letter-spacing:-.03em}
 .bcell.feat .big s{font-size:22px;font-weight:600;color:var(--gray);margin-left:8px;text-decoration:none}
 .bcell.feat .note{font-size:13.5px;color:var(--gray);margin-top:8px}
 .bcell.feat .file-btn{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:11px;padding:10px 16px;font-size:13px;font-weight:600;white-space:nowrap;transition:.3s var(--ease)}
@@ -314,19 +311,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .split.rev{grid-template-columns:1.05fr .95fr}
 .kicker{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
 
-
-
-
-
-
-/* service catalog cards */
-
-
-
-
-
-
-
 /* doc engine flow */
 .de-panel{background:var(--navy);border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);color:#fff;position:relative;overflow:hidden}
 .de-panel .nglow{top:-30%;left:-10%;width:400px;height:470px;opacity:.16}
@@ -336,10 +320,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .step .sn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--gold)}
 .step .st{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;margin:10px 0 6px}
 .step .sd{font-size:12.5px;line-height:1.55;color:#9fb0c4}
-
-
-
-
 
 /* introspector dark */
 .intro-sec{background:var(--navy);color:#fff;border-radius:0;overflow:hidden;position:relative}
@@ -377,25 +357,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .sec-amb{position:relative;overflow:hidden}
 .sec-amb .ablob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;animation:faqdrift 20s ease-in-out infinite}
 .sec-amb>.wrap{position:relative;z-index:1}
-/* ============ PRICING ============ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ============ TESTIMONIALS (premium, one-screen) ============ */
 .tst2{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,var(--bg-tint) 45%,#fff);padding:clamp(44px,6vw,72px) 0}
@@ -465,7 +426,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .faq-grid{display:grid;grid-template-columns:.85fr 1.3fr;gap:64px;align-items:start;position:relative;z-index:1}
 .faq-badge{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);background:var(--gold-soft);border:1px solid rgba(216,171,91,.35);padding:8px 16px 8px 14px;border-radius:100px}
 .faq-badge svg{width:13px;height:13px;stroke:var(--gold-deep);fill:none;stroke-width:2}
-.faq-copy h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(32px,4vw,46px);line-height:1.1;letter-spacing:-.025em;margin:20px 0 0}
+.faq-copy h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:min(clamp(32px,4vw,46px),11vw);line-height:1.1;letter-spacing:-.025em;margin:20px 0 0}
 .faq-copy h2 .g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
 .faq-copy p{font-size:15.5px;line-height:1.7;color:var(--gray);max-width:400px;margin:18px 0 0}
 .faq-rule{width:52px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));border-radius:2px;margin:26px 0 0;border:none}
@@ -519,10 +480,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .cinfo .ico{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
 .cinfo .ico svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:1.7}
 .cinfo .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
-.cinfo .v{font-size:14.5px;font-weight:500}
+.cinfo .v{font-size:14.5px;font-weight:500;overflow-wrap:anywhere}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{display:flex;flex-direction:column;gap:7px}
-.field.full{grid-column:span 2}
+.field.full{grid-column:1/-1}
 .field label{font-size:13px;font-weight:600;color:var(--ink)}
 .field input,.field textarea{
   font-family:inherit;font-size:14.5px;padding:13px 15px;border-radius:12px;border:1px solid var(--line);
@@ -530,10 +491,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 }
 .field textarea{min-height:110px;resize:vertical}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
-.consent{grid-column:span 2;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--gray);line-height:1.5}
+.consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--gray);line-height:1.5}
 .consent a{color:var(--gold-deep);font-weight:600}
-.send{grid-column:span 2}
-.form-ok{grid-column:span 2;display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold-deep);font-weight:600}
+.send{grid-column:1/-1}
+.form-ok{grid-column:1/-1;display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold-deep);font-weight:600}
 .form-ok svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:2}
 /* ============ CTA BAND ============ */
 .cta-band{position:relative;border-radius:var(--r-lg);background:var(--navy);color:#fff;overflow:hidden;padding:clamp(48px,7vw,84px) 32px;text-align:center}
@@ -559,83 +520,44 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .foot-social a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease)}
 .foot-social a:hover{border-color:var(--ink);background:var(--ink);color:#fff}
 .foot-social svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+/* ============ BACK TO TOP ============ */
+.totop{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom,0px));right:max(26px,env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:95;opacity:0;pointer-events:none;transform:translateY(12px);transition:.4s var(--ease)}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+.totop:hover{border-color:var(--gold);box-shadow:var(--shadow-lg)}
 /* ============ HERO LOGO ============ */
 .hero-logo{width:clamp(180px,26vw,280px);height:auto;margin-bottom:18px}
-/* ============ HERO RATING ============ */
-
-
-
-
-
-
-
-
-/* ============ JOURNEY: Start · Manage · Protect ============ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .journey{grid-template-columns:1fr;perspective:none;gap:18px}
-  .jcard,.jcard:nth-child(1),.jcard:nth-child(2),.jcard:nth-child(3),.journey:hover .jcard{transform:none}
-  .jcard{min-height:0}
   .hero-copy{max-width:none}
   .split,.split.rev{grid-template-columns:1fr;gap:36px}
   .contact-grid{grid-template-columns:1fr;gap:36px}
   .products{grid-template-columns:1fr}
   .bento{grid-template-columns:repeat(2,1fr)}
   .bcell.feat{grid-column:span 2}
-  .cat-grid{grid-template-columns:repeat(2,1fr)}
   .flow{grid-template-columns:1fr}
-  .intro-grid{grid-template-columns:1fr}
-  .price-grid{grid-template-columns:1fr}
   .forks{grid-template-columns:1fr}
-  .tcard{flex:0 0 calc((100% - 22px)/2)}
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
   .nav-links,.nav-cta .nav-login{display:none}
   .burger{display:flex}
-  .stats{grid-template-columns:1fr 1fr}
 }
 @media (max-width:560px){
-  .wrap{padding:0 20px}
   .hero{padding-top:100px}
-  .bento,.cat-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
   .bcell.feat{grid-column:span 1;grid-row:span 2}
-  .tcard{flex:0 0 100%}
   .form,.contact-grid{grid-template-columns:1fr}
-  .field.full,.consent,.send,.form-ok{grid-column:span 1}
   .foot-grid{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr}
-  .nav-inner{margin:10px 14px}
   .nav-cta .btn-gold{display:none}
   .marquee-item{font-size:16px}
+}
+/* ============ MOBILE ERGONOMICS ============ */
+@media (max-width:768px){
+  /* 16px+ prevents iOS Safari zoom-on-focus */
+  .field input,.field textarea{font-size:16px}
+}
+@media (pointer:coarse){
+  .foot-social a{width:44px;height:44px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
@@ -871,7 +793,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
       </div>
       <div class="reveal" style="--d:160ms">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
           <div class="icap"><div class="k">Research</div><div class="cn" style="font-size:15px;margin:10px 0 6px">Precedent search, cited</div><div class="cb" style="font-size:12px">Every claim carries a citation formatted for filings.</div></div>
           <div class="icap"><div class="k">Statute maps</div><div class="cn" style="font-size:15px;margin:10px 0 6px">IPC ↔ BNS, both ways</div><div class="cb" style="font-size:12px">Cross-mapped across IPC, CrPC, and Evidence Act.</div></div>
           <div class="icap"><div class="k">Case file</div><div class="cn" style="font-size:15px;margin:10px 0 6px">Organises itself</div><div class="cb" style="font-size:12px">OCR and auto-classification of FIRs and orders.</div></div>
@@ -1054,7 +976,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
           <div class="field full"><label for="em">Email</label><input id="em" name="email" type="email" placeholder="you@company.in" autocomplete="email" required aria-required="true" aria-describedby="emErr"><small class="ferr" id="emErr" role="alert"></small></div>
           <div class="field full"><label for="msg">Message</label><textarea id="msg" name="message" placeholder="Tell us what you need help with..." required aria-required="true" aria-describedby="msgErr"></textarea><small class="ferr" id="msgErr" role="alert"></small></div>
           <label class="consent"><input type="checkbox" id="consent" required aria-required="true"><span>I agree to the <a href="#">Privacy Policy</a> and consent to Turn2Law contacting me about my enquiry.</span></label>
-          <small class="ferr" id="consentErr" role="alert" style="grid-column:span 2;margin-top:-6px"></small>
+          <small class="ferr" id="consentErr" role="alert" style="grid-column:1/-1;margin-top:-6px"></small>
           <button class="btn btn-gold send" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"></path></svg></button>
           <div class="form-ok" id="formOk"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4 12 14.01l-3-3"></path></svg><span>Thank you. Your message has been received, we will write back shortly.</span></div>
         </form>
@@ -1088,20 +1010,23 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
     </div>
   </div>
 </footer>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
 <script>
 (function(){
   'use strict';
   var $=function(s,c){return (c||document).querySelector(s)};
   var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   /* ---- Scroll progress + nav ---- */
-  var nav=$('#nav'),progress=$('#progress');
+  var nav=$('#nav'),progress=$('#progress'),totop=$('#totop');
   function onScroll(){
     var st=window.pageYOffset||document.documentElement.scrollTop;
     var h=document.documentElement.scrollHeight-window.innerHeight;
     progress.style.transform='scaleX('+(h>0?st/h:0)+')';
     nav.classList.toggle('scrolled',st>20);
+    totop.classList.toggle('show',st>800);
   }
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});});
   /* ---- Mobile menu ---- */
   var burger=$('#burger'),mobileMenu=$('#mobileMenu');
   function menuIsOpen(){return document.body.classList.contains('menu-open');}

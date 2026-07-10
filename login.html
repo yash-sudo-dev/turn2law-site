@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <title>Log in · Turn2Law</title>
 <meta name="description" content="Log in to your Turn2Law account — India's Legal Operating System for founders and lawyers.">
@@ -84,7 +84,7 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
 .inp .toggle svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ferr{display:none;color:#B4231B;font-size:12px;font-weight:500;margin-top:6px}
 .ferr.show{display:block}
-.row-between{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:2px 0 8px}
+.row-between{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px;margin:2px 0 8px}
 .remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);cursor:pointer}
 .remember input{width:16px;height:16px;accent-color:var(--gold-deep)}
 .forgot{font-size:13px;font-weight:600;color:var(--gold-text)}
@@ -106,19 +106,27 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
 .alt a:hover{text-decoration:underline}
 .formok{display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold-deep);font-weight:600;background:var(--gold-soft);border:1px solid rgba(216,171,91,.3);border-radius:12px;padding:14px;margin-top:8px}
 .formok svg{width:20px;height:20px;stroke:var(--gold-deep);fill:none;stroke-width:2;flex:none}
-.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:12px 18px;border-radius:100px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:.35s var(--ease);z-index:50}
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:12px 18px;border-radius:100px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:.35s var(--ease);z-index:50}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.back{position:absolute;top:clamp(20px,3vw,32px);right:clamp(20px,3vw,32px);z-index:2;font-size:13.5px;font-weight:600;color:var(--gray);display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:100px;transition:.25s}
+.totop{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom,0px));right:max(26px,env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:95;opacity:0;pointer-events:none;transform:translateY(12px);transition:.4s var(--ease)}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+.totop:hover{border-color:var(--gold);box-shadow:var(--shadow-lg)}
+.back{position:absolute;top:max(clamp(20px,3vw,32px),env(safe-area-inset-top,0px));right:max(clamp(20px,3vw,32px),env(safe-area-inset-right,0px));z-index:2;font-size:13.5px;font-weight:600;color:var(--gray);display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:100px;transition:.25s}
 .back:hover{color:var(--ink);background:rgba(17,17,17,.04)}
 .back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 @media (max-width:920px){
   .auth{grid-template-columns:1fr}
   .brandside{display:none}
-  .formside{min-height:100svh;padding:24px 20px}
+  .formside{min-height:100vh;min-height:100svh;padding:calc(58px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
   .card .mob-logo{display:block;margin:0 auto 22px}
   .card .mob-logo img{height:30px;width:auto;margin:0 auto}
   .card{box-shadow:var(--shadow-md)}
+}
+@media (max-width:768px){
+  /* 16px+ prevents iOS Safari zoom-on-focus */
+  .inp input{font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){.fcard{animation:none}}
 </style>
@@ -200,11 +208,16 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
 
 <script>
 (function(){
   'use strict';
   var $=function(s){return document.querySelector(s)};
+  var totop=$('#totop');
+  function onScroll(){totop.classList.toggle('show',(window.pageYOffset||document.documentElement.scrollTop)>800);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});});
   var pw=$('#password'),tog=$('#pwToggle');
   var eye='<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
   var eyeOff='<svg viewBox="0 0 24 24"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a13.2 13.2 0 0 1-1.67 2.68M6.6 6.6A13.5 13.5 0 0 0 2 11s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M14.12 14.12A3 3 0 1 1 9.88 9.88"></path><path d="M2 2l20 20"></path></svg>';

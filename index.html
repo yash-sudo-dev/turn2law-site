@@ -40,7 +40,7 @@
   --line:#EAEAEA;
   --line-soft:#F1F1F1;
   --bg:#FFFFFF;
-  --bg-tint:#FBFAF7;
+  --bg-tint:#FFFFFF;
   --glass:rgba(255,255,255,.65);
   --glass-line:rgba(255,255,255,.7);
   --shadow-sm:0 2px 10px rgba(17,17,17,.05);
@@ -186,7 +186,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
   -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
 }
-.hero .nglow{top:-12%;left:50%;transform:translateX(-50%);width:min(680px,70vw);height:min(760px,78vw);opacity:.22}
 .hero-inner{position:relative;z-index:2;display:flex;justify-content:center;width:100%}
 .hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:760px;width:100%}
 .hero-badge{
@@ -243,7 +242,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
 /* ============ MARQUEE ============ */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:var(--bg-tint)}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:none}
 .marquee-track{display:flex;gap:64px;width:max-content;animation:scrollx 28s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-item{font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;color:var(--gray-2);letter-spacing:-.01em;display:flex;align-items:center;gap:64px}
@@ -359,7 +358,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .sec-amb>.wrap{position:relative;z-index:1}
 
 /* ============ TESTIMONIALS (premium, one-screen) ============ */
-.tst2{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,var(--bg-tint) 45%,#fff);padding:clamp(44px,6vw,72px) 0}
+.tst2{position:relative;overflow:hidden;background:none;padding:clamp(44px,6vw,72px) 0}
 .tst2 .tbp{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
 .tst2 .tbp1{top:-12%;right:-8%;width:420px;height:420px;background:radial-gradient(circle,rgba(216,171,91,.24),transparent 70%);animation:faqdrift 18s ease-in-out infinite}
 .tst2 .tbp2{bottom:-14%;left:-8%;width:380px;height:380px;background:radial-gradient(circle,rgba(216,171,91,.18),transparent 70%);animation:faqdrift 22s ease-in-out infinite 3s reverse}
@@ -416,7 +415,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 @media (max-width:640px){.tst-metrics-grid{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){.tst2 .tbp{animation:none}}
 /* ============ FAQ (premium) ============ */
-.faq-sec{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,var(--bg-tint) 55%,#fff)}
+.faq-sec{position:relative;overflow:hidden;background:none}
 .faq-sec .fp{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;opacity:.55;z-index:0}
 .faq-sec .fp1{top:-8%;left:-6%;width:360px;height:360px;background:radial-gradient(circle,rgba(216,171,91,.30),transparent 70%);animation:faqdrift 16s ease-in-out infinite}
 .faq-sec .fp2{bottom:-10%;right:-6%;width:420px;height:420px;background:radial-gradient(circle,rgba(216,171,91,.22),transparent 70%);animation:faqdrift 20s ease-in-out infinite 2s reverse}
@@ -614,7 +613,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   <div class="hero-bg">
     <div class="hero-mesh"></div>
     <div class="hero-grid-lines"></div>
-    <div class="nglow" style="transform: translateY(0px);"><svg><use href="#nmark"></use></svg></div>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
@@ -1123,16 +1121,46 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
     var ev=el.type==='checkbox'?'change':'input';
     el.addEventListener(ev,function(){setErr(el.id,'');});
   });
-  /* ---- Hero N glow subtle parallax ---- */
-  var heroGlow=$('.hero .nglow');
-  if(heroGlow&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-    window.addEventListener('scroll',function(){
-      var y=window.pageYOffset;
-      if(y<900)heroGlow.style.transform='translateY('+(y*0.12)+'px)';
-    },{passive:true});
-  }
+  /* ---- Hero logo morphs into the nav logo on scroll ---- */
+  (function(){
+    var heroLogo=$('.hero-logo'),navLogo=$('.nav .brand .brand-logo');
+    if(!heroLogo||!navLogo)return;
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var clone=null,raf=0,YMAX=200;
+    function hideClone(){if(clone)clone.style.display='none';}
+    function ensureClone(){
+      if(clone)return;
+      clone=document.createElement('img');
+      clone.src=heroLogo.src;clone.alt='';
+      clone.style.cssText='position:fixed;left:0;top:0;z-index:103;pointer-events:none;transform-origin:0 0;will-change:transform;display:none';
+      document.body.appendChild(clone);
+    }
+    function layout(){
+      raf=0;
+      var y=window.pageYOffset||document.documentElement.scrollTop;
+      var src=heroLogo.getBoundingClientRect(),dst=navLogo.getBoundingClientRect();
+      /* fallback if either logo has no box (unexpected display context) */
+      if(src.width<2||dst.width<2){heroLogo.style.visibility='visible';navLogo.style.visibility='visible';hideClone();return;}
+      var p=Math.min(1,Math.max(0,y/YMAX));
+      if(reduce)p=p>=.5?1:0;
+      /* exactly one logo owns the slot at any time: hero at top, nav after flight */
+      if(p<=0){heroLogo.style.visibility='visible';navLogo.style.visibility='hidden';hideClone();return;}
+      if(p>=1){heroLogo.style.visibility='hidden';navLogo.style.visibility='visible';hideClone();return;}
+      var e=p*p*(3-2*p);
+      heroLogo.style.visibility='hidden';navLogo.style.visibility='hidden';
+      ensureClone();
+      clone.style.display='block';
+      clone.style.width=src.width+'px';
+      clone.style.transform='translate('+(src.left+(dst.left-src.left)*e)+'px,'+(src.top+(dst.top-src.top)*e)+'px) scale('+(1+(dst.width/src.width-1)*e)+')';
+    }
+    function tick(){if(!raf)raf=requestAnimationFrame(layout);}
+    addEventListener('scroll',tick,{passive:true});
+    addEventListener('resize',tick,{passive:true});
+    layout();
+  })();
   /* ---- Hero search + suggestion chips ---- */
   observeReveals();
 })();
 </script>
+<script src="/ambient.js" defer></script>
 </body></html>

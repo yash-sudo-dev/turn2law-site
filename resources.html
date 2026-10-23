@@ -18,7 +18,7 @@
   --line:#EAEAEA;
   --line-soft:#F1F1F1;
   --bg:#FFFFFF;
-  --bg-tint:#FBFAF7;
+  --bg-tint:#FFFFFF;
   --glass:rgba(255,255,255,.65);
   --glass-line:rgba(255,255,255,.7);
   --ok:#1E824C;--ok-soft:rgba(30,130,76,.09);--ok-line:rgba(30,130,76,.24);
@@ -448,7 +448,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 <main id="top">
 
 <!-- ================= HERO ================= -->
-<section class="phero"><div class="nglow"><svg><use href="#nmark"></use></svg></div>
+<section class="phero">
   <div class="wrap"><div class="phero-inner">
     <span class="crumb reveal"><a href="/">Home</a> / Resources</span>
     <h1 class="reveal" style="--d:60ms">Everything legal,<br><span class="g">searchable in one place.</span></h1>
@@ -991,4 +991,5 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   /* ---------- Newsletter ---------- */
   $('#nlForm').addEventListener('submit',function(e){e.preventDefault();var email=$('#nlEmail');if(email.value&&/.+@.+\..+/.test(email.value)){showToast('You are subscribed. Watch your inbox.');email.value='';}else{showToast('Please enter a valid email');email.focus();}});
 })();</script>
+<script src="/ambient.js" defer></script>
 </body></html>

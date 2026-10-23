@@ -15,7 +15,7 @@
   --line:#EAEAEA;
   --line-soft:#F1F1F1;
   --bg:#FFFFFF;
-  --bg-tint:#FBFAF7;
+  --bg-tint:#FFFFFF;
   --glass:rgba(255,255,255,.65);
   --glass-line:rgba(255,255,255,.7);
   --shadow-sm:0 2px 10px rgba(17,17,17,.05);
@@ -222,7 +222,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .stat .k{font-size:12.5px;color:var(--gray);margin-top:2px}
 
 /* ============ MARQUEE ============ */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:var(--bg-tint)}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:none}
 .marquee-track{display:flex;gap:64px;width:max-content;animation:scrollx 28s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-item{font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;color:var(--gray-2);letter-spacing:-.01em;display:flex;align-items:center;gap:64px}
@@ -741,7 +741,7 @@ body.dark-hero .nav:not(.scrolled) .burger span,body.dark-hero .nav:not(.scrolle
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </div>
 </div></header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile"><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a><div class="mm-actions"><a href="/login.html" class="btn btn-ghost">Login</a><a href="/signup.html" class="btn btn-gold">Get Started</a></div></nav><main id="top"><section class="phero"><div class="hero-bg"><div class="hero-mesh"></div><div class="hero-grid-lines"></div><div class="nglow"><svg><use href="#nmark"></use></svg></div></div><div class="wrap"><div class="phero-inner center"><span class="crumb reveal"><a href="/">Home</a> / Doc Engine</span><h1 class="reveal" style="--d:60ms">Prompt in.<br><span class="g">Drafted document out.</span></h1><p class="lede reveal" style="--d:140ms">Plain language in. A well-drafted, India-specific document out, in minutes.</p><div class="de-composer reveal" style="--d:220ms">
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile"><a href="/legal-services.html">Legal Services</a><a href="/docengine.html">Doc Engine</a><a href="/introspector.html">Introspector</a><a href="/resources.html">Resources</a><div class="mm-actions"><a href="/login.html" class="btn btn-ghost">Login</a><a href="/signup.html" class="btn btn-gold">Get Started</a></div></nav><main id="top"><section class="phero"><div class="hero-bg"><div class="hero-mesh"></div><div class="hero-grid-lines"></div></div><div class="wrap"><div class="phero-inner center"><span class="crumb reveal"><a href="/">Home</a> / Doc Engine</span><h1 class="reveal" style="--d:60ms">Prompt in.<br><span class="g">Drafted document out.</span></h1><p class="lede reveal" style="--d:140ms">Plain language in. A well-drafted, India-specific document out, in minutes.</p><div class="de-composer reveal" style="--d:220ms">
   <form class="dec-form" action="/docengine-app.html" method="get" autocomplete="off">
     <div class="dec-box">
       <svg class="dec-spark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path></svg>
@@ -815,4 +815,5 @@ body.dark-hero .nav:not(.scrolled) .burger span,body.dark-hero .nav:not(.scrolle
     });
     $$('.dec-chip').forEach(function(c){c.addEventListener('click',function(){dePrompt.value=c.getAttribute('data-p');grow();dePrompt.focus();});});
   }
-})();</script></body></html>
+})();</script><script src="/ambient.js" defer></script>
+</body></html>

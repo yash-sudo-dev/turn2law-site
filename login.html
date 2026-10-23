@@ -13,7 +13,7 @@
 :root{
   --gold:#D8AB5B;--gold-deep:#B98F42;--gold-text:#8A6A2E;--gold-soft:rgba(216,171,91,.14);
   --ink:#111111;--navy:#0A1628;--gray:#6F6F6F;--gray-2:#767676;
-  --line:#EAEAEA;--line-soft:#F1F1F1;--bg:#FFFFFF;--bg-tint:#FBFAF7;
+  --line:#EAEAEA;--line-soft:#F1F1F1;--bg:#FFFFFF;--bg-tint:#FFFFFF;
   --glass:rgba(255,255,255,.7);
   --shadow-sm:0 2px 10px rgba(17,17,17,.05);
   --shadow-md:0 12px 34px rgba(17,17,17,.09);
@@ -34,7 +34,7 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
 .mono{font-family:'DM Mono',monospace}
 
 .auth{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.02fr .98fr}
-.brandside{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:clamp(26px,3.4vw,46px);background:linear-gradient(165deg,#fff 0%,var(--bg-tint) 100%)}
+.brandside{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:clamp(26px,3.4vw,46px);background:none}
 .brandside .mesh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 45% at 80% 12%,rgba(216,171,91,.22),transparent 60%),radial-gradient(45% 45% at 10% 88%,rgba(216,171,91,.16),transparent 60%)}
 .brandside .grid-lines{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 80%)}
 .brandside>*{position:relative;z-index:1}
@@ -66,7 +66,7 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
 .feat b{font-family:'Poppins',sans-serif;font-weight:600;font-size:12.5px;display:block;letter-spacing:-.01em}
 .feat span{font-size:11px;color:var(--gray);line-height:1.35;display:block;margin-top:1px}
 
-.formside{display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,44px);background:var(--bg-tint)}
+.formside{display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,44px);background:none}
 .card{width:100%;max-width:440px;background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-lg);padding:clamp(26px,3vw,40px)}
 .card .mob-logo{display:none}
 .card h2{font-size:clamp(22px,2.4vw,27px);font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:-.02em}
@@ -255,4 +255,5 @@ h1,h2{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;mar
   });
 })();
 </script>
+<script src="/ambient.js" defer></script>
 </body></html>

@@ -1,0 +1,21 @@
+scope,description,default_roles
+resources.read,View published resources and drafts permitted to the reviewer,content_editor,content_reviewer,support,internal_team,product_admin,super_admin
+resources.create,Create draft resources,content_editor,product_admin,super_admin
+resources.edit,Edit resources in draft or review,content_editor,product_admin,super_admin
+resources.review,Approve or reject content in review,legal_reviewer,content_reviewer,super_admin
+resources.publish,Publish schedule or unpublish resources,content_reviewer,product_admin,super_admin
+sources.manage,Create and configure ingestion sources,ops_manager,product_admin,super_admin
+ingestion.run,Trigger and retry ingestion jobs,ops_manager,product_admin,super_admin
+services.manage,Configure services categories prices questionnaires workflows,ops_manager,product_admin,super_admin
+orders.read,View orders and matters for assigned or org scope,support,ops_manager,finance_manager,internal_team,product_admin,super_admin
+orders.assign,Assign and reassign matters,ops_manager,super_admin
+orders.update,Transition matter workflow states,internal_team,ops_manager,super_admin
+payments.read,View payment and invoice amounts,finance_manager,super_admin
+refunds.approve,Approve refund requests,finance_manager,super_admin
+documents.review,Verify or reject matter documents,internal_team,legal_reviewer,super_admin
+templates.manage,Manage Doc Engine templates and clause library,legal_reviewer,product_admin,super_admin
+introspector.sources.manage,Manage legal source configs and evals,product_admin,super_admin
+users.manage,View suspend and manage users and orgs,support,product_admin,super_admin
+roles.manage,Change role and scope assignments,product_admin,super_admin
+audit.read,Read the audit log,product_admin,super_admin
+settings.manage,Change integration and platform settings,product_admin,super_admin

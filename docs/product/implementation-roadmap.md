@@ -1,16 +1,18 @@
-# Implementation Roadmap (Proposed)
+# Implementation Roadmap
 
-Status: PROPOSED, pending founder confirmation. Order follows PRD section 9. Each phase has a hard acceptance gate; a phase is not done until its gate passes.
+Status: APPROVED by founder 25 Oct 2026, with decisions B1 to D5 recorded in `decisions-log.md`. Order follows PRD section 9. Each phase has a hard acceptance gate; a phase is not done until its gate passes. Phase 1 begins as soon as production repository access is granted; until then only repo-agnostic scaffolding proceeds (see `/scaffold`).
 
-## Blockers and founder decisions (resolve before Phase 1)
+## Decisions and blockers (status)
 
-- **B1 Repository**: this repo is the static marketing site; the live Doc Engine wizard is in the production codebase. Decide: (1) provide the production repo for the build, or (2) build the platform fresh in this repo and migrate/replace the wizard later. Everything else adapts to this choice.
-- **C1 Credentials**: Supabase project (or new), Razorpay account, email provider, AI provider key. Development adapters carry Phase 1 to 3 without them; payments cannot be marked live without Razorpay test+live keys.
-- **D1 Payment provider confirmation** (Razorpay assumed).
-- **D2 Licensed sources** for Introspector and Resources ingestion; none verified yet.
-- **D3 AI provider and data-handling terms** (which models may receive user or document content).
-- **D4 Content truth**: confirm which marketing metrics/testimonials are real; unverifiable ones are removed from production surfaces (PRD rule 3).
-- **D5 GST**: no GSTIN is shown anywhere until the founder confirms GSTIN status (PRD section 11).
+- **B1 Repository: DECIDED.** Build in the production codebase; never rebuild the wizard. Founder connects the production repo; this repo is the marketing surface to fold in. **Phase 1 app code is blocked on production access.**
+- **C1 Credentials: DECIDED.** Labelled dev adapters now; keys per phase in order: Supabase, email, AI provider, Razorpay (test before live). No payment is marked live without Razorpay keys. Secrets only via env vars, documented in `.env.example`; never in chat, logs, or committed files.
+- **D1 Payment provider: CONFIRMED Razorpay** (per C1 ordering).
+- **D2 Legal sources: DECIDED.** Editorial and manual connector only. Source registry and pipeline are built so licensed feeds plug in later; default is manual editorial publishing; nothing unlicensed is fetched.
+- **D3 AI provider: DECIDED (default).** Provider must have terms that allow no training on our data; all document and case content is gated behind that adapter default. Founder confirms the exact provider before any Introspector or Doc Engine content calls go live; adapter is flagged until then.
+- **D4 Content truth: DECIDED.** The live site wins over this repo; repo metrics and testimonials are stale where they differ. Unverifiable claims are removed rather than carried forward. Founder will confirm the real client references and the startups-registered figure; no invented proof.
+- **D5 GST: CONFIRMED.** No GSTIN appears anywhere until the founder declares it active.
+
+Interim work while production access is pending: Phase 0 doc refinement and repo-agnostic shared-foundation scaffolding only. The wizard is not re-implemented anywhere.
 
 ## Phase 0 (done with this document set)
 

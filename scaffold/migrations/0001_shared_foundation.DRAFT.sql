@@ -149,7 +149,7 @@ create table if not exists public.notifications (
   template_key  text not null,
   payload       jsonb not null default '{}'::jsonb,
   status        text not null default 'queued'
-                  check (status in ('queued','sent','failed','skipped')),
+                  check (status in ('queued','sent','failed','skipped','skipped_unconfigured')),
   attempts      int not null default 0,
   last_error    text,
   sent_at       timestamptz,
@@ -267,5 +267,11 @@ create policy consents_own on public.consents for select
 
 -- audit: INSERT via service role only; SELECT for audit readers is granted by
 -- the API layer after scope checks (audit.read). No UPDATE/DELETE policies
--- exist on purpose; also hard-revoke at the grant level:
-revoke update, delete on public.audit_log from authenticated, anon;
+-- exist on purpose; also hard-revoke at the grant level where the Supabase
+-- guest roles exist (guarded so the same file runs on vanilla Postgres):
+do $$ begin
+  if exists (select from pg_roles where rolname = 'authenticated') then
+    revoke update, delete on public.audit_log from authenticated, anon;
+  end if;
+  revoke update, delete on public.audit_log from app_user;
+end $$;

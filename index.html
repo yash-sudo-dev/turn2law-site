@@ -190,7 +190,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   background:var(--glass);border:1px solid rgba(17,17,17,.07);backdrop-filter:blur(10px);
   font-size:13px;font-weight:500;color:var(--ink);box-shadow:var(--shadow-sm);
 }
-.hero-badge .tag{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.06em;background:var(--ink);color:#fff;padding:4px 10px;border-radius:100px}
+.hero-kicker{margin:0;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-align:center}
 .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
 .hero h1{
   font-size:min(clamp(40px,6vw,74px),12.5vw);line-height:1.02;letter-spacing:-.035em;margin:26px 0 0;
@@ -224,6 +224,8 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   letter-spacing:.02em;padding:5px 10px;border-radius:100px;background:#fff;border:1px solid var(--line);color:var(--gray);
 }
 .chip i{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.spec{margin:0;font-family:'DM Mono',monospace;font-size:11.5px;line-height:2.1;letter-spacing:.06em;color:var(--gray-2)}
+.pcard.dark .spec,.intro-sec .spec{color:#9fb0c4}
 .hp-bar{height:6px;border-radius:100px;background:var(--line);overflow:hidden}
 .hp-bar span{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));animation:fill 2.6s var(--ease) infinite}
 @keyframes fill{0%{width:8%}60%{width:92%}100%{width:100%}}
@@ -236,6 +238,32 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .hp-badge.b1{top:-18px;right:14px;animation:floaty 5s ease-in-out infinite}
 .hp-badge.b2{bottom:-16px;left:-14px;animation:floaty 6s ease-in-out infinite .8s}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* ============ ORDER TRACKING CONSOLE ============ */
+.track{position:relative;background:var(--navy);border-radius:var(--r-lg);padding:clamp(24px,3vw,34px);color:#fff;overflow:hidden;box-shadow:var(--shadow-md)}
+.track::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 100% 0%,rgba(216,171,91,.10),transparent 60%);pointer-events:none}
+.track-head{position:relative;display:flex;justify-content:space-between;gap:12px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9fb0c4;margin-bottom:26px}
+.track-status{color:var(--gold)}
+.track-steps{position:relative}
+.track-line{position:absolute;left:13px;top:14px;bottom:14px;width:2px;background:rgba(255,255,255,.10);border-radius:2px}
+.track-fill{position:absolute;left:13px;top:14px;width:2px;height:0;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--gold-deep));transition:height .9s var(--ease)}
+.tstep{position:relative;display:flex;gap:16px;padding-bottom:24px}
+.tstep:last-child{padding-bottom:0}
+.tdot{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.18);background:var(--navy);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:.4s var(--ease)}
+.tdot svg{width:13px;height:13px;color:#fff;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .45s ease .15s}
+.tdot i{font-style:normal;font-family:'DM Mono',monospace;font-size:10px;color:#7d8da2;transition:.3s}
+.tstep.done .tdot{background:var(--gold);border-color:var(--gold)}
+.tstep.done .tdot svg{stroke-dashoffset:0}
+.tstep.done .tdot i{display:none}
+.tstep.active .tdot{border-color:var(--gold);animation:tpulse 1.8s infinite}
+.tstep.active .tdot i{color:var(--gold)}
+@keyframes tpulse{0%{box-shadow:0 0 0 0 rgba(216,171,91,.45)}70%{box-shadow:0 0 0 11px rgba(216,171,91,0)}100%{box-shadow:0 0 0 0 rgba(216,171,91,0)}}
+.tstep .tt{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;color:rgba(255,255,255,.5);transition:color .4s}
+.tstep .td{margin:4px 0 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.38);max-width:380px;transition:color .4s}
+.tstep .ts{display:inline-block;margin-top:6px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:var(--gold);opacity:0;transform:translateY(4px);transition:.45s var(--ease)}
+.tstep.done .tt,.tstep.active .tt{color:#fff}
+.tstep.done .td,.tstep.active .td{color:#9fb0c4}
+.tstep.done .ts,.tstep.active .ts{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.tstep.active .tdot{animation:none}}
 
 /* ============ MARQUEE ============ */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:none}
@@ -432,7 +460,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 @keyframes faqfloat{0%,100%{transform:translateY(0) scale(1);opacity:.22}50%{transform:translateY(-18px) scale(1.2);opacity:.5}}
 .faq-grid{display:grid;grid-template-columns:.85fr 1.3fr;gap:64px;align-items:start;position:relative;z-index:1}
 .faq-badge{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);background:var(--gold-soft);border:1px solid rgba(216,171,91,.35);padding:8px 16px 8px 14px;border-radius:100px}
-.faq-badge svg{width:13px;height:13px;stroke:var(--gold-deep);fill:none;stroke-width:2}
+.faq-kicker{margin:0;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
 .faq-copy h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:min(clamp(32px,4vw,46px),11vw);line-height:1.1;letter-spacing:-.025em;margin:20px 0 0}
 .faq-copy h2 .g{background:linear-gradient(105deg,var(--gold-deep),var(--gold) 55%,#eccf95);-webkit-background-clip:text;background-clip:text;color:transparent}
 .faq-copy p{font-size:15.5px;line-height:1.7;color:var(--gray);max-width:400px;margin:18px 0 0}
@@ -625,17 +653,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <img class="hero-logo reveal in" src="/turn2law-logo.png" loading="eager" decoding="async" alt="Turn2Law" width="1620" height="460">
-      <span class="hero-badge reveal in" style="--d:60ms">
-        <span class="dot"></span>India's Legal Operating System
-        <span class="tag">EST. 2025</span>
-      </span>
+      <p class="hero-kicker reveal in" style="--d:60ms">India's Legal Operating System &nbsp;·&nbsp; EST. 2025</p>
       <h1 class="reveal in" style="--d:80ms">We simplify legal<br>access for <span class="g">everyone.</span></h1>
       <p class="hero-sub reveal in" style="--d:160ms">One platform. Founders and lawyers. Grounded in Indian law.</p>
       <div class="hero-ctas reveal in" style="--d:240ms">
         <a href="#products" class="btn btn-gold">Explore products
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-        <a href="/introspector.html" class="btn btn-ghost">Try Introspector <span class="pill">24/7 AI</span></a>
+        <a href="/introspector.html" class="btn btn-ghost">Try Introspector</a>
       </div>
     </div>
   </div>
@@ -663,7 +688,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Introspector</div>
         <p class="p-desc">AI legal research for practising lawyers. Every claim cited.</p>
         <div class="p-visual">
-          <span class="chip"><i></i>IPC → BNS</span><span class="chip"><i></i>Precedents</span><span class="chip"><i></i>Cited ✓</span>
+          <p class="spec">IPC → BNS &nbsp;·&nbsp; Precedents &nbsp;·&nbsp; Cited ✓</p>
         </div>
         <span class="p-link">Meet the bench <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -672,7 +697,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Legal Services</div>
         <p class="p-desc">Incorporation, compliance, and trademark, handled by an in-house bench of lawyers, CAs, and CS.</p>
         <div class="p-visual">
-          <span class="chip"><i></i>Incorporation</span><span class="chip"><i></i>GST · MSME</span><span class="chip"><i></i>ROC</span><span class="chip"><i></i>Trademark</span>
+          <p class="spec">Incorporation &nbsp;·&nbsp; GST &amp; MSME &nbsp;·&nbsp; ROC &nbsp;·&nbsp; Trademark</p>
         </div>
         <span class="p-link">See the catalogue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -681,7 +706,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Doc Engine</div>
         <p class="p-desc">NDAs, agreements, and contracts in minutes. Plain language in, a drafted document out.</p>
         <div class="p-visual">
-          <span class="chip"><i></i>NDA</span><span class="chip"><i></i>Founders' Agmt</span><span class="chip"><i></i>Employment</span><span class="chip"><i></i>Notice</span>
+          <p class="spec">NDA &nbsp;·&nbsp; Founders' Agmt &nbsp;·&nbsp; Employment &nbsp;·&nbsp; Notice</p>
         </div>
         <span class="p-link">Draft a document <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -724,22 +749,37 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal in" style="color:var(--gold-text)">Pillar 01 · Legal Services</span>
         <h2 class="h2 reveal in" style="--d:80ms">Done right,<br>not just fast.</h2>
         <p class="lede reveal in" style="--d:140ms">Legal, compliance, and IP work delivered by an in-house bench, and tracked like software.</p>
-        <div class="hp-chips reveal in" style="--d:200ms;margin-top:24px">
-          <span class="chip"><i></i>Incorporation</span><span class="chip"><i></i>GST · MSME</span><span class="chip"><i></i>ROC compliance</span><span class="chip"><i></i>Trademark</span><span class="chip"><i></i>Virtual GC</span>
-        </div>
+        <p class="spec reveal in" style="--d:200ms;margin-top:24px">Incorporation &nbsp;·&nbsp; GST &amp; MSME &nbsp;·&nbsp; ROC compliance &nbsp;·&nbsp; Trademark &nbsp;·&nbsp; Virtual GC</p>
         <div class="hero-ctas reveal in" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/legal-services.html" class="btn btn-gold">See the catalogue<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/legal-services.html#pricing" class="btn btn-ghost">View pricing</a>
         </div>
       </div>
       <div class="reveal in" style="--d:160ms">
-        <div class="glasscard" style="position:relative;padding:26px;background:var(--bg-tint);box-shadow:var(--shadow-md)">
-          <div class="k mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:18px">Order · Received → Delivered</div>
-          <div style="display:flex;flex-direction:column;gap:2px">
-            <div style="display:flex;gap:14px;padding:12px 0;"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--gold);color:#111;">✓</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Received</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Your order and matter are created; an invoice is issued within two minutes.</div></div></div>
-            <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--gold);color:#111;">✓</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Documents verified</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Each KYC item shows its status with a reason in plain language.</div></div></div>
-            <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">3</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Filed</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Your assigned professional files with the MCA; you see who owns it.</div></div></div>
-            <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);"><div style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--line);color:var(--gray);">4</div><div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px">Delivered</div><div style="font-size:12px;color:var(--gray);line-height:1.5">Everything lands in your locker, and your compliance calendar switches on.</div></div></div>
+        <div class="track" id="trackCard">
+          <div class="track-head">
+            <span>Order · T2L-2025-0147</span>
+            <span class="track-status" id="trackStatus">RECEIVED</span>
+          </div>
+          <div class="track-steps">
+            <span class="track-line" aria-hidden="true"></span>
+            <span class="track-fill" id="trackFill" aria-hidden="true"></span>
+            <div class="tstep">
+              <span class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><i>1</i></span>
+              <div><div class="tt">Received</div><p class="td">Your order and matter are created; an invoice is issued within two minutes.</p><span class="ts">T+0</span></div>
+            </div>
+            <div class="tstep">
+              <span class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><i>2</i></span>
+              <div><div class="tt">Documents verified</div><p class="td">Each KYC item shows its status with a reason in plain language.</p><span class="ts">T+2 MIN</span></div>
+            </div>
+            <div class="tstep">
+              <span class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><i>3</i></span>
+              <div><div class="tt">Filed</div><p class="td">Your assigned professional files with the MCA; you see who owns it.</p><span class="ts">T+2 DAYS</span></div>
+            </div>
+            <div class="tstep">
+              <span class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><i>4</i></span>
+              <div><div class="tt">Delivered</div><p class="td">Everything lands in your locker, and your compliance calendar switches on.</p><span class="ts">T+11 DAYS</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -765,9 +805,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal" style="color:var(--gold-text)">Pillar 02 · Doc Engine</span>
         <h2 class="h2 reveal" style="--d:80ms">Prompt in.<br>Drafted document out.</h2>
         <p class="lede reveal" style="--d:140ms">Describe what you need in plain language; get an India-specific document in minutes. A lawyer is one click away when the stakes rise.</p>
-        <div class="hp-chips reveal" style="--d:200ms;margin-top:24px">
-          <span class="chip"><i></i>NDA</span><span class="chip"><i></i>Founders' Agmt</span><span class="chip"><i></i>Employment</span><span class="chip"><i></i>Privacy Policy</span><span class="chip"><i></i>Term Sheet</span>
-        </div>
+        <p class="spec reveal" style="--d:200ms;margin-top:24px">NDA &nbsp;·&nbsp; Founders' Agmt &nbsp;·&nbsp; Employment &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Term Sheet</p>
         <div class="hero-ctas reveal" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/docengine.html" class="btn btn-gold">Try Doc Engine<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/docengine.html" class="btn btn-ghost">See templates</a>
@@ -785,9 +823,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal" style="color:var(--gold)">Pillar 03 · Introspector</span>
         <h2 class="h2 reveal" style="--d:80ms">The bench<br>you never had.</h2>
         <p class="lede reveal" style="--d:140ms">AI research and strategy for practising lawyers. Precedents, statutes, case strategy, every claim cited.</p>
-        <div class="hp-chips reveal" style="--d:200ms;margin-top:24px">
-          <span class="chip"><i></i>Research</span><span class="chip"><i></i>Statute maps</span><span class="chip"><i></i>Case file</span><span class="chip"><i></i>Strategy</span><span class="chip"><i></i>Vault</span>
-        </div>
+        <p class="spec reveal" style="--d:200ms;margin-top:24px">Research &nbsp;·&nbsp; Statute maps &nbsp;·&nbsp; Case file &nbsp;·&nbsp; Strategy &nbsp;·&nbsp; Vault</p>
         <div class="hero-ctas reveal" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/introspector.html" class="btn btn-gold" style="background:var(--gold);color:#111">Join the pilot<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/introspector.html" class="btn btn-ghost" style="background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)">See capabilities</a>
@@ -889,7 +925,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   <div class="wrap">
     <div class="faq-grid">
       <div class="faq-copy">
-        <span class="faq-badge reveal in"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"></path></svg>FAQ</span>
+        <p class="faq-kicker reveal in">FAQ</p>
         <h2 class="reveal in" style="--d:80ms">Your Questions,<br><span class="g">Answered</span></h2>
         <p class="reveal in" style="--d:140ms">Straight answers on how Turn2Law works.</p>
         <hr class="faq-rule reveal in" style="--d:180ms">
@@ -1151,6 +1187,43 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
     addEventListener('scroll',tick,{passive:true});
     addEventListener('resize',tick,{passive:true});
     layout();
+  })();
+  /* ---- Order tracking console animation ---- */
+  (function(){
+    var card=$('#trackCard');if(!card)return;
+    var steps=$$('.tstep',card),fill=$('#trackFill'),status=$('#trackStatus');
+    var labels=['RECEIVED','DOCS VERIFIED','FILING · MCA','DELIVERED'];
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+      steps.forEach(function(s){s.classList.add('done')});
+      if(fill)fill.style.height='100%';
+      if(status)status.textContent='DELIVERED';
+      return;
+    }
+    var timers=[];
+    function run(){
+      timers.forEach(clearTimeout);timers=[];
+      steps.forEach(function(s){s.classList.remove('done','active')});
+      if(fill)fill.style.height='0%';
+      status.textContent=labels[0];
+      steps.forEach(function(s,i){
+        timers.push(setTimeout(function(){
+          if(i>0){steps[i-1].classList.add('done');steps[i-1].classList.remove('active')}
+          s.classList.add('active');
+          status.textContent=labels[i];
+          if(fill)fill.style.height=(i/(steps.length-1)*100)+'%';
+        },500+i*1150));
+      });
+      timers.push(setTimeout(function(){
+        steps[steps.length-1].classList.remove('active');
+        steps[steps.length-1].classList.add('done');
+        if(fill)fill.style.height='100%';
+        status.textContent=labels[3];
+      },500+steps.length*1150));
+    }
+    var io=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){run();setInterval(run,500+4*1150+3400);io.disconnect();}
+    },{threshold:.35});
+    io.observe(card);
   })();
   /* ---- Hero search + suggestion chips ---- */
   observeReveals();

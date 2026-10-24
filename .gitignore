@@ -2,3 +2,9 @@
 node_modules
 .DS_Store
 .claude
+
+# scaffold runtime artifacts
+scaffold/server/node_modules/
+scaffold/server/.data/
+scaffold/server/.testdata/
+scaffold/.data/

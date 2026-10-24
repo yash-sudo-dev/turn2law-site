@@ -173,11 +173,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(88px,12vh,108px) 0 clamp(40px,6vh,52px)}
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-mesh{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(60% 55% at 78% 18%,rgba(216,171,91,.20),transparent 60%),
-    radial-gradient(50% 50% at 12% 82%,rgba(216,171,91,.13),transparent 60%),
-    radial-gradient(40% 40% at 50% 50%,rgba(10,22,40,.03),transparent 70%);
+  position:absolute;inset:0;background:none;
 }
 .hero-grid-lines{
   position:absolute;inset:0;opacity:.5;
@@ -254,6 +250,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 /* ============ PRODUCTS ============ */
 .sec-head{max-width:660px;margin-bottom:clamp(32px,5vw,44px)}
 .sec-head .h2{margin:14px 0 14px}
+/* split header: headline left, message right, hairline divider */
+.sec-head.split-head{max-width:none;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:end;border-bottom:1px solid var(--line);padding-bottom:clamp(20px,3vw,30px);margin-bottom:clamp(28px,4vw,44px)}
+.split-head .h2{margin:14px 0 0}
+.split-head .split-msg{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,40px);margin:0;color:var(--gray);font-size:clamp(15px,1.2vw,17px);line-height:1.7}
+@media (max-width:980px){
+  .sec-head.split-head{grid-template-columns:1fr;align-items:start}
+  .split-head .split-msg{border-left:none;border-top:1px solid var(--line);padding:18px 0 0}
+}
 .split .h2,.intro-sec .h2{margin:14px 0 16px}
 .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;perspective:1400px}
 .pcard{
@@ -269,6 +273,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .pcard.dark .p-desc{color:#9fb0c4}
 .pcard.dark::before{background:radial-gradient(120% 80% at 100% 0%,rgba(216,171,91,.22),transparent 55%)}
 .p-num{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--gold-text);font-weight:500}
+#products .p-name{margin-top:10px}
 .p-ico{width:50px;height:50px;border-radius:14px;background:var(--bg-tint);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:18px 0 20px;transition:.5s var(--ease)}
 .p-ico svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.7}
 .pcard.dark .p-ico{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
@@ -289,7 +294,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   border-radius:var(--r);border:1px solid var(--line);background:#fff;padding:24px;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);position:relative;overflow:hidden;will-change:transform;
 }
-.bcell:hover{transform:translateY(-4px);box-shadow:var(--shadow-gold);border-color:rgba(216,171,91,.35)}
+.bcell::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,var(--gold-soft),transparent 55%);opacity:0;transition:opacity .5s var(--ease);pointer-events:none}
+.bcell.dark::before{background:radial-gradient(120% 80% at 100% 0%,rgba(216,171,91,.22),transparent 55%)}
+.bcell:hover{transform:translateY(-8px);box-shadow:var(--shadow-gold);border-color:transparent}
+.bcell:hover::before{opacity:1}
 .bcell .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
 .bcell .bt{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:-.01em;margin-bottom:6px}
 .bcell .bd{font-size:13px;line-height:1.55;color:var(--gray)}
@@ -641,40 +649,37 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </div>
 <!-- ===== PRODUCTS ===== -->
 <section id="products" class="pad sec-amb">
-  <div class="ablob" style="top:-14%;right:-8%;width:400px;height:400px;background:radial-gradient(circle,rgba(216,171,91,.22),transparent 70%)"></div>
-  <div class="ablob" style="bottom:-16%;left:-8%;width:360px;height:360px;background:radial-gradient(circle,rgba(216,171,91,.16),transparent 70%);animation-delay:3s;animation-direction:reverse"></div>
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow reveal in">The platform</span>
-      <h2 class="h2 reveal in" style="--d:80ms">Three products. One legal OS.</h2>
-      <p class="lede reveal in" style="--d:140ms">Everything Turn2Law does lives in one of three products: prepare the case, deliver the legal work, or draft the document. All grounded in Indian law, the IPC, BNS, and 50+ statutes that govern your work.</p>
+    <div class="sec-head split-head">
+      <div>
+        <span class="eyebrow reveal in">The platform</span>
+        <h2 class="h2 reveal in" style="--d:80ms">Three products.<br>One legal OS.</h2>
+      </div>
+      <p class="split-msg reveal in" style="--d:140ms">Prepare the case, deliver the legal work, or draft the document. All grounded in Indian law.</p>
     </div>
     <div class="products">
       <a href="/introspector.html" class="pcard dark reveal in" style="--d:80ms">
-        <div class="p-num">01 · Introspector</div>
-        <div class="p-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"></path></svg></div>
+        <div class="p-num">01</div>
         <div class="p-name">Introspector</div>
-        <p class="p-desc">The lawyer's AI research bench. Precedent search, statute mapping, and case strategy, with a citation on every claim it makes.</p>
+        <p class="p-desc">AI legal research for practising lawyers. Every claim cited.</p>
         <div class="p-visual">
           <span class="chip"><i></i>IPC → BNS</span><span class="chip"><i></i>Precedents</span><span class="chip"><i></i>Cited ✓</span>
         </div>
         <span class="p-link">Meet the bench <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
       <a href="/legal-services.html" class="pcard reveal in" style="--d:160ms">
-        <div class="p-num">02 · Legal Services</div>
-        <div class="p-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
+        <div class="p-num">02</div>
         <div class="p-name">Legal Services</div>
-        <p class="p-desc">Done right, not just fast. Incorporation, compliance, trademark, and advisory, delivered by an in-house bench of lawyers, CAs, and CS professionals.</p>
+        <p class="p-desc">Incorporation, compliance, and trademark, handled by an in-house bench of lawyers, CAs, and CS.</p>
         <div class="p-visual">
           <span class="chip"><i></i>Incorporation</span><span class="chip"><i></i>GST · MSME</span><span class="chip"><i></i>ROC</span><span class="chip"><i></i>Trademark</span>
         </div>
         <span class="p-link">See the catalogue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
       <a href="/docengine.html" class="pcard reveal in" style="--d:240ms">
-        <div class="p-num">03 · Doc Engine</div>
-        <div class="p-ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline><line x1="8" y1="13" x2="15" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></div>
+        <div class="p-num">03</div>
         <div class="p-name">Doc Engine</div>
-        <p class="p-desc">Generate NDAs, agreements, legal notices, and contracts in minutes. Plain language in, an India-specific drafted document out.</p>
+        <p class="p-desc">NDAs, agreements, and contracts in minutes. Plain language in, a drafted document out.</p>
         <div class="p-visual">
           <span class="chip"><i></i>NDA</span><span class="chip"><i></i>Founders' Agmt</span><span class="chip"><i></i>Employment</span><span class="chip"><i></i>Notice</span>
         </div>
@@ -685,8 +690,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </section>
 <!-- ===== BENTO: platform capabilities ===== -->
 <section class="pad-t sec-amb">
-  <div class="ablob" style="top:-10%;left:-6%;width:380px;height:380px;background:radial-gradient(circle,rgba(216,171,91,.2),transparent 70%)"></div>
-  <div class="ablob" style="bottom:-18%;right:-6%;width:420px;height:420px;background:radial-gradient(circle,rgba(216,171,91,.16),transparent 70%);animation-delay:2s;animation-direction:reverse"></div>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow reveal in">What the platform does</span>
@@ -720,7 +723,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
       <div>
         <span class="kicker reveal in" style="color:var(--gold-text)">Pillar 01 · Legal Services</span>
         <h2 class="h2 reveal in" style="--d:80ms">Done right,<br>not just fast.</h2>
-        <p class="lede reveal in" style="--d:140ms">Human-delivered legal, compliance, and IP work, sold and tracked like a modern product. Incorporation, registrations, ROC compliance, trademark, and advisory, all on one platform with an in-house bench behind it.</p>
+        <p class="lede reveal in" style="--d:140ms">Legal, compliance, and IP work delivered by an in-house bench, and tracked like software.</p>
         <div class="hp-chips reveal in" style="--d:200ms;margin-top:24px">
           <span class="chip"><i></i>Incorporation</span><span class="chip"><i></i>GST · MSME</span><span class="chip"><i></i>ROC compliance</span><span class="chip"><i></i>Trademark</span><span class="chip"><i></i>Virtual GC</span>
         </div>
@@ -761,7 +764,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
       <div>
         <span class="kicker reveal" style="color:var(--gold-text)">Pillar 02 · Doc Engine</span>
         <h2 class="h2 reveal" style="--d:80ms">Prompt in.<br>Drafted document out.</h2>
-        <p class="lede reveal" style="--d:140ms">A founder describes what they need in plain language and receives a well-drafted, India-specific legal document in minutes, with the option to bring in a Turn2Law lawyer when the stakes rise.</p>
+        <p class="lede reveal" style="--d:140ms">Describe what you need in plain language; get an India-specific document in minutes. A lawyer is one click away when the stakes rise.</p>
         <div class="hp-chips reveal" style="--d:200ms;margin-top:24px">
           <span class="chip"><i></i>NDA</span><span class="chip"><i></i>Founders' Agmt</span><span class="chip"><i></i>Employment</span><span class="chip"><i></i>Privacy Policy</span><span class="chip"><i></i>Term Sheet</span>
         </div>
@@ -781,7 +784,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
       <div>
         <span class="kicker reveal" style="color:var(--gold)">Pillar 03 · Introspector</span>
         <h2 class="h2 reveal" style="--d:80ms">The bench<br>you never had.</h2>
-        <p class="lede reveal" style="--d:140ms">An AI research and strategy agent for practising lawyers. Precedent search, statute mapping, and case organisation, with a citation on every claim it makes.</p>
+        <p class="lede reveal" style="--d:140ms">AI research and strategy for practising lawyers. Precedents, statutes, case strategy, every claim cited.</p>
         <div class="hp-chips reveal" style="--d:200ms;margin-top:24px">
           <span class="chip"><i></i>Research</span><span class="chip"><i></i>Statute maps</span><span class="chip"><i></i>Case file</span><span class="chip"><i></i>Strategy</span><span class="chip"><i></i>Vault</span>
         </div>
@@ -803,8 +806,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </section>
 <!-- ===== AUDIENCES ===== -->
 <section class="pad sec-amb">
-  <div class="ablob" style="top:-12%;right:-8%;width:380px;height:380px;background:radial-gradient(circle,rgba(216,171,91,.2),transparent 70%)"></div>
-  <div class="ablob" style="bottom:-14%;left:-8%;width:340px;height:340px;background:radial-gradient(circle,rgba(216,171,91,.16),transparent 70%);animation-delay:4s;animation-direction:reverse"></div>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow reveal in">One platform, two audiences</span>
@@ -816,7 +817,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="orb"></div>
         <div class="fork-badge"><i><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"></path></svg></i>For founders</div>
         <h3>I am starting or running a company.</h3>
-        <p>Incorporation with a visible timeline, documents drafted from plain language, and a compliance calendar that switches on the moment your company exists.</p>
+        <p>Incorporation with a visible timeline, documents from plain language, deadlines that never slip.</p>
         <ul>
           <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Incorporation and registrations, done right</li>
           <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Contracts drafted in minutes</li>
@@ -828,7 +829,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="orb"></div>
         <div class="fork-badge"><i><svg viewBox="0 0 24 24"><path d="M3 6h11M3 12h11M3 18h7M17 4v10M13 10l4 4 4-4"></path></svg></i>For lawyers</div>
         <h3>I am a practising lawyer.</h3>
-        <p>Introspector takes on the research and organisation that normally sits with paralegals and junior associates, so your hours go into arguing the case.</p>
+        <p>Introspector does the research work of juniors and paralegals, so your hours go into arguing the case.</p>
         <ul>
           <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Precedent search with citations</li>
           <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Statute mapping across IPC and BNS</li>
@@ -841,7 +842,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </section>
 <!-- ===== TESTIMONIALS (premium bento) ===== -->
 <section id="testimonials" class="pad tst2">
-  <div class="tbp tbp1"></div><div class="tbp tbp2"></div>
   <svg class="tst2-lines" viewBox="0 0 1200 500" preserveAspectRatio="none"><g fill="none" stroke="var(--gold)" stroke-width="1"><path d="M0 420 L260 300 L520 380 L800 200 L1200 260"></path><path d="M100 60 L360 180 L640 40"></path></g><g fill="var(--gold)"><circle cx="260" cy="300" r="3"></circle><circle cx="520" cy="380" r="3"></circle><circle cx="800" cy="200" r="3"></circle><circle cx="360" cy="180" r="3"></circle></g></svg>
   <div class="wrap" style="position:relative;z-index:1">
     <div class="sec-head" style="max-width:640px">
@@ -886,16 +886,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </section>
 <!-- ===== FAQ ===== -->
 <section id="faq" class="pad-t faq-sec">
-  <div class="fp fp1"></div><div class="fp fp2"></div>
-  <div class="faq-particle" style="width:6px;height:6px;top:20%;left:38%;animation-delay:.5s"></div>
-  <div class="faq-particle" style="width:4px;height:4px;top:64%;left:46%;animation-delay:2.2s"></div>
-  <div class="faq-particle" style="width:8px;height:8px;top:42%;left:60%;animation-delay:3.6s"></div>
   <div class="wrap">
     <div class="faq-grid">
       <div class="faq-copy">
         <span class="faq-badge reveal in"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"></path></svg>FAQ</span>
         <h2 class="reveal in" style="--d:80ms">Your Questions,<br><span class="g">Answered</span></h2>
-        <p class="reveal in" style="--d:140ms">Everything you need to know about Turn2Law and how our AI-powered products simplify legal work for individuals and businesses.</p>
+        <p class="reveal in" style="--d:140ms">Straight answers on how Turn2Law works.</p>
         <hr class="faq-rule reveal in" style="--d:180ms">
       </div>
       <div class="faq-list">
@@ -905,7 +901,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
             <span class="faq-qtext">What is Turn2Law?</span>
             <span class="faq-toggle"></span>
           </button>
-          <div class="faq-panel2"><p class="faq-a2">Turn2Law is India's Legal OS: one platform that brings verified legal professionals and purpose-built AI onto the same system. Founders use it to incorporate, draft contracts, and stay compliant; lawyers use it to research and prepare cases. It is a technology platform, not a law firm.</p></div>
+          <div class="faq-panel2"><p class="faq-a2">India's Legal OS: verified professionals and purpose-built AI on one platform. Founders incorporate and stay compliant; lawyers research and prepare. A technology platform, not a law firm.</p></div>
         </div>
         <div class="faq-card reveal in" style="--d:60ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
@@ -913,7 +909,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
             <span class="faq-qtext">What are Introspector and Doc Engine?</span>
             <span class="faq-toggle"></span>
           </button>
-          <div class="faq-panel2"><p class="faq-a2">Introspector is an AI research bench for practising lawyers: precedent search, statute mapping across the IPC, BNS and CrPC, case timelines, and strategy scaffolds, with a citation on every claim. Doc Engine turns plain-language prompts into India-specific legal documents in minutes, with risk flagging, plain-language explainers, and e-signature. AI output is decision support and is always reviewed by qualified counsel.</p></div>
+          <div class="faq-panel2"><p class="faq-a2">Introspector is an AI research bench for lawyers: precedent search, statute mapping, case strategy, every claim cited. Doc Engine turns plain-language prompts into India-specific documents in minutes. AI output is decision support, always reviewed by qualified counsel.</p></div>
         </div>
         <div class="faq-card reveal in" style="--d:120ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
@@ -921,7 +917,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
             <span class="faq-qtext">What legal services does Turn2Law offer?</span>
             <span class="faq-toggle"></span>
           </button>
-          <div class="faq-panel2"><p class="faq-a2">Company incorporation and registrations, trademark and IP protection, GST and MSME registration, ROC and annual compliance, fundraising and ESOP advisory, employment and HR legal, disputes and recovery, plus AI document drafting through Doc Engine and AI legal research through Introspector.</p></div>
+          <div class="faq-panel2"><p class="faq-a2">Incorporation and registrations, trademark and IP, GST and MSME, ROC compliance, fundraising and ESOP advisory, employment law, disputes and recovery, plus AI drafting and research.</p></div>
         </div>
         <div class="faq-card reveal in" style="--d:180ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
@@ -929,7 +925,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
             <span class="faq-qtext">How is my data kept private and secure?</span>
             <span class="faq-toggle"></span>
           </button>
-          <div class="faq-panel2"><p class="faq-a2">Confidentiality is a design requirement, not a policy footnote. Sensitive and privileged material lives in isolated, encrypted storage in India, with per-matter access controls and a full access log visible to you. Your documents are never used to train models.</p></div>
+          <div class="faq-panel2"><p class="faq-a2">Sensitive material lives in isolated, encrypted storage in India, with per-matter access controls and a log you can see. Your documents never train models.</p></div>
         </div>
         <div class="faq-card reveal in" style="--d:240ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
@@ -937,7 +933,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
             <span class="faq-qtext">Can I use Turn2Law entirely online?</span>
             <span class="faq-toggle"></span>
           </button>
-          <div class="faq-panel2"><p class="faq-a2">Yes. Turn2Law is built for virtual legal support: draft documents, run research, file registrations, and track every matter online from anywhere in India, with live status, named owners, and updates on WhatsApp. Support is available around the clock.</p></div>
+          <div class="faq-panel2"><p class="faq-a2">Yes. Draft, research, file, and track everything online from anywhere in India, with live status and WhatsApp updates.</p></div>
         </div>
         <div class="faq-cta2 reveal in" style="--d:300ms">
           <div class="faq-cta-h">
@@ -957,8 +953,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 <section id="contact" class="pad">
   <div class="wrap">
     <div class="contact-wrap reveal in">
-      <div class="glow" style="top:-80px;right:-60px;width:340px;height:340px;background:radial-gradient(circle,rgba(216,171,91,.2),transparent 68%)"></div>
-      <div class="glow" style="bottom:-90px;left:-70px;width:300px;height:300px;background:radial-gradient(circle,rgba(216,171,91,.12),transparent 68%)"></div>
       <div class="contact-grid">
         <div>
           <span class="eyebrow">Get in touch</span>
@@ -998,7 +992,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
     <div class="foot-statutory">
       Effivia Turn2Law Legal Pvt. Ltd.&nbsp;·&nbsp;CIN: U63110DL2025PTC443434&nbsp;
     </div>
-    <p class="foot-disc">Turn2Law is a technology platform, not a law firm, and does not provide legal representation. Information here is not legal advice. AI output is decision support and must be reviewed by qualified counsel before use in any filing.</p>
+    <p class="foot-disc">Turn2Law is a technology platform, not a law firm. Information here is not legal advice. AI output is decision support and must be reviewed by qualified counsel.</p>
     <div class="foot-bottom">
       <div class="cr">© 2026 Effivia Turn2Law Legal Pvt. Ltd. All rights reserved.</div>
       <div class="foot-social">

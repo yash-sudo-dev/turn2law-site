@@ -598,6 +598,31 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ============ EDITORIAL REDESIGN: TESTIMONIALS + FAQ ============ */
+.tst2{background:#fff}
+.ttile{background:#fff;border:1px solid var(--line);border-radius:14px;backdrop-filter:none;box-shadow:none;padding:22px;transition:transform .4s var(--ease),border-color .4s var(--ease)}
+.ttile:hover{transform:translateY(-4px);box-shadow:none;border-color:#D8D8D8}
+.ttile .qmark{display:none}
+.ttile .who .av{background:#fff;border:1px solid var(--line);color:var(--gold-deep);box-shadow:none}
+.tst-metrics{background:#fff;border:1px solid var(--line);backdrop-filter:none;box-shadow:none;border-radius:14px}
+.tst-metric{background:#fff}
+.tst-metric:hover{background:#FAFAFA}
+.tst-metric .mv{color:var(--ink)}
+.tst-metric .mv span{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--gold-deep)}
+.faq-sec{background:#fff}
+.faq-copy h2 .g{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--gold-deep)}
+.faq-rule{background:var(--ink)}
+.faq-card{background:#fff;border:1px solid var(--line);border-radius:14px;backdrop-filter:none;box-shadow:none}
+.faq-card:hover{transform:translateY(-2px);box-shadow:none;border-color:#D8D8D8}
+.faq-card.open{border-color:var(--ink);box-shadow:none}
+.faq-num{flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--gold-text);transition:.4s var(--ease)}
+.faq-card.open .faq-num{background:var(--ink);border-color:var(--ink);color:#fff}
+.faq-toggle{width:32px;height:32px}
+.faq-cta2{background:#fff;border:1px solid var(--line);box-shadow:none}
+.faq-cta-h .fic{background:#fff;border:1px solid var(--line)}
+.faq-cta-arrow{background:var(--ink);box-shadow:none}
+.faq-cta-arrow:hover{background:var(--gold-deep)}
 </style>
 </head>
 <body>
@@ -875,7 +900,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </section>
 <!-- ===== TESTIMONIALS (premium bento) ===== -->
 <section id="testimonials" class="pad tst2">
-  <svg class="tst2-lines" viewBox="0 0 1200 500" preserveAspectRatio="none"><g fill="none" stroke="var(--gold)" stroke-width="1"><path d="M0 420 L260 300 L520 380 L800 200 L1200 260"></path><path d="M100 60 L360 180 L640 40"></path></g><g fill="var(--gold)"><circle cx="260" cy="300" r="3"></circle><circle cx="520" cy="380" r="3"></circle><circle cx="800" cy="200" r="3"></circle><circle cx="360" cy="180" r="3"></circle></g></svg>
   <div class="wrap" style="position:relative;z-index:1">
     <div class="sec-head" style="max-width:640px">
       <span class="eyebrow reveal">What people say</span>
@@ -884,7 +908,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
     </div>
     <div class="tst-bento">
       <div class="ttile feat reveal" style="--d:0ms">
-        <div class="qmark">“</div>
         <p class="q">Turn2Law incorporated us in eleven days flat, every stage visible, no chasing anyone on email. It felt like software, not a law firm.</p>
         <div class="who">
           <div class="av">AR</div>
@@ -892,17 +915,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
       </div>
       <div class="ttile reveal" style="--d:60ms">
-        <div class="qmark">“</div>
         <p class="q">Introspector does the research my juniors used to spend nights on, with a citation on every claim.</p>
         <div class="who"><div class="av">PV</div><div><div class="nm">Adv. Pranav Verma</div><div class="rl">Advocate · High Court</div></div></div>
       </div>
       <div class="ttile reveal" style="--d:120ms">
-        <div class="qmark">“</div>
         <p class="q">Doc Engine drafts our NDAs in under a minute and flags anything one-sided.</p>
         <div class="who"><div class="av">KM</div><div><div class="nm">Kabir Menon</div><div class="rl">COO · Sentinel Layer</div></div></div>
       </div>
       <div class="ttile reveal" style="--d:180ms">
-        <div class="qmark">“</div>
         <p class="q">Transparent pricing, right on the page. That kind of honesty is refreshing.</p>
         <div class="who"><div class="av">TW</div><div><div class="nm">Tara Wadhwa</div><div class="rl">Founder · Withera Labs</div></div></div>
       </div>
@@ -930,7 +950,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
       <div class="faq-list">
         <div class="faq-card open reveal in" data-faq>
           <button class="faq-q2" type="button" aria-expanded="true">
-            <span class="faq-ico2"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"></path></svg></span>
+            <span class="faq-num">01</span>
             <span class="faq-qtext">What is Turn2Law?</span>
             <span class="faq-toggle"></span>
           </button>
@@ -938,7 +958,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
         <div class="faq-card reveal in" style="--d:60ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
-            <span class="faq-ico2"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="14 3 14 9 20 9"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></span>
+            <span class="faq-num">02</span>
             <span class="faq-qtext">What are Introspector and Doc Engine?</span>
             <span class="faq-toggle"></span>
           </button>
@@ -946,7 +966,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
         <div class="faq-card reveal in" style="--d:120ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
-            <span class="faq-ico2"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+            <span class="faq-num">03</span>
             <span class="faq-qtext">What legal services does Turn2Law offer?</span>
             <span class="faq-toggle"></span>
           </button>
@@ -954,7 +974,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
         <div class="faq-card reveal in" style="--d:180ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
-            <span class="faq-ico2"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+            <span class="faq-num">04</span>
             <span class="faq-qtext">How is my data kept private and secure?</span>
             <span class="faq-toggle"></span>
           </button>
@@ -962,7 +982,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         </div>
         <div class="faq-card reveal in" style="--d:240ms" data-faq>
           <button class="faq-q2" type="button" aria-expanded="false">
-            <span class="faq-ico2"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.5 4 6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-6-4-9s1.5-6.5 4-9z"></path></svg></span>
+            <span class="faq-num">05</span>
             <span class="faq-qtext">Can I use Turn2Law entirely online?</span>
             <span class="faq-toggle"></span>
           </button>

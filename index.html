@@ -226,6 +226,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .chip i{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
 .spec{margin:0;font-family:'DM Mono',monospace;font-size:11.5px;line-height:2.1;letter-spacing:.06em;color:var(--gray-2)}
 .pcard.dark .spec,.intro-sec .spec{color:#9fb0c4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.pchip{display:inline-flex;align-items:center;height:27px;padding:0 13px;border:1px solid var(--line);border-radius:100px;background:#fff;font-size:11.5px;font-weight:500;color:var(--gray);transition:border-color .25s,color .25s;white-space:nowrap}
+.pchip:hover{border-color:#D8D8D8;color:var(--ink)}
+.pcard.dark .chips,.intro-sec .chips{margin-top:18px}
+.pcard.dark .pchip,.intro-sec .pchip{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16);color:#9fb0c4}
+.pcard.dark .pchip:hover,.intro-sec .pchip:hover{border-color:rgba(255,255,255,.34);color:#fff}
+.pcard .chips{margin:22px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.pcard.dark .chips{border-top-color:rgba(255,255,255,.12)}
 .hp-bar{height:6px;border-radius:100px;background:var(--line);overflow:hidden}
 .hp-bar span{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));animation:fill 2.6s var(--ease) infinite}
 @keyframes fill{0%{width:8%}60%{width:92%}100%{width:100%}}
@@ -688,7 +696,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Introspector</div>
         <p class="p-desc">AI legal research for practising lawyers. Every claim cited.</p>
         <div class="p-visual">
-          <p class="spec">IPC → BNS &nbsp;·&nbsp; Precedents &nbsp;·&nbsp; Cited ✓</p>
+          <divclass="chips"><span class="pchip">IPC → BNS</span><span class="pchip">Precedents</span><span class="pchip">Cited ✓</span></div>
         </div>
         <span class="p-link">Meet the bench <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -697,7 +705,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Legal Services</div>
         <p class="p-desc">Incorporation, compliance, and trademark, handled by an in-house bench of lawyers, CAs, and CS.</p>
         <div class="p-visual">
-          <p class="spec">Incorporation &nbsp;·&nbsp; GST &amp; MSME &nbsp;·&nbsp; ROC &nbsp;·&nbsp; Trademark</p>
+          <divclass="chips"><span class="pchip">Incorporation</span><span class="pchip">GST &amp; MSME</span><span class="pchip">ROC</span><span class="pchip">Trademark</span></div>
         </div>
         <span class="p-link">See the catalogue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -706,7 +714,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <div class="p-name">Doc Engine</div>
         <p class="p-desc">NDAs, agreements, and contracts in minutes. Plain language in, a drafted document out.</p>
         <div class="p-visual">
-          <p class="spec">NDA &nbsp;·&nbsp; Founders' Agmt &nbsp;·&nbsp; Employment &nbsp;·&nbsp; Notice</p>
+          <divclass="chips"><span class="pchip">NDA</span><span class="pchip">Founders' Agmt</span><span class="pchip">Employment</span><span class="pchip">Notice</span></div>
         </div>
         <span class="p-link">Draft a document <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
       </a>
@@ -749,7 +757,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal in" style="color:var(--gold-text)">Pillar 01 · Legal Services</span>
         <h2 class="h2 reveal in" style="--d:80ms">Done right,<br>not just fast.</h2>
         <p class="lede reveal in" style="--d:140ms">Legal, compliance, and IP work delivered by an in-house bench, and tracked like software.</p>
-        <p class="spec reveal in" style="--d:200ms;margin-top:24px">Incorporation &nbsp;·&nbsp; GST &amp; MSME &nbsp;·&nbsp; ROC compliance &nbsp;·&nbsp; Trademark &nbsp;·&nbsp; Virtual GC</p>
+        <divclass="chips reveal in" style="--d:200ms;margin-top:24px"><span class="pchip">Incorporation</span><span class="pchip">GST &amp; MSME</span><span class="pchip">ROC compliance</span><span class="pchip">Trademark</span><span class="pchip">Virtual GC</span></div>
         <div class="hero-ctas reveal in" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/legal-services.html" class="btn btn-gold">See the catalogue<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/legal-services.html#pricing" class="btn btn-ghost">View pricing</a>
@@ -805,7 +813,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal" style="color:var(--gold-text)">Pillar 02 · Doc Engine</span>
         <h2 class="h2 reveal" style="--d:80ms">Prompt in.<br>Drafted document out.</h2>
         <p class="lede reveal" style="--d:140ms">Describe what you need in plain language; get an India-specific document in minutes. A lawyer is one click away when the stakes rise.</p>
-        <p class="spec reveal" style="--d:200ms;margin-top:24px">NDA &nbsp;·&nbsp; Founders' Agmt &nbsp;·&nbsp; Employment &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Term Sheet</p>
+        <divclass="chips reveal" style="--d:200ms;margin-top:24px"><span class="pchip">NDA</span><span class="pchip">Founders' Agmt</span><span class="pchip">Employment</span><span class="pchip">Privacy Policy</span><span class="pchip">Term Sheet</span></div>
         <div class="hero-ctas reveal" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/docengine.html" class="btn btn-gold">Try Doc Engine<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/docengine.html" class="btn btn-ghost">See templates</a>
@@ -823,7 +831,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <span class="kicker reveal" style="color:var(--gold)">Pillar 03 · Introspector</span>
         <h2 class="h2 reveal" style="--d:80ms">The bench<br>you never had.</h2>
         <p class="lede reveal" style="--d:140ms">AI research and strategy for practising lawyers. Precedents, statutes, case strategy, every claim cited.</p>
-        <p class="spec reveal" style="--d:200ms;margin-top:24px">Research &nbsp;·&nbsp; Statute maps &nbsp;·&nbsp; Case file &nbsp;·&nbsp; Strategy &nbsp;·&nbsp; Vault</p>
+        <divclass="chips reveal" style="--d:200ms;margin-top:24px"><span class="pchip">Research</span><span class="pchip">Statute maps</span><span class="pchip">Case file</span><span class="pchip">Strategy</span><span class="pchip">Vault</span></div>
         <div class="hero-ctas reveal" style="--d:260ms;justify-content:flex-start;margin-top:30px">
           <a href="/introspector.html" class="btn btn-gold" style="background:var(--gold);color:#111">Join the pilot<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
           <a href="/introspector.html" class="btn btn-ghost" style="background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)">See capabilities</a>

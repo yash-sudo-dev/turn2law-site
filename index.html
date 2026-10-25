@@ -645,6 +645,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 .f3-disc{font-size:11.5px;line-height:1.7;color:#6F6F6F;max-width:720px;margin:22px 0 0}
 @media (max-width:760px){.f3-cols{grid-template-columns:1fr 1fr}.f3-top{padding-bottom:32px}}
 @media (max-width:520px){.f3-cols{grid-template-columns:1fr}}
+
+/* ============ FOOTER v4 (site-wide sitemap) ============ */
+.f3-map{display:grid;grid-template-columns:repeat(4,1fr);gap:44px 40px;padding:clamp(36px,4vw,52px) 0;border-top:1px solid var(--line,#EAEAEA)}
+.f3-map .f3-col a{font-size:12.5px;line-height:2.05}
+.f3-map .f3-sub{display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#B9B9B9;margin:16px 0 2px}
+@media (max-width:1020px){.f3-map{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.f3-map{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.f3-map{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -761,7 +769,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   </div>
 </section>
 <!-- ===== BENTO: platform capabilities ===== -->
-<section class="pad-t sec-amb">
+<section id="why" class="pad-t sec-amb">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow reveal in">What the platform does</span>
@@ -885,7 +893,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
   </div>
 </section>
 <!-- ===== AUDIENCES ===== -->
-<section class="pad sec-amb">
+<section id="audience" class="pad sec-amb">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow reveal in">One platform, two audiences</span>
@@ -965,28 +973,80 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
         <a href="/#contact" class="btn btn-ghost">Talk to us</a>
       </div>
     </div>
-    <div class="f3-cols">
+    <div class="f3-map">
       <div class="f3-col"><h4>Platform</h4>
         <a href="/legal-services.html">Legal Services</a>
         <a href="/docengine.html">Doc Engine</a>
         <a href="/introspector.html">Introspector</a>
         <a href="/resources.html">Resources</a>
+        <a href="/introspector.html#ask">AI Legal Assistant</a>
       </div>
-      <div class="f3-col"><h4>Company</h4>
-        <a href="/">Home</a>
-        <a href="/about.html">About &amp; FAQ</a>
+      <div class="f3-col"><h4>Homepage</h4>
+        <a href="/">Overview</a>
+        <a href="/#products">Four products</a>
+        <a href="/#why">Friction, rebuilt</a>
+        <a href="/#legal-services">Product teasers</a>
+        <a href="/#audience">Built for both sides</a>
+        <a href="/about.html#testimonials">Testimonials</a>
+        <a href="/about.html#faq">FAQ</a>
         <a href="/#contact">Contact</a>
-        <a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <div class="f3-col"><h4>Get started</h4>
-        <a href="/signup.html">Create account</a>
-        <a href="/login.html">Log in</a>
-        <a href="mailto:hello@turn2law.in">hello@turn2law.in</a>
+      <div class="f3-col"><h4>Legal Services</h4>
+        <a href="/legal-services.html">Service overview</a>
+        <a href="/legal-services.html#entities">Entity selector</a>
+        <a href="/legal-services.html#pricing">Pricing, on the page</a>
+        <a href="/legal-services.html#process">Three-step process</a>
+        <a href="/legal-services.html#compare">Traditional vs rebuilt</a>
+        <a href="/legal-services.html#trust">Trust</a>
+        <a href="/legal-services.html#faq">FAQ</a>
+      </div>
+      <div class="f3-col"><h4>Doc Engine</h4>
+        <a href="/docengine.html">Overview</a>
+        <span class="f3-sub">The nine-step wizard</span>
+        <a href="/docengine.html#how">Select document type</a>
+        <a href="/docengine.html#how">Choose input method</a>
+        <a href="/docengine.html#how">Fill details form</a>
+        <a href="/docengine.html#how">Choose branding</a>
+        <a href="/docengine.html#how">Review and confirm</a>
+        <a href="/docengine.html#how">Generate</a>
+        <a href="/docengine.html#how">Preview</a>
+        <a href="/docengine.html#how">Digital signature</a>
+        <a href="/docengine.html#how">Download, print, regenerate</a>
+        <a href="/docengine.html#templates">Templates</a>
+        <a href="/docengine.html#faq">FAQ</a>
+      </div>
+      <div class="f3-col"><h4>Introspector</h4>
+        <a href="/introspector.html#ask">Ask Introspector, live</a>
+        <a href="/introspector.html#workflows">Seven research modes</a>
+        <a href="/introspector.html#grounded">Grounded, checkable answers</a>
+        <a href="/introspector.html#citations">Citation treatment</a>
+        <a href="/introspector.html#brief">Question to brief</a>
+        <a href="/introspector.html#security">Privilege by architecture</a>
+        <a href="/introspector.html#steps">Ask, Ground, Review</a>
+        <a href="/introspector.html#aud">Audience</a>
+        <a href="/introspector.html#testimonials">Testimonials</a>
+        <a href="/introspector.html#faq">FAQ</a>
+      </div>
+      <div class="f3-col"><h4>Resources</h4>
+        <a href="/resources.html#search">Search</a>
+        <a href="/resources.html#featured">Featured collections</a>
+        <a href="/resources.html#documents">Turn2Law Tools</a>
+        <a href="/resources.html#news">Latest legal news</a>
+        <a href="/resources.html#compliance">Compliance and deadlines</a>
+        <a href="/resources.html#events">Events and opportunities</a>
+        <a href="/resources.html#caselaw">Case law library</a>
+      </div>
+      <div class="f3-col"><h4>Account</h4>
+        <a href="/login.html">Email and password login</a>
+        <a href="/login.html">Demo account</a>
+        <a href="/signup.html">Signup</a>
       </div>
     </div>
     <div class="f3-bar">
       <div class="f3-cr"><b>&copy; 2026 Effivia Turn2Law Legal Pvt. Ltd.</b> All rights reserved.<br>CIN: U63110DL2025PTC443434</div>
       <div class="f3-soc">
+        <a href="/#products">Platform</a>
+        <a href="/#contact">Contact</a>
         <a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:hello@turn2law.in">Email</a>
       </div>

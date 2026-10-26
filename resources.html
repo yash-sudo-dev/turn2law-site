@@ -497,6 +497,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 @media (max-width:1100px){.f4-cols{grid-template-columns:repeat(3,1fr);row-gap:40px}.f4-col{padding-left:0}}
 @media (max-width:740px){.f4-cols{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:500px){.f4-cols{grid-template-columns:1fr}}
+
+/* ============ FOOTER OUTLINE WATERMARK ============ */
+.footer{position:relative;overflow:hidden}
+.footer>.wrap{position:relative;z-index:1}
+.f-outline{position:absolute;left:50%;bottom:-.26em;transform:translateX(-50%);z-index:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(110px,21vw,340px);line-height:1;letter-spacing:.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(176,141,62,.20);pointer-events:none;user-select:none}
 </style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="nmark" viewBox="0 0 96 118"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 108 V26 L70 100 V34"></path><path d="M49 44 L70 18 L91 44"></path></g></symbol></svg>
@@ -896,6 +901,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;tra
 </main>
 
 <footer class="footer">
+  <div class="f-outline" aria-hidden="true">TURN2LAW</div>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">

@@ -795,6 +795,11 @@ body.dark-hero .nav:not(.scrolled) .burger span,body.dark-hero .nav:not(.scrolle
 @media (max-width:1100px){.f4-cols{grid-template-columns:repeat(3,1fr);row-gap:40px}.f4-col{padding-left:0}}
 @media (max-width:740px){.f4-cols{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:500px){.f4-cols{grid-template-columns:1fr}}
+
+/* ============ FOOTER OUTLINE WATERMARK ============ */
+.footer{position:relative;overflow:hidden}
+.footer>.wrap{position:relative;z-index:1}
+.f-outline{position:absolute;left:50%;bottom:-.26em;transform:translateX(-50%);z-index:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(110px,21vw,340px);line-height:1;letter-spacing:.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(176,141,62,.20);pointer-events:none;user-select:none}
 </style></head><body class=""><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="nmark" viewBox="0 0 96 118"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 108 V26 L70 100 V34"></path><path d="M49 44 L70 18 L91 44"></path></g></symbol></svg><div class="progress" id="progress"></div>
 <header class="nav" id="nav"><div class="nav-inner">
   <a href="/" class="brand" aria-label="Turn2Law home"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async" style="height:28px;width:auto;display:block"></a>
@@ -841,6 +846,7 @@ body.dark-hero .nav:not(.scrolled) .burger span,body.dark-hero .nav:not(.scrolle
     <h2>Draft your next document in minutes.</h2><p>Plain language in, an India-specific drafted document out, with risk flags and e-signature built in.</p>
     <div class="btn-row"><a href="/signup.html" class="btn btn-gold">Get started</a><a href="/#contact" class="btn btn-ghost" style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)">Talk to us</a></div>
   </div></div></section></main><footer class="footer">
+  <div class="f-outline" aria-hidden="true">TURN2LAW</div>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">

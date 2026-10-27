@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Create account · Turn2Law</title>
+<meta name="description" content="Create your Turn2Law account. India's Legal OS for founders and lawyers.">
+<link rel="icon" href="/turn2law-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Turn2Law auth: premium minimal. White canvas, black type,
+   one champagne-gold accent, architectural grid, no clutter.
+   ============================================================ */
+:root{
+  --gold:#D8AB5B; --gold-deep:#B98F42;
+  --ink:#111111; --gray:#6F6F6F; --gray-2:#9A9A9A;
+  --line:#EAEAEA; --line-soft:#F1F1F1;
+  --err:#B4231B;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none}
+svg{display:block}
+::selection{background:var(--gold);color:#fff}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px;border-radius:6px}
+.mono{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-2)}
+.skip{position:fixed;top:10px;left:10px;z-index:50;background:var(--ink);color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;transform:translateY(-200%)}
+.skip:focus{transform:none}
+
+/* ---------- layout: fixed to one screen ---------- */
+.auth{height:100dvh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+
+/* ---------- left: quiet brand panel ---------- */
+.brandside{
+  position:relative;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(28px,5vh,56px) clamp(28px,4vw,64px);
+  border-right:1px solid var(--line);overflow:hidden;background:#fff;
+}
+.arch{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.045) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  -webkit-mask-image:radial-gradient(120% 100% at 30% 40%,#000 20%,transparent 78%);
+  mask-image:radial-gradient(120% 100% at 30% 40%,#000 20%,transparent 78%);
+}
+.brand-inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(14px,3vh,26px);max-width:420px}
+.brand-logo{height:44px;width:auto}
+.headline{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(38px,7vh,64px);line-height:1.06;letter-spacing:-.03em;margin:0}
+.headline .g{color:var(--gold-deep)}
+.sub{margin:0;color:var(--gray);font-size:14px;max-width:320px}
+.trust{display:flex;flex-direction:column;margin-top:clamp(4px,2vh,14px)}
+.trust .row{display:flex;align-items:center;gap:14px;padding:11px 0;border-top:1px solid var(--line-soft)}
+.trust .row:first-child{border-top:none}
+.trust .ic{flex:none;width:34px;height:34px;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;transition:border-color .3s var(--ease)}
+.trust .row:hover .ic{border-color:var(--gold)}
+.trust .ic svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.trust b{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:-.01em}
+.trust span{display:block;font-size:11.5px;color:var(--gray)}
+
+/* ---------- right: the form ---------- */
+.formside{display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vh,40px) clamp(20px,3vw,40px);overflow-y:auto}
+.card{width:100%;max-width:400px;padding:0}
+.mob-logo{display:none;margin:0 auto 18px}
+.mob-logo img{height:26px;width:auto}
+.card h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,3.2vh,27px);letter-spacing:-.02em;margin:0}
+.lede{margin:6px 0 20px;color:var(--gray);font-size:13px}
+
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;margin-bottom:5px}
+.inp{position:relative;display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;background:#fff;height:44px;transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
+.inp:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,171,91,.18)}
+.inp .lead{flex:none;width:40px;height:44px;display:flex;align-items:center;justify-content:center}
+.inp .lead svg{width:15px;height:15px;stroke:var(--gray-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.inp:focus-within .lead svg{stroke:var(--gold-deep)}
+.inp input{flex:1;min-width:0;height:44px;border:none;outline:none;background:transparent;padding:0 12px 0 0;font:inherit;font-size:14px;color:var(--ink)}
+.inp input::placeholder{color:#B9B9B9}
+.toggle{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);transition:color .25s}
+.toggle:hover{color:var(--ink)}
+.toggle svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.ferr{display:none;color:var(--err);font-size:11.5px;margin-top:4px}
+.ferr.show{display:block}
+.field [aria-invalid="true"] .inp,
+.inp[aria-invalid="true"]{border-color:var(--err);box-shadow:0 0 0 3px rgba(178,35,27,.10)}
+
+/* password strength: fine bar + mono label */
+.pw-meta{display:flex;align-items:center;justify-content:space-between;margin-top:6px;min-height:14px}
+.meter{flex:1;height:2px;background:var(--line-soft);border-radius:2px;overflow:hidden;margin-right:10px}
+.meter i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s var(--ease),background .4s}
+.pw-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2)}
+
+.consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--gray);line-height:1.5;margin:2px 0 16px;cursor:pointer}
+.consent input{margin:2px 0 0;accent-color:var(--ink);width:13px;height:13px;flex:none}
+.consent a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px;transition:text-decoration-color .25s}
+.consent a:hover{text-decoration-color:var(--gold-deep)}
+
+.submit{
+  width:100%;height:44px;border-radius:9px;background:var(--ink);color:#fff;
+  font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.submit svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease)}
+.submit:hover{background:#000;transform:translateY(-1px);box-shadow:0 8px 20px rgba(17,17,17,.14)}
+.submit:hover svg{transform:translateX(3px)}
+.submit:disabled{opacity:.6;transform:none;cursor:default}
+.formok{display:none;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:var(--gold-deep);font-weight:600}
+.formok svg{width:15px;height:15px;stroke:var(--gold-deep);fill:none;stroke-width:2.2}
+
+/* socials: Google primary, others secondary */
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px;color:var(--gray-2);font-size:10.5px;font-family:'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.soc{width:100%;height:42px;border:1px solid var(--line);border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:13px;transition:border-color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease)}
+.soc:hover{border-color:#D8D8D8;background:#FAFAFA;transform:translateY(-1px)}
+.alt{margin:18px 0 0;font-size:12.5px;color:var(--gray);text-align:center}
+.alt a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+.alt a:hover{text-decoration-color:var(--gold-deep)}
+
+.back{position:fixed;top:14px;right:16px;z-index:10;display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:var(--gray);padding:7px 12px;border:1px solid var(--line);border-radius:100px;background:#fff;transition:color .25s,border-color .25s}
+.back:hover{color:var(--ink);border-color:#D8D8D8}
+.back svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,80px);z-index:60;background:var(--ink);color:#fff;font-size:12.5px;padding:10px 18px;border-radius:9px;opacity:0;transition:.45s var(--ease);pointer-events:none;max-width:88vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  html,body{overflow:auto}
+  .auth{height:auto;min-height:100dvh;grid-template-columns:1fr}
+  .brandside{border-right:none;border-bottom:1px solid var(--line);padding:26px 22px 20px}
+  .arch{display:none}
+  .brand-inner{max-width:none}
+  .trust{flex-direction:row;gap:8px}
+  .trust .row{flex:1;flex-direction:column;align-items:flex-start;gap:6px;border-top:none;border-left:1px solid var(--line-soft);padding:2px 0 2px 10px}
+  .trust .ic{width:28px;height:28px}
+  .formside{padding:26px 22px 40px}
+  .mob-logo{display:block}
+  .brandside .brand-logo{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.001ms!important;animation:none!important}
+}
+/* 16px+ prevents iOS Safari zoom-on-focus */
+@media (max-width:768px){
+  .inp input{font-size:16px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#signupForm">Skip to form</a>
+
+<a href="/" class="back" aria-label="Back to home"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to site</a>
+
+<main class="auth">
+  <!-- Left: quiet brand panel -->
+  <section class="brandside" aria-label="About Turn2Law">
+    <div class="arch" aria-hidden="true"></div>
+    <div class="brand-inner">
+      <a href="/" aria-label="Turn2Law home"><img class="brand-logo" src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async"></a>
+      <h2 class="headline">Let's get you<br>started<span class="g">.</span></h2>
+      <p class="sub">One account for legal services, document drafting, and research. Grounded in Indian law.</p>
+      <div class="trust">
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"></rect><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"></path></svg></span>
+          <div><b>AI-powered</b><span>Cited research and drafting tools</span></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8.4-7 10-4-1.6-7-5.6-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+          <div><b>Secure by design</b><span>Encrypted, isolated, auditable</span></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg></span>
+          <div><b>Built for Indian law</b><span>IPC, BNS, and 50+ statutes</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right: the form -->
+  <section class="formside">
+    <div class="card">
+      <a href="/" class="mob-logo" aria-label="Turn2Law home"><img src="/turn2law-logo.png" alt="Turn2Law" width="1620" height="460" decoding="async"></a>
+      <h1>Create your account</h1>
+      <p class="lede">Join Turn2Law, India's Legal OS.</p>
+
+      <form id="signupForm" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <div class="inp">
+            <span class="lead" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+            <input id="name" name="name" type="text" placeholder="Ananya Rao" autocomplete="name" required aria-required="true" aria-describedby="nameErr">
+          </div>
+          <small class="ferr" id="nameErr" role="alert"></small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <div class="inp">
+            <span class="lead" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
+            <input id="email" name="email" type="email" placeholder="you@company.in" autocomplete="email" required aria-required="true" aria-describedby="emailErr">
+          </div>
+          <small class="ferr" id="emailErr" role="alert"></small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="inp">
+            <span class="lead" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
+            <input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" required aria-required="true" aria-describedby="passwordErr pwLabel">
+            <button type="button" class="toggle" id="pwToggle" aria-label="Show password" aria-pressed="false">
+              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <div class="pw-meta">
+            <span class="meter" aria-hidden="true"><i id="meterBar"></i></span>
+            <span class="pw-label" id="pwLabel" aria-live="polite"></span>
+          </div>
+          <small class="ferr" id="passwordErr" role="alert"></small>
+        </div>
+
+        <label class="consent"><input type="checkbox" id="consent" required aria-required="true"><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span></label>
+        <small class="ferr" id="consentErr" role="alert" style="margin:-10px 0 12px"></small>
+
+        <button type="submit" class="submit" id="submitBtn">Create account <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+        <div class="formok" id="formOk"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4 12 14.01l-3-3"></path></svg><span>Account created. Taking you in…</span></div>
+      </form>
+
+      <div class="divider">or continue with</div>
+      <button type="button" class="soc" data-soc="Google" aria-label="Continue with Google">
+        <svg viewBox="0 0 48 48" width="17" height="17" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"></path><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"></path><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"></path><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"></path></svg>
+        Continue with Google
+      </button>
+
+      <p class="alt">Already have an account? <a href="/login.html">Log in</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s){return document.querySelector(s)};
+
+  /* password visibility */
+  var pw=$('#password'),tog=$('#pwToggle');
+  var eye='<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+  var eyeOff='<svg viewBox="0 0 24 24"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a13.2 13.2 0 0 1-1.67 2.68M6.6 6.6A13.5 13.5 0 0 0 2 11s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M14.12 14.12A3 3 0 1 1 9.88 9.88"></path><path d="M2 2l20 20"></path></svg>';
+  tog.addEventListener('click',function(){
+    var show=pw.type==='password';
+    pw.type=show?'text':'password';
+    tog.innerHTML=show?eyeOff:eye;
+    tog.setAttribute('aria-pressed',show);
+    tog.setAttribute('aria-label',show?'Hide password':'Show password');
+    pw.focus();
+  });
+
+  /* password strength: length + variety, quiet feedback */
+  var meterBar=$('#meterBar'),pwLabel=$('#pwLabel');
+  function strength(v){
+    var score=0;
+    if(v.length>=8)score++;
+    if(v.length>=12)score++;
+    if(/[A-Z]/.test(v)&&/[a-z]/.test(v))score++;
+    if(/\d/.test(v))score++;
+    if(/[^A-Za-z0-9]/.test(v))score++;
+    return Math.min(4,score);
+  }
+  function renderStrength(){
+    var v=pw.value;
+    if(!v){meterBar.style.width='0';pwLabel.textContent='';return;}
+    var s=strength(v);
+    var labels=['Weak','Weak','Fair','Good','Strong'];
+    var colors=['#B4231B','#B4231B','#D8AB5B','#B98F42','#111111'];
+    meterBar.style.width=(s/4*100)+'%';
+    meterBar.style.background=colors[s];
+    pwLabel.textContent=labels[s];
+    pwLabel.style.color=colors[s];
+  }
+  pw.addEventListener('input',renderStrength);
+
+  /* toast */
+  var toast=$('#toast'),tt;
+  function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show');},2600);}
+
+  /* validation */
+  function setErr(id,msg){
+    var el=$('#'+id),e=$('#'+id+'Err');
+    if(msg){if(el)el.setAttribute('aria-invalid','true');if(e){e.textContent=msg;e.classList.add('show');}}
+    else{if(el)el.removeAttribute('aria-invalid');if(e){e.textContent='';e.classList.remove('show');}}
+  }
+  var form=$('#signupForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=$('#name').value.trim(),email=$('#email').value.trim(),pwv=pw.value,consent=$('#consent').checked;
+    var okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var firstBad=null;
+    setErr('name',name?'':'Please enter your full name.');if(!name)firstBad=firstBad||'name';
+    setErr('email',email?(okEmail?'':'Enter a valid email address.'):'Please enter your email.');if(!email||!okEmail)firstBad=firstBad||'email';
+    setErr('password',pwv?(pwv.length<8?'Use at least 8 characters.':''):'Please create a password.');if(!pwv||pwv.length<8)firstBad=firstBad||'password';
+    setErr('consent',consent?'':'Please accept the Terms and Privacy Policy.');if(!consent)firstBad=firstBad||'consent';
+    if(firstBad){var f=$('#'+firstBad);if(f)f.focus();return;}
+    var btn=$('#submitBtn');btn.disabled=true;btn.textContent='Creating account…';
+    setTimeout(function(){$('#formOk').style.display='flex';setTimeout(function(){window.location.href='/';},1100);},700);
+  });
+  ['name','email'].forEach(function(id){$('#'+id).addEventListener('input',function(){setErr(id,'');});});
+  pw.addEventListener('input',function(){setErr('password','');});
+  $('#consent').addEventListener('change',function(){setErr('consent','');});
+
+  /* social: honest placeholders, no dead buttons */
+  document.querySelectorAll('.soc').forEach(function(b){
+    b.addEventListener('click',function(){showToast(b.getAttribute('data-soc')+' sign-up is coming soon.');});
+  });
+})();
+</script>
+</body></html>

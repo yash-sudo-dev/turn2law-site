@@ -1,5 +1,6 @@
 // App assembly: config, db, adapters, routes, SSR pages, boot, seed.
 import { createServer } from 'node:http';
+import { randomBytes } from 'node:crypto';
 import { existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,6 +18,7 @@ import { seed } from './src/seed.js';
 import { renderPage, ROUTES as WEB_ROUTES } from './src/web.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
+const randomSecret = () => randomBytes(32).toString('base64url');
 
 export function loadConfig(env = process.env) {
   const dev = (env.NODE_ENV || 'local') !== 'production';
@@ -28,14 +30,14 @@ export function loadConfig(env = process.env) {
     appUrl: env.APP_URL || 'http://localhost:8787',
     port: Number(env.PORT || 8787),
     secureCookies: !!env.SESSION_SECRET && !dev,
-    sessionSecret: env.SESSION_SECRET || 'dev-session-secret-CHANGE-ME',
-    devPaymentWebhookSecret: env.DEV_PAYMENT_WEBHOOK_SECRET || 'dev-payment-webhook-secret',
-    docEngineSeamSecret: env.DOCENGINE_SEAM_SECRET || 'dev-docengine-seam-secret',
-    fileTokenSecret: env.FILE_TOKEN_SECRET || 'dev-file-token-secret',
+    sessionSecret: env.SESSION_SECRET || randomSecret(),
+    devPaymentWebhookSecret: env.DEV_PAYMENT_WEBHOOK_SECRET || randomSecret(),
+    docEngineSeamSecret: env.DOCENGINE_SEAM_SECRET || randomSecret(),
+    fileTokenSecret: env.FILE_TOKEN_SECRET || randomSecret(),
     storageDir: env.T2L_STORAGE_DIR || join(dataDir, 'storage'),
     dbDir: join(dataDir, 'db'),
     devAdminEmail: env.DEV_ADMIN_EMAIL || 'dev-admin@turn2law.invalid',
-    devAdminPassword: env.DEV_ADMIN_PASSWORD || 'dev-admin-password',
+    devAdminPassword: env.DEV_ADMIN_PASSWORD || '',
   };
 }
 

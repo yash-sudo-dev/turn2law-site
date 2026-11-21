@@ -84,9 +84,9 @@ const PAGE = {
   '/login': (c) => layout({ title: 'Login', ctx: c.ctx, active: '/login', body: `
     <h1>Login</h1><div class="card" style="max-width:420px">
     <label>Email</label><input id="email" value="dev-admin@turn2law.invalid">
-    <label>Password</label><input id="password" type="password" value="dev-admin-password">
+    <label>Password</label><input id="password" type="password">
     <button class="btn" onclick="login()">Login</button></div>
-    <div class="note">DEV bootstrap admin is prefilled (labelled .invalid). Change DEV_ADMIN_* env vars before any shared deployment.</div>`,
+    <div class="note">Set DEV_ADMIN_EMAIL and DEV_ADMIN_PASSWORD before starting the scaffold server to enable the local bootstrap admin.</div>`,
     script: `async function login(){const r=await call('POST','/api/auth/login',
       {email:email.value,password:password.value}); if(r&&r.ok)location='/';}` }),
 

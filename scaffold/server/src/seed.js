@@ -22,6 +22,11 @@ export async function seed(app) {
     }
   }
 
+  if (!app.config.devAdminPassword) {
+    if (app.config.dev) console.log('[seed] DEV bootstrap admin disabled; set DEV_ADMIN_PASSWORD to enable it.');
+    return;
+  }
+
   const existing = await app.db.system(
     'select id from auth.users where email = $1', [app.config.devAdminEmail]);
   if (!existing.length) {

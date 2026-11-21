@@ -7,6 +7,9 @@ import { seed } from '../src/seed.js';
 import { join } from 'node:path';
 import { rmSync } from 'node:fs';
 import { hmacSign } from '../src/crypto.js';
+import { randomBytes } from 'node:crypto';
+
+const TEST_PASSWORD = randomBytes(24).toString('base64url');
 
 const DATA = join(import.meta.dirname, '..', '.testdata');
 let app, base;
@@ -40,15 +43,15 @@ async function loginAs(name, email, password) {
 }
 async function signupUser(name) {
   const email = `${name.toLowerCase()}@test.invalid`;
-  const r = await api('POST', '/api/auth/signup', { body: { email, password: 'password-123', name } });
+  const r = await api('POST', '/api/auth/signup', { body: { email, password: TEST_PASSWORD, name } });
   assert.equal(r.status, 200, `signup ${name}: ${JSON.stringify(r.data)}`);
-  await loginAs(name, email, 'password-123');
+  await loginAs(name, email, TEST_PASSWORD);
   return { email };
 }
 
 before(async () => {
   rmSync(DATA, { recursive: true, force: true });
-  const config = loadConfig({ ...process.env, T2L_DATA_DIR: DATA, PORT: String(5800 + Math.floor(Math.random() * 100)) });
+  const config = loadConfig({ ...process.env, DEV_ADMIN_PASSWORD: randomBytes(24).toString('base64url'), T2L_DATA_DIR: DATA, PORT: String(5800 + Math.floor(Math.random() * 100)) });
   app = await createApp(config);
   await seed(app);
   await new Promise(r => app.server.listen(config.port, r));

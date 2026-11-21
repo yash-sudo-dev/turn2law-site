@@ -1,0 +1,7 @@
+/* ============================================================
+   shell.css  ·  Single-page app shell (stacked sections)
+   Smooth scrolling + nav offset (scroll-padding-top) come from
+   base.css. This file only carries shell-specific overrides.
+   ============================================================ */
+/* Confine Introspector's full-bleed dark background to its own section */
+#page-introspector{position:relative;overflow:hidden}
